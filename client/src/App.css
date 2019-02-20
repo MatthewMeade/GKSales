@@ -1,33 +1,60 @@
-.App {
-  text-align: center;
+/* img {
+  width: 100%;
+} */
+
+.landing {
+  position: relative;
+  background: url("./img/landing.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 30px);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.landing-inner {
+  padding-top: 80px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.card-form {
+  opacity: 0.9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+nav {
+  background-color: #bf2127 !important;
+}
+
+#navLogo {
+  height: 20px;
+  margin: 5px;
+}
+
+.landing .logo {
+  width: 25%;
+}
+
+.landing .container {
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 8px 8px 10px 10px rgba(0, 0, 0, 0.25);
+  padding: 5px;
+}
+
+.landing h1 {
+  text-transform: uppercase;
 }
