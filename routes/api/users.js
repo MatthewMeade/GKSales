@@ -18,7 +18,7 @@ router.get("/test", (req, res) => res.json({ message: "User routes working", ...
 
 // @route   GET api/users/test/auth
 // @desc    Tests authentication for private routes
-// @access  Provate
+// @access  Private
 router.get("/test/auth", authenticate, (req, res) => res.json({ message: "Private Route", user: req.user }));
 
 // @route   POST api/users/register
