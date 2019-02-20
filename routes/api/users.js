@@ -29,6 +29,6 @@ router.post("/register", validateRegisterInput, catchErrors(UserController.regis
 // @route   POST api/users/login
 // @desc    Login User
 // @access  Public
-router.post("/register", validateLoginInput, catchErrors(UserController.registerUser));
+router.post("/login", validateLoginInput, catchErrors(UserController.loginUser));
 
 module.exports = router;

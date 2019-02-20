@@ -12,6 +12,9 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -44,16 +47,14 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            {/* <div className="container">
+            <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-
-              <Switch>
+              {/*<Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
-
-              <Route exact path="/not-found" component={NotFound} /> 
-            </div> */}
+              <Route exact path="/not-found" component={NotFound} /> */}
+            </div>
           </div>
         </Router>
       </Provider>

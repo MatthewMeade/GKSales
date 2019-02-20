@@ -34,15 +34,15 @@ function findUser(query) {
 module.exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await fundUser({ email });
+  const user = await findUser({ email });
 
   // Check if account exists
-  if (!(await findUser({ email }))) {
+  if (!user) {
     return res.status(400).json({ email: "No user found with that email" });
   }
 
   // Check if password is correct
-  const isMatch = bcrypt.compareSync(password, user.passport);
+  const isMatch = bcrypt.compareSync(password, user.password);
   if (!isMatch) {
     return res.status(400).json({ password: "Password is incorrect" });
   }
