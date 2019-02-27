@@ -55,7 +55,7 @@ class Login extends Component {
               <p className="lead text-center">Sign in to your DevConnector account</p>
               <form onSubmit={this.onSubmit} noValidate>
                 <TextFieldGroup
-                  placeholder="emailaddress.com"
+                  placeholder="Email Address"
                   name="email"
                   type="email"
                   value={this.state.email}
