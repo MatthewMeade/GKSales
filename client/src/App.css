@@ -55,7 +55,7 @@ nav {
   padding: 5px;
 }
 
-.container {
+.App > .container {
   padding-top: 25px;
 }
 
