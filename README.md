@@ -22,7 +22,7 @@ npm run client-install  # Install client packages
 
 ```javascript
 // Use MongoDB Atlas or a similar service to create a development DB
-// Replace he example with your connection string
+// Replace the example with your connection string
 module.exports = {
   mongoURI: "mongodb://username:password@exampleMongoServer.net",
   secret: "This is a secret",
