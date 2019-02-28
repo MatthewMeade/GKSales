@@ -21,7 +21,8 @@ npm run client-install  # Install client packages
 ### Create keys_dev.js file in `/config`
 
 ```javascript
-// Use MongoDB Atlas or a similar service to create a development DB and replace the example with your connection string
+// Use MongoDB Atlas or a similar service to create a development DB
+// Replace he example with your connection string
 module.exports = {
   mongoURI: "mongodb://username:password@exampleMongoServer.net",
   secret: "This is a secret",
@@ -30,9 +31,7 @@ module.exports = {
 
 ## Start App
 
-This script will run both the back and front end servers
-
-Nodemon will restart the app when changes are saved
+This script will run both the back and front end servers, nodemon will restart the app when code changes are saved
 
 ```bash
 npm run dev
