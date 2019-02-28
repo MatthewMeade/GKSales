@@ -15,16 +15,22 @@ mongoose
   .connect(mongoURI, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
+mongoose.set("useFindAndModify", false);
 
+// Load DB Models
 require("./models/User");
+require("./models/Lead");
+require("./models/Quote");
 
 // Passport
 app.use(passport.initialize());
 require("./config/passport")(passport);
 
 // Use Routes
-const users = require("./routes/api/users");
-app.use("/api/users", users);
+const userRoutes = require("./routes/api/users");
+const leadRoutes = require("./routes/api/leads");
+app.use("/api/users", userRoutes);
+app.use("/api/leads", leadRoutes);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
