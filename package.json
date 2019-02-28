@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "client-install": "cd ./client && npm i --dev",
     "server": "nodemon server.js",
     "start": "node server.js",
     "client": "npm start --prefix client",
@@ -22,6 +22,7 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.12",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"
