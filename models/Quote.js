@@ -3,11 +3,15 @@ const { Schema, model } = mongoose;
 
 const QuoteSchema = new Schema({
   // General
-  Address: String,
+  address: String,
   consultationDate: Date,
   Notes: String,
   Photos: [String],
   Operation: String,
+  lead: {
+    type: Schema.Types.ObjectId,
+    ref: "lead",
+  },
 
   // Job Info
   job: {

@@ -29,8 +29,12 @@ require("./config/passport")(passport);
 // Use Routes
 const userRoutes = require("./routes/api/users");
 const leadRoutes = require("./routes/api/leads");
+const quoteRoutes = require("./routes/api/quotes");
+const uploadRoutes = require("./routes/api/uploads");
 app.use("/api/users", userRoutes);
 app.use("/api/leads", leadRoutes);
+app.use("/api/quotes", quoteRoutes);
+app.use("/api/uploads", uploadRoutes);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

@@ -1,4 +1,5 @@
 import axios from "axios";
+window.axios = axios;
 
 const setAuthToken = token => {
   // Apply to every request
