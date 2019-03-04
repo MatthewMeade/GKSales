@@ -60,11 +60,12 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark" style={{ height: 30 }}>
+      <nav className="navbar navbar-expand-lg bg-primary">
         <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Garage Kings" id="navLogo" />
           Garage King Sales
         </Link>
+
         {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
           <span className="navbar-toggler-icon" />
         </button>

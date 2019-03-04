@@ -1,0 +1,51 @@
+// Variables
+$GK-red: #bf2127;
+
+// Bootstrap Overrides
+$primary: $GK-red;
+
+// Bootstrap Import
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Global Styles
+.App > .container {
+  // padding-top: 2em; // Add space between nav and body
+}
+
+// Landing page
+.landing {
+  position: relative;
+  background: url("./img/landing.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 3rem);
+  padding-top: 80px;
+
+  .container {
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
+    padding-top: 100px;
+    height: 60vh;
+  }
+
+  .logo {
+    width: 20%;
+  }
+}
+
+nav {
+  background-color: $GK-red !important;
+  height: 3em;
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: darken($white, 10);
+  }
+  img {
+    height: 30px;
+    margin-right: 1em;
+  }
+}
