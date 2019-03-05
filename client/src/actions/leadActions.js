@@ -18,6 +18,22 @@ export const getLeads = () => dispatch => {
     });
 };
 
+// Refresh Leads
+export const refreshLeads = () => dispatch => {
+  dispatch(setLeadLoading());
+  axios
+    .get("/api/leads/refresh")
+    .then(res => {
+      dispatch({ type: GET_LEADS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_LEADS,
+        payload: null,
+      });
+    });
+};
+
 // Set loading state
 export const setLeadLoading = () => {
   return { type: LEAD_LOADING };

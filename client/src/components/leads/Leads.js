@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
-import { getLeads } from "../../actions/leadActions";
+import { getLeads, refreshLeads } from "../../actions/leadActions";
 
 class Leads extends Component {
   componentDidMount() {
     this.props.getLeads();
   }
+
+  onDeleteClick = () => {
+    this.props.refreshLeads();
+  };
 
   render() {
     const { leads, loading } = this.props;
@@ -40,7 +44,9 @@ class Leads extends Component {
             <h3>Leads</h3>
           </div>
           <div className="col text-right">
-            <a className="btn btn-primary">Refresh</a>
+            <button className="btn btn-primary" onClick={this.onDeleteClick}>
+              Refresh
+            </button>
           </div>
         </div>
         <table className="table table-striped table-light table-hover">
@@ -69,5 +75,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getLeads }
+  { getLeads, refreshLeads }
 )(Leads);
