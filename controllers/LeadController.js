@@ -14,11 +14,14 @@ module.exports.refreshLeads = async (req, res) => {
   // Upsert each lead
   const upsertPromises = [];
   leads.forEach(lead => {
-    upsertPromises.push(
-      Lead.findOneAndUpdate({ _id: lead._id }, lead, { upsert: true, new: true }).exec()
-    );
+    upsertPromises.push(Lead.findOneAndUpdate({ _id: lead._id }, lead, { upsert: true, new: true }).exec());
   });
   const updatedLeads = await Promise.all(upsertPromises);
 
   res.send(updatedLeads);
+};
+
+module.exports.getLeads = async (req, res) => {
+  const leads = await Lead.find();
+  res.send(leads);
 };
