@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
 import { getLeads } from "../../actions/leadActions";
-import LeadList from "./LeadList";
 
 class Leads extends Component {
   componentDidMount() {
@@ -38,7 +37,7 @@ class Leads extends Component {
     return (
       <div className="leadList">
         <h3>Leads</h3>
-        <table className="table">
+        <table className="table table-striped table-light">
           <thead>
             <tr>
               <th>Name</th>
