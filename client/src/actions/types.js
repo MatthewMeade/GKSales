@@ -14,3 +14,9 @@ export const GET_LEADS = "GET_LEADS";
 export const GET_LEAD = "GET_LEAD";
 export const ADD_LEAD = "ADD_LEAD";
 export const DELETE_LEAD = "DELETE_LEAD";
+
+export const QUOTE_LOADING = "QUOTE_LOADING";
+export const GET_QUOTES = "GET_QUOTES";
+export const GET_QUOTE = "GET_QUOTE";
+export const ADD_QUOTE = "ADD_QUOTE";
+export const DELETE_QUOTE = "DELETE_QUOTE";

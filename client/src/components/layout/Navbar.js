@@ -29,6 +29,11 @@ class Navbar extends Component {
             Leads
           </Link>
         </li>
+        <li className="nav-item ml-3">
+          <Link className="nav-link" to="/quotes">
+            Quotes
+          </Link>
+        </li>
       </ul>
     );
 
