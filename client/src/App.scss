@@ -1,15 +1,20 @@
-// Variables
-$GK-red: #bf2127;
-
 // Bootstrap Overrides
-$primary: $GK-red;
+$primary: #c0392b;
 
-// Bootstrap Import
-@import "../node_modules/bootstrap/scss/bootstrap";
+// Theme Import
+@import "~bootswatch/dist/darkly/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/darkly/bootswatch";
 
 // Global Styles
 .App > .container {
   padding-top: 2em; // Add space between nav and body
+  background-color: rgba(0, 0, 0, 0.25);
+  min-height: 90vh;
+}
+
+body {
+  background: url("./img/background.png");
 }
 
 // Landing page
@@ -34,7 +39,6 @@ $primary: $GK-red;
 }
 
 nav {
-  background-color: $GK-red !important;
   height: 3em;
 
   a {
