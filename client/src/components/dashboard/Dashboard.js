@@ -8,13 +8,11 @@ import Leads from "../leads/Leads";
 class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
-    // const { profile, loading } = this.props.profile;
 
     return (
       <div className="dashboard">
         <h1>Dashboard</h1>
-        {/* <h2>Welcome Back {user.name}</h2> */}
-        <Leads />
+        <h3>Welcome Back {user.name}</h3>
       </div>
     );
   }

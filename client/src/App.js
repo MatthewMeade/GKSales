@@ -19,6 +19,8 @@ import Login from "./components/auth/Login";
 
 import Dashboard from "./components/dashboard/Dashboard";
 
+import Leads from "./components/leads/Leads";
+
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -56,6 +58,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/leads" component={Leads} />
               </Switch>
               {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>
