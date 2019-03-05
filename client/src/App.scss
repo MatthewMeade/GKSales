@@ -10,7 +10,7 @@ $primary: #c0392b;
 .App > .container {
   padding-top: 2em; // Add space between nav and body
   background-color: rgba(0, 0, 0, 0.25);
-  min-height: 90vh;
+  min-height: calc(100vh - 3rem);
 }
 
 body {
@@ -20,18 +20,7 @@ body {
 // Landing page
 .landing {
   position: relative;
-  background: url("./img/landing.jpg") no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: calc(100vh - 3rem);
   padding-top: 80px;
-
-  .container {
-    background: rgba(0, 0, 0, 0.75);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
-    padding-top: 100px;
-    height: 60vh;
-  }
 
   .logo {
     width: 20%;
@@ -39,7 +28,7 @@ body {
 }
 
 nav {
-  height: 3em;
+  height: 50px;
 
   a {
     color: $white;
@@ -48,8 +37,9 @@ nav {
   a:hover {
     color: darken($white, 10);
   }
+
   img {
-    height: 30px;
+    height: 25px;
     margin-right: 1em;
   }
 }

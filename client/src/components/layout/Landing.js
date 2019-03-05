@@ -17,22 +17,18 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
-        <div className="dark-overlay landing-inner text-light">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <img src={Logo} alt="Garage Kings" className="logo" />
-                <h1 className="display-4 mb-4">Sales App</h1>
-                <p className="lead">Sign in or Register as a new salesperson</p>
-                <hr />
-                <Link to="/login" className="btn btn-lg btn-success mr-2">
-                  Sign In
-                </Link>
-                <Link to="/register" className="btn btn-lg btn-light">
-                  Register
-                </Link>
-              </div>
-            </div>
+        <div className="row">
+          <div className="col-md-12 text-center">
+            <img src={Logo} alt="Garage Kings" className="logo" />
+            <h1 className="display-4 mb-4">Sales App</h1>
+            <p>Sign in or Register as a new salesperson</p>
+            <hr />
+            <Link to="/login" className="btn btn-lg btn-primary mr-2">
+              Sign In
+            </Link>
+            <Link to="/register" className="btn btn-lg btn-light">
+              Register
+            </Link>
           </div>
         </div>
       </div>

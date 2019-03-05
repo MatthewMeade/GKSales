@@ -60,7 +60,7 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-lg bg-primary">
+      <nav className="navbar navbar-expand bg-primary">
         <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Garage Kings" id="navLogo" />
           Garage King Sales
