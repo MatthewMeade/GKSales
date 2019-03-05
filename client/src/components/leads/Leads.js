@@ -29,21 +29,26 @@ class Leads extends Component {
           <td>{lead.name}</td>
           <td>{lead.email}</td>
           <td>{lead.phone}</td>
-          <td>{lead.zip}</td>
         </tr>
       ));
     }
 
     return (
       <div className="leadList">
-        <h3>Leads</h3>
-        <table className="table table-striped table-light">
+        <div className="row">
+          <div className="col">
+            <h3>Leads</h3>
+          </div>
+          <div className="col text-right">
+            <a className="btn btn-primary">Refresh</a>
+          </div>
+        </div>
+        <table className="table table-striped table-light table-hover">
           <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Zip</th>
             </tr>
           </thead>
           <tbody>{leadsContent}</tbody>

@@ -43,3 +43,19 @@ nav {
     margin-right: 1em;
   }
 }
+
+.leadList {
+  th {
+    background: $primary;
+    border: none;
+  }
+
+  tbody {
+    tr:nth-of-type(2n):not(:hover) {
+      background: rgba($primary, 0.2);
+    }
+    tr:nth-of-type(2n):hover {
+      background: rgba($primary, 0.1);
+    }
+  }
+}
