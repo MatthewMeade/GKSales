@@ -21,11 +21,7 @@ class Leads extends Component {
 
   render() {
     const { leads, loading } = this.props;
-    console.log(leads);
     let leadsContent;
-
-    console.log("PROPS");
-    console.log(this.props);
 
     if (!leads || loading) {
       leadsContent = (
