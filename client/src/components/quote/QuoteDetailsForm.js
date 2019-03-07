@@ -5,14 +5,18 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import SelectListGroup from "../common/SelectListGroup";
+
 import { getQuote, updateQuoteDetails } from "../../actions/quoteActions";
+import { getLeads } from "../../actions/leadActions";
 import Spinner from "../common/Spinner";
 
 class QuoteDetailsForm extends Component {
-  state = { errors: {}, consultationDate: new Date().toISOString(), address: "", notes: "" };
+  state = { errors: {}, consultationDate: new Date().toISOString(), address: "", notes: "", lead: "" };
 
   componentDidMount() {
     this.props.getQuote(this.props.match.params.id);
+    this.props.getLeads();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,11 +26,15 @@ class QuoteDetailsForm extends Component {
 
     if (nextProps.quote) {
       const { quote } = nextProps;
-      console.log(quote);
+
+      if (!quote.lead) {
+        return;
+      }
       this.setState({
         consultationDate: quote.consultationDate || "",
         address: quote.address || "",
         notes: quote.notes || "",
+        lead: quote.lead._id || "",
       });
     }
   }
@@ -38,20 +46,42 @@ class QuoteDetailsForm extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { consultationDate, address, notes } = this.state;
-    this.props.updateQuoteDetails(this.props.match.params.id, { consultationDate, address, notes }, this.props.history);
+    const { consultationDate, address, notes, lead } = this.state;
+    this.props.updateQuoteDetails(
+      this.props.match.params.id,
+      { consultationDate, address, notes, lead },
+      this.props.history
+    );
   };
 
   render() {
     const { errors } = this.state;
+    const { quotesLoading, leadsLoading, leads } = this.props;
+
+    const leadOptions =
+      leads &&
+      leads
+        .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1))
+        .map(lead => ({ label: `${lead.name} (${lead.email})`, value: lead._id }));
+    console.log(leads);
     return (
       <div className="quoteDetailsForm">
         <h1>Edit Quote Details</h1>
 
-        {this.props.loading ? (
+        {quotesLoading || leadsLoading ? (
           <Spinner />
         ) : (
           <form onSubmit={this.onSubmit}>
+            <SelectListGroup
+              placeholder="Status"
+              name="lead"
+              value={this.state.lead}
+              onChange={this.onChange}
+              options={leadOptions}
+              error={errors.status}
+              info="Give us an idea of where you are at in your career"
+            />
+
             <TextFieldGroup
               name="consultationDate"
               type="date"
@@ -97,11 +127,13 @@ QuoteDetailsForm.propTypes = {
 
 const mapStateToProps = state => ({
   quote: state.quotes.quote,
+  leads: state.leads.leads,
   errors: state.errors,
-  loading: state.quotes.loading,
+  quotesLoading: state.quotes.loading,
+  leadsLoading: state.leads.loading,
 });
 
 export default connect(
   mapStateToProps,
-  { getQuote, updateQuoteDetails }
+  { getQuote, updateQuoteDetails, getLeads }
 )(withRouter(QuoteDetailsForm));

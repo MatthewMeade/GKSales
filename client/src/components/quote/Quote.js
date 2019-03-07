@@ -13,7 +13,9 @@ class Quote extends Component {
   }
 
   render() {
-    return (
+    return this.props.loading ? (
+      <Spinner />
+    ) : (
       <div className="quotePage">
         <QuoteDetails quote={this.props.quote} />
       </div>
