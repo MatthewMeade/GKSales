@@ -13,8 +13,8 @@
 - [ ] Replace loading spinner with something less ugly
 - [ ] Refactor sass into files organized by the component being styled
 - [x] Lead detail page
-- [ ] New Quote button / form
-- [ ] Quote detail page
+- [x] New Quote button / form
+- [x] Quote detail page
 - [ ] Quote Job Info page
 - [ ] Quote Floor Info page
 - [ ] Quote Summary (details and payment)
@@ -24,6 +24,7 @@
 - [ ] Fix navbar overflowing smaller viewport
 - [ ] Add search to tables
 - [ ] Add table pagination
+- [ ] Add log out button
 
 ## Infrastructure
 
