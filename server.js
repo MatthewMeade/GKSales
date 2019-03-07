@@ -18,9 +18,9 @@ mongoose
 mongoose.set("useFindAndModify", false);
 
 // Load DB Models
+require("./models/Quote");
 require("./models/User");
 require("./models/Lead");
-require("./models/Quote");
 
 // Passport
 app.use(passport.initialize());

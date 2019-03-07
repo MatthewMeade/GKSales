@@ -17,13 +17,9 @@ module.exports.getQuoteById = async (req, res) => {
 };
 
 module.exports.getQuotesByLead = async (req, res) => {
-  const quotes = Quote.find({ lead: req.params.lead_id });
+  const quotes = await Quote.find({ lead: req.params.lead_id });
 
-  if (!quotes) {
-    return res.status(404).send({ err: "Not found" });
-  }
-
-  return res.send({ quote });
+  return res.send({ quotes });
 };
 
 module.exports.createQuote = async (req, res) => {

@@ -20,4 +20,9 @@ router.get("/refresh", authenticate, catchErrors(LeadController.refreshLeads));
 // @access  Private
 router.get("/", authenticate, catchErrors(LeadController.getLeads));
 
+// @route   GET api/leads/:id
+// @desc    Get a lead by id
+// @access  Private
+router.get("/:id", authenticate, catchErrors(LeadController.getLead));
+
 module.exports = router;

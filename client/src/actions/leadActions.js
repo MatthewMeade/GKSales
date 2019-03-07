@@ -18,6 +18,22 @@ export const getLeads = () => dispatch => {
     });
 };
 
+// Get lead by ID
+export const getLead = id => dispatch => {
+  dispatch(setLeadLoading());
+  axios
+    .get(`/api/leads/${id}`)
+    .then(res => {
+      dispatch({ type: GET_LEAD, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_LEAD,
+        payload: null,
+      });
+    });
+};
+
 // Refresh Leads
 export const refreshLeads = () => dispatch => {
   dispatch(setLeadLoading());

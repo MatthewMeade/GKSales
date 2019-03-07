@@ -7,6 +7,6 @@ import quoteReducer from "./quoteReducer";
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  leadList: leadReducer,
+  leads: leadReducer,
   quote: quoteReducer,
 });

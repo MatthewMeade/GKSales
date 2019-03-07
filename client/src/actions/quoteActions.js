@@ -19,6 +19,23 @@ export const getQuotes = () => dispatch => {
     });
 };
 
+// Get quotes by lead ID
+export const getQuotesByLead = id => dispatch => {
+  dispatch(setQuoteLoading());
+
+  axios
+    .get(`/api/quotes/lead/${id}`)
+    .then(res => {
+      dispatch({ type: GET_QUOTES, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_QUOTES,
+        payload: null,
+      });
+    });
+};
+
 // Set loading state
 export const setQuoteLoading = () => {
   return { type: QUOTE_LOADING };

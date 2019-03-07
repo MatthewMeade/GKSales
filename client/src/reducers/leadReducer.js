@@ -2,7 +2,7 @@ import { ADD_LEAD, GET_ERRORS, GET_LEADS, LEAD_LOADING, DELETE_LEAD, GET_LEAD, C
 
 const initialState = {
   leads: [],
-  // lead: {},
+  lead: {},
   loading: false,
 };
 
@@ -12,6 +12,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         leads: action.payload,
+        loading: false,
+      };
+
+    case GET_LEAD:
+      return {
+        ...state,
+        lead: action.payload,
         loading: false,
       };
 

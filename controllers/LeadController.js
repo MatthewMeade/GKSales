@@ -21,7 +21,14 @@ module.exports.refreshLeads = async (req, res) => {
   res.send(updatedLeads);
 };
 
+// Returns all leads
 module.exports.getLeads = async (req, res) => {
   const leads = await Lead.find();
   res.send(leads);
+};
+
+// Returns a lead by ID
+module.exports.getLead = async (req, res) => {
+  const lead = await Lead.findOne({ _id: req.params.id });
+  res.send(lead);
 };

@@ -24,7 +24,7 @@ router.get("/:id", authenticate, catchErrors(QuoteController.getQuoteById));
 // @route   GET api/quotes/lead/:lead_id
 // @desc    Return a list of quotes by lead ID
 // @access  Private
-router.get("/:id", authenticate, catchErrors(QuoteController.getQuoteByLead));
+router.get("/lead/:lead_id", authenticate, catchErrors(QuoteController.getQuotesByLead));
 
 // @route   POST api/quotes
 // @desc    Create a new quote

@@ -21,9 +21,11 @@ class Leads extends Component {
 
   render() {
     const { leads, loading } = this.props;
+    console.log(leads);
     let leadsContent;
 
-    console.log(loading);
+    console.log("PROPS");
+    console.log(this.props);
 
     if (!leads || loading) {
       leadsContent = (
@@ -76,8 +78,8 @@ Leads.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  leads: state.leadList.leads,
-  loading: state.leadList.loading,
+  leads: state.leads.leads,
+  loading: state.leads.loading,
 });
 
 export default withRouter(

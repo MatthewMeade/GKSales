@@ -60,3 +60,9 @@ nav {
     }
   }
 }
+
+.leadPage {
+  .leadDetails * {
+    color: $dark;
+  }
+}
