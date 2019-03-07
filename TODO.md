@@ -12,7 +12,7 @@
 
 - [ ] Replace loading spinner with something less ugly
 - [ ] Refactor sass into files organized by the component being styled
-- [ ] Lead detail page
+- [x] Lead detail page
 - [ ] New Quote button / form
 - [ ] Quote detail page
 - [ ] Quote Job Info page
