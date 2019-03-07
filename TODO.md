@@ -25,6 +25,7 @@
 - [ ] Add search to tables
 - [ ] Add table pagination
 - [ ] Add log out button
+- [ ] Add 404 for invalid page ids
 
 ## Infrastructure
 
