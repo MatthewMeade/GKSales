@@ -109,7 +109,7 @@ class QuoteDetailsForm extends Component {
               value={this.state.notes}
               onChange={this.onChange}
               error={errors.handle}
-              info="Notes regarding this quotes"
+              info="Notes regarding this quote"
               rows={10}
             />
 
