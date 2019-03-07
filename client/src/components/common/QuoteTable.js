@@ -54,7 +54,7 @@ class QuoteTable extends Component {
           <thead>
             <tr>
               <th>Lead</th>
-              <th>Date</th>
+              <th>Consultation Date</th>
             </tr>
           </thead>
           <tbody>{quoteContent}</tbody>

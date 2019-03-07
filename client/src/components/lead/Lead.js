@@ -22,10 +22,17 @@ class Lead extends Component {
       content = (
         // TODO: Refactor
         <div>
-          <h1 className="mb-2">Lead: {lead.name}</h1>
+          <div className="row">
+            <div className="col-lg">
+              <h1 className="mb-2">Lead: {lead.name}</h1>
+            </div>
+            <div className="col-lg text-lg-right">
+              <button className="btn btn-primary mt-2 mb-sm-5">New Quote for {lead.name}</button>
+            </div>
+          </div>
           <div className="row leadDetails">
             {lead.email && (
-              <div className="col-lg col-md-6 col-sm-6">
+              <div className="col-lg col-md-6 col-sm-6 mb-sm-2">
                 <a href={`mailto:${lead.email}`}>
                   <i className="far fa-envelope mr-1" />
                   <strong>Email:</strong> {lead.email}
@@ -34,7 +41,7 @@ class Lead extends Component {
             )}
 
             {lead.phone && (
-              <div className="col-lg col-md-6 col-sm-6">
+              <div className="col-lg col-md-6 col-sm-6 mb-sm-2">
                 <a href={`phone:${lead.phone}`}>
                   <i className="fas fa-phone mr-1" />
                   <strong>Phone: </strong>
@@ -44,7 +51,7 @@ class Lead extends Component {
             )}
 
             {lead.zip && (
-              <div className="col-lg col-md-6 col-sm-6">
+              <div className="col-lg col-md-6 col-sm-6 mb-sm-2">
                 <i className="fas fa-map-marked-alt mr-1" />
                 <strong>Zip: </strong>
                 {lead.zip}
@@ -52,7 +59,7 @@ class Lead extends Component {
             )}
 
             {lead.source && (
-              <div className="col-lg col-md-6 col-sm-6">
+              <div className="col-lg col-md-6 col-sm-6 mb-sm-2">
                 <i className="far fa-address-book mr-1" />
                 <strong>Source: </strong>
                 {lead.source}
