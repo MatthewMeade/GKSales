@@ -39,7 +39,7 @@ export const getQuotesByLead = id => dispatch => {
 export const newQuote = (leadId, history) => dispatch => {
   axios
     .post("/api/quotes", { lead: leadId })
-    .then(res => history.push(`/quotes/${res.data._id}`))
+    .then(res => history.push(`/quotes/${res.data._id}/details`))
     .catch(err => console.log(err));
 };
 

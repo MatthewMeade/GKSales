@@ -16,7 +16,7 @@ class Leads extends Component {
   };
 
   onRowClick = id => {
-    this.props.history.push("/lead/" + id);
+    this.props.history.push("/leads/" + id);
   };
 
   render() {

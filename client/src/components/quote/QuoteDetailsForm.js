@@ -63,7 +63,6 @@ class QuoteDetailsForm extends Component {
       leads
         .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1))
         .map(lead => ({ label: `${lead.name} (${lead.email})`, value: lead._id }));
-    console.log(leads);
     return (
       <div className="quoteDetailsForm">
         <h1>Edit Quote Details</h1>
