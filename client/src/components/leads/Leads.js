@@ -28,7 +28,7 @@ class Leads extends Component {
     if (!leads || loading) {
       leadsContent = (
         <tr>
-          <td colspan="4">
+          <td colSpan="4">
             <Spinner className="spinner" />
           </td>
         </tr>
