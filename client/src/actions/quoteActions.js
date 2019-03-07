@@ -26,7 +26,6 @@ export const getQuotesByLead = id => dispatch => {
   axios
     .get(`/api/quotes/lead/${id}`)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: GET_QUOTES, payload: res.data });
     })
     .catch(err => {
@@ -49,7 +48,6 @@ export const getQuote = id => dispatch => {
   axios
     .get(`/api/quotes/${id}`)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: GET_QUOTE, payload: res.data });
     })
     .catch(err => {
