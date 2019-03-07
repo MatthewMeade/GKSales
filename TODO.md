@@ -22,6 +22,8 @@
 - [ ] Add "Remember Me" checkbox to the login form
 - [ ] Refactor tables into Table component
 - [ ] Fix navbar overflowing smaller viewport
+- [ ] Add search to tables
+- [ ] Add table pagination
 
 ## Infrastructure
 
