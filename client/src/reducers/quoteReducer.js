@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
     case GET_QUOTES:
       return {
         ...state,
-        leads: action.payload,
+        quotes: action.payload,
         loading: false,
       };
 

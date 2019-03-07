@@ -16,9 +16,9 @@ Quote.propTypes = {
   // quotes: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
-  quotes: state.quote.quotes,
-  loading: state.quote.loading,
-});
+// const mapStateToProps = state => ({
+//   quotes: state.quote.quotes,
+//   loading: state.quote.loading,
+// });
 
 export default withRouter(connect()(Quote));

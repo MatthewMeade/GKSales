@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import Spinner from "../common/Spinner";
 
 import { getLead } from "../../actions/leadActions";
+
+import { newQuote } from "../../actions/quoteActions";
 
 import QuoteTable from "../common/QuoteTable";
 
@@ -11,6 +15,10 @@ class Lead extends Component {
   componentDidMount() {
     this.props.getLead(this.props.match.params.id);
   }
+
+  onNewQuoteClick = () => {
+    this.props.newQuote(this.props.match.params.id, this.props.history);
+  };
 
   render() {
     const { loading, lead } = this.props;
@@ -27,7 +35,9 @@ class Lead extends Component {
               <h1 className="mb-2">Lead: {lead.name}</h1>
             </div>
             <div className="col-lg text-lg-right">
-              <button className="btn btn-primary mt-2 mb-sm-5">New Quote for {lead.name}</button>
+              <button className="btn btn-primary mt-2 mb-sm-5" onClick={this.onNewQuoteClick}>
+                New Quote for {lead.name}
+              </button>
             </div>
           </div>
           <div className="row leadDetails">
@@ -97,5 +107,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getLead }
-)(Lead);
+  { getLead, newQuote }
+)(withRouter(Lead));

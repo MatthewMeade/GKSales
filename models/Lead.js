@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Quote = mongoose.model("Quote");
 const { Schema, model } = mongoose;
 
 const LeadSchema = Schema({

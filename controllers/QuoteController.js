@@ -13,13 +13,13 @@ module.exports.getQuoteById = async (req, res) => {
     return res.status(404).send({ err: "Not found" });
   }
 
-  return res.send({ quote });
+  return res.send(quote);
 };
 
 module.exports.getQuotesByLead = async (req, res) => {
   const quotes = await Quote.find({ lead: req.params.lead_id });
 
-  return res.send({ quotes });
+  return res.send(quotes);
 };
 
 module.exports.createQuote = async (req, res) => {
@@ -27,7 +27,7 @@ module.exports.createQuote = async (req, res) => {
 
   const newQuote = await new Quote(req.body).save();
 
-  return res.send({ newQuote });
+  return res.send(newQuote);
 };
 
 module.exports.editQuote = async (req, res) => {

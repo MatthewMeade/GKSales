@@ -40,7 +40,7 @@ class QuoteTable extends Component {
       quoteContent = quotes.map(quote => (
         // Can't wrap tr in Link, using onRowClick instead
         <tr key={quote._id} onClick={this.onRowClick.bind(this, quote._id)}>
-          <td>{quote.lead}</td>
+          <td>{quote.lead.name}</td>
           <td>{quote.consultationDate}</td>
         </tr>
       ));
@@ -70,8 +70,8 @@ QuoteTable.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  quotes: state.quote.quotes,
-  loading: state.quote.loading,
+  quotes: state.quotes.quotes,
+  loading: state.quotes.loading,
 });
 
 export default withRouter(

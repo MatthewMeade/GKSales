@@ -10,7 +10,7 @@ const QuoteSchema = new Schema({
   Operation: String,
   lead: {
     type: Schema.Types.ObjectId,
-    ref: "lead",
+    ref: "Lead",
   },
 
   // Job Info
@@ -33,5 +33,12 @@ const QuoteSchema = new Schema({
     collorComment: String,
   },
 });
+
+const autoPopulate = function(next) {
+  this.populate("lead");
+  next();
+};
+
+QuoteSchema.pre("find", autoPopulate).pre("findOne", autoPopulate);
 
 module.exports = model("Quote", QuoteSchema);

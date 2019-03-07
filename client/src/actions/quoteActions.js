@@ -26,6 +26,7 @@ export const getQuotesByLead = id => dispatch => {
   axios
     .get(`/api/quotes/lead/${id}`)
     .then(res => {
+      console.log(res.data);
       dispatch({ type: GET_QUOTES, payload: res.data });
     })
     .catch(err => {
@@ -34,6 +35,13 @@ export const getQuotesByLead = id => dispatch => {
         payload: null,
       });
     });
+};
+
+export const newQuote = (leadId, history) => dispatch => {
+  axios
+    .post("/api/quotes", { lead: leadId })
+    .then(res => history.push(`/quotes/${res.data._id}`))
+    .catch(err => console.log(err));
 };
 
 // Set loading state
