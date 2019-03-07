@@ -19,6 +19,7 @@
 - [ ] Quote Summary (details and payment)
 - [ ] Offline mode with sync (PWA)
 - [ ] Add "Remember Me" checkbox to the login form
+- [ ] Refactor tables into Table component
 
 ## Infrastructure
 
