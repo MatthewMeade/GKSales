@@ -6,6 +6,7 @@
 - [ ] Validate file uploads (only accept photos)
 - [ ] Add input validation to controllers
 - [ ] Add support for "Remember Me" in UserController.js
+- [ ] Respond 404 in controllers if DB finds return nothing
 
 ## Front End
 
