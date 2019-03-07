@@ -5,7 +5,7 @@ const QuoteSchema = new Schema({
   // General
   address: String,
   consultationDate: Date,
-  Notes: String,
+  notes: String,
   Photos: [String],
   Operation: String,
   lead: {

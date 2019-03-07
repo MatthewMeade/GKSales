@@ -22,6 +22,12 @@ export default function(state = initialState, action) {
         quotes: action.payload,
         loading: false,
       };
+    case GET_QUOTE:
+      return {
+        ...state,
+        quote: action.payload,
+        loading: false,
+      };
 
     case QUOTE_LOADING:
       return {

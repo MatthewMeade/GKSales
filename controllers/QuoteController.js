@@ -7,7 +7,7 @@ module.exports.getQuotes = async (req, res) => {
 };
 
 module.exports.getQuoteById = async (req, res) => {
-  const quote = Quote.findOne({ _id: req.params.id });
+  const quote = await Quote.findOne({ _id: req.params.id });
 
   if (!quote) {
     return res.status(404).send({ err: "Not found" });
@@ -41,7 +41,7 @@ module.exports.editQuote = async (req, res) => {
     return res.status(404).send({ err: "Not found" });
   }
 
-  return res.send({ quote });
+  return res.send(quote);
 };
 
 module.exports.deleteQuote = async (req, res) => {
@@ -51,5 +51,5 @@ module.exports.deleteQuote = async (req, res) => {
     return res.status(404).send({ err: "Not found" });
   }
 
-  return res.send({ quote });
+  return res.send(quote);
 };

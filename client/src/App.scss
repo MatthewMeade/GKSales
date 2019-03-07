@@ -64,5 +64,21 @@ nav {
 .leadPage {
   .leadDetails * {
     color: $dark;
+    font-size: 20px;
+  }
+}
+
+.quotePage {
+  .quoteDetails * {
+    color: $dark;
+    font-size: 20px;
+  }
+}
+
+.quoteNotes,
+.leadNotes {
+  div {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 1em;
   }
 }

@@ -23,6 +23,8 @@ import Leads from "./components/leads/Leads";
 import Quotes from "./components/quotes/Quotes";
 
 import Lead from "./components/lead/Lead";
+import Quote from "./components/quote/Quote";
+import QuoteDetailsForm from "./components/quote/QuoteDetailsForm";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -70,6 +72,12 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/lead/:id" component={Lead} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/quotes/:id" component={Quote} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/quotes/:id/details" component={QuoteDetailsForm} />
               </Switch>
               {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>

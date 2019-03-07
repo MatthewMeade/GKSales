@@ -44,6 +44,34 @@ export const newQuote = (leadId, history) => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const getQuote = id => dispatch => {
+  dispatch(setQuoteLoading());
+  axios
+    .get(`/api/quotes/${id}`)
+    .then(res => {
+      console.log(res.data);
+      dispatch({ type: GET_QUOTE, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_QUOTE,
+        payload: null,
+      });
+    });
+};
+
+export const updateQuoteDetails = (id, details, history) => dispatch => {
+  axios
+    .post(`/api/quotes/${id}`, details)
+    .then(res => history.push(`/quotes/${id}`))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
+
 // Set loading state
 export const setQuoteLoading = () => {
   return { type: QUOTE_LOADING };

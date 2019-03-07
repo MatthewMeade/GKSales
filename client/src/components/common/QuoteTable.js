@@ -15,7 +15,7 @@ class QuoteTable extends Component {
   }
 
   onRowClick = id => {
-    this.props.history.push("/quote/" + id);
+    this.props.history.push("/quotes/" + id);
   };
 
   render() {

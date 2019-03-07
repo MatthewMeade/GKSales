@@ -5,6 +5,7 @@ import classnames from "classnames";
 const TextFieldGroup = ({ name, placeholder, value, label, error, info, type, onChange, disabled }) => {
   return (
     <div className="form-group">
+      <label>{label}</label>
       <input
         type={type}
         className={classnames("form-control form-control-lg", {
@@ -25,7 +26,7 @@ const TextFieldGroup = ({ name, placeholder, value, label, error, info, type, on
 TextFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  // value: PropTypes.string.isRequired,
   info: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
