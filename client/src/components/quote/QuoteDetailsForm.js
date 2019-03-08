@@ -78,7 +78,7 @@ class QuoteDetailsForm extends Component {
               onChange={this.onChange}
               options={leadOptions}
               error={errors.status}
-              info="Give us an idea of where you are at in your career"
+              label="Lead"
             />
 
             <TextFieldGroup
@@ -87,7 +87,6 @@ class QuoteDetailsForm extends Component {
               value={this.state.consultationDate.split("T")[0]}
               onChange={this.onChange}
               error={errors.handle}
-              info="The date a sales person will visit the location"
               label="Consultation Date"
             />
 
@@ -98,7 +97,6 @@ class QuoteDetailsForm extends Component {
               value={this.state.address}
               onChange={this.onChange}
               error={errors.handle}
-              info="Address of the garage"
               rows={4}
             />
 
@@ -108,7 +106,6 @@ class QuoteDetailsForm extends Component {
               value={this.state.notes}
               onChange={this.onChange}
               error={errors.handle}
-              info="Notes regarding this quote"
               rows={10}
             />
 
