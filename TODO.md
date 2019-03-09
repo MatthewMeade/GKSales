@@ -12,9 +12,6 @@
 
 - [ ] Replace loading spinner with something less ugly
 - [ ] Refactor sass into files organized by the component being styled
-- [x] Lead detail page
-- [x] New Quote button / form
-- [x] Quote detail page
 - [ ] Quote Job Info page
 - [ ] Quote Floor Info page
 - [ ] Quote Summary (details and payment)
@@ -26,6 +23,7 @@
 - [ ] Add table pagination
 - [ ] Add log out button
 - [ ] Add 404 for invalid page ids
+- [ ] Secure getting upload images (jwt auth not sent with img tag)
 
 ## Infrastructure
 
