@@ -44,6 +44,38 @@ module.exports.editQuote = async (req, res) => {
   return res.send(quote);
 };
 
+module.exports.addPhoto = async (req, res) => {
+  const file = req.files[0].filename;
+
+  const quote = await Quote.findById(req.params.id);
+
+  if (!quote.photos) quote.photos = [];
+
+  quote.photos.push(file);
+
+  const newQuote = await quote.save({ new: true });
+
+  res.send(newQuote);
+};
+
+module.exports.deletePhoto = async (req, res) => {
+  const delFileName = req.body.fileName;
+
+  const quote = await Quote.findById(req.params.id);
+
+  if (!quote.photos) quote.photos = [];
+
+  if (quote.photos.indexOf(delFileName) < 0) return res.status(404).send({ err: "That file does not exist" });
+
+  console.log(delFileName);
+  console.log(quote.photos);
+  quote.photos = quote.photos.filter(fileName => fileName !== delFileName);
+  console.log(quote.photos);
+
+  const newQuote = await quote.save({ new: true });
+
+  res.send(newQuote);
+};
 module.exports.deleteQuote = async (req, res) => {
   const quote = await Quote.findOneAndDelete({ _id: req.params.id }).exec();
 

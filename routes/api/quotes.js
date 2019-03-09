@@ -36,6 +36,16 @@ router.post("/", authenticate, UploadController.upload, catchErrors(QuoteControl
 // @access  Private
 router.post("/:id", authenticate, UploadController.upload, catchErrors(QuoteController.editQuote));
 
+// @route   POST api/quotes/:id/addPhoto
+// @desc    Add a photo to a quote
+// @access  Private
+router.post("/:id/addPhoto", authenticate, UploadController.upload, catchErrors(QuoteController.addPhoto));
+
+// @route   POST api/quotes/:id/deletePhoto
+// @desc    Remove a photo from a quote
+// @access  Private
+router.post("/:id/deletePhoto", authenticate, UploadController.upload, catchErrors(QuoteController.deletePhoto));
+
 // @route   DELETE api/quotes/:id
 // @desc    Delete a quote
 // @access  Private

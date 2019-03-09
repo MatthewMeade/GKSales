@@ -78,7 +78,53 @@ nav {
 .quoteNotes,
 .leadNotes {
   div {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 1em;
+  }
+}
+
+.uploadCarousel {
+  .carouselItemContainer {
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .carouselItemContent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+
+    color: $dark;
+    background-color: rgba(0, 0, 0, 0.95);
+    float: right;
+  }
+
+  h3 {
+    float: left;
+  }
+
+  .uploadCarouselControls * {
+    float: right;
+    margin-left: 20px;
+  }
+
+  .fileRow {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+
+    h5 {
+      padding-top: 5px;
+      &.active {
+        color: $primary;
+      }
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
   }
 }

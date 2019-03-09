@@ -6,7 +6,7 @@ const QuoteSchema = new Schema({
   address: String,
   consultationDate: Date,
   notes: String,
-  Photos: [String],
+  photos: [String],
   Operation: String,
   lead: {
     type: Schema.Types.ObjectId,

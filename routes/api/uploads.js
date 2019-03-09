@@ -10,6 +10,14 @@ const catchErrors = require("../catchErrors");
 // Load authentication
 const authenticate = passport.authenticate("jwt", { session: false });
 
-router.get("/uploads/:fileName", authenticate, FileController.getUpload);
+// @route   POST api/uploads/export
+// @desc    Returns a zip of requested files
+// @access  Private
+router.post("/export", FileController.exportUploads);
+
+// @route   POST api/uploads/:filename
+// @desc    Returns an uploaded file
+// @access  Private
+router.get("/:fileName", FileController.getUpload);
 
 module.exports = router;

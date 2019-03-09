@@ -70,6 +70,38 @@ export const updateQuoteDetails = (id, details, history) => dispatch => {
     );
 };
 
+export const addPhoto = (quoteID, file) => dispatch => {
+  const fd = new FormData();
+  fd.append("photo", file);
+  fd.append("quote", quoteID);
+
+  axios
+    .post(`/api/quotes/${quoteID}/addPhoto`, fd, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    })
+    .then(res => dispatch({ type: GET_QUOTE, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
+
+export const deletePhoto = (quoteID, fileName) => dispatch => {
+  axios
+    .post(`/api/quotes/${quoteID}/deletePhoto`, { fileName })
+    .then(res => dispatch({ type: GET_QUOTE, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
+
 // Set loading state
 export const setQuoteLoading = () => {
   return { type: QUOTE_LOADING };
