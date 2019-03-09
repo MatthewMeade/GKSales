@@ -25,6 +25,8 @@
 - [ ] Secure getting upload images (jwt auth not sent with img tag)
 - [ ] Add photo fullscreen on click
 - [ ] Add individual photo download
+- [ ] Align UI Elements
+- [ ] Improve UI for smaller breakpoints
 
 ## Infrastructure
 
