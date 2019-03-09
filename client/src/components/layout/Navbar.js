@@ -39,9 +39,9 @@ class Navbar extends Component {
 
     return (
       <nav className="navbar navbar-expand bg-primary">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand mr-0" to="/">
           <img src={Logo} alt="Garage Kings" id="navLogo" />
-          Garage King Sales
+          <span className="d-none d-md-inline ml-2">Garage King Sales</span>
         </Link>
 
         {isAuthenticated && authLinks}
