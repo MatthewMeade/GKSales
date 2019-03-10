@@ -3,10 +3,15 @@ const fs = require("fs");
 const { resolve } = require("path");
 const archiver = require("archiver");
 
-// TODO: File Validation
-// TODO: Move file storage to mongodb
+const mongoose = require("mongoose");
+const connection = mongoose.connection;
 
-const storage = multer.diskStorage({
+const GridFSStorage = require("multer-gridfs-storage");
+let Grid = require("gridfs-stream");
+Grid.mongo = mongoose.mongo;
+
+// TODO: File Validation
+const localStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = `./uploads/`;
     if (!fs.existsSync(dir)) {
@@ -22,11 +27,24 @@ const storage = multer.diskStorage({
   },
 });
 
+storage = new GridFSStorage({
+  db: connection,
+  file: (req, file) => {
+    console.log(file);
+    const fileName = `${Date.now()}_${file.originalname}`;
+    req.body.file = fileName;
+
+    return { fileName, bucketName: "uploads" };
+  },
+});
+
 exports.upload = multer({ storage }).any();
 
 exports.getUpload = (req, res) => {
   const filePath = resolve(`./uploads/${req.params.fileName}`);
   res.sendFile(filePath);
+
+  // gfs.collection("uploads");
 };
 
 exports.exportUploads = (req, res) => {
