@@ -2,7 +2,6 @@
 
 ## Back End
 
-- [ ] Change uploads to be stored in DB instead of locally
 - [ ] Validate file uploads (only accept photos)
 - [ ] Add input validation to controllers
 - [ ] Add support for "Remember Me" in UserController.js
@@ -27,12 +26,6 @@
 - [ ] Add individual photo download
 - [ ] Align UI Elements
 - [ ] Improve UI for smaller breakpoints
-
-## Infrastructure
-
-- [ ] Create a production mongodb instance
-- [ ] Create a production server
-- [ ] Configure application to support production build
 
 ## General
 
