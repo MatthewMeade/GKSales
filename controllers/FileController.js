@@ -3,10 +3,28 @@ const fs = require("fs");
 const { resolve } = require("path");
 const archiver = require("archiver");
 
-// TODO: File Validation
-// TODO: Move file storage to mongodb
+const mongoose = require("mongoose");
+const connection = mongoose.connection;
 
-const storage = multer.diskStorage({
+const GridFSStorage = require("multer-gridfs-storage");
+let Grid = require("gridfs-stream");
+Grid.mongo = mongoose.mongo;
+
+const gridfs = require("mongoose-gridfs");
+
+let Attachment;
+exports.initDB = connection => {
+  const { model } = gridfs({
+    collection: "uploads",
+    model: "Attachment",
+    mongooseConnection: connection,
+  });
+
+  Attachment = model;
+};
+
+// TODO: File Validation
+const localStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = `./uploads/`;
     if (!fs.existsSync(dir)) {
@@ -22,11 +40,21 @@ const storage = multer.diskStorage({
   },
 });
 
+storage = new GridFSStorage({
+  db: connection,
+  file: (req, file) => {
+    const filename = `${Date.now()}_${file.originalname}`;
+    req.body.file = filename;
+
+    return { filename, bucketName: "uploads" };
+  },
+});
+
 exports.upload = multer({ storage }).any();
 
-exports.getUpload = (req, res) => {
-  const filePath = resolve(`./uploads/${req.params.fileName}`);
-  res.sendFile(filePath);
+exports.getUpload = async (req, res) => {
+  const readStream = Attachment.readByFileName(req.params.fileName);
+  readStream.pipe(res);
 };
 
 exports.exportUploads = (req, res) => {
@@ -38,9 +66,9 @@ exports.exportUploads = (req, res) => {
   var zip = archiver("zip");
   zip.pipe(res);
 
-  req.body.photos.forEach(f => {
-    const filePath = resolve(`./uploads/${f}`);
-    zip.file(filePath, { name: f });
+  req.body.photos.forEach(fName => {
+    const readStream = Attachment.readByFileName(fName);
+    zip.append(readStream, { name: fName });
   });
 
   zip.finalize();

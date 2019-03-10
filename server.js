@@ -13,8 +13,12 @@ app.use(bodyParser.json());
 const { mongoURI } = require("./config/keys");
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
-  .then(() => console.log("MongoDB Connected"))
+  .then(() => {
+    console.log("MongoDB Connected");
+    require("./controllers/FileController").initDB(mongoose.connection);
+  })
   .catch(err => console.log(err));
+
 mongoose.set("useFindAndModify", false);
 
 // Load DB Models
