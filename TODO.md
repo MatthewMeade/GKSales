@@ -9,7 +9,6 @@
 
 ## Front End
 
-- [ ] Replace loading spinner with something less ugly
 - [ ] Refactor sass into files organized by the component being styled
 - [ ] Quote Job Info page
 - [ ] Quote Floor Info page
