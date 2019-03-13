@@ -18,23 +18,35 @@ class Navbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <ul className="navbar-nav">
-        <li className="nav-item ml-3">
-          <Link className="nav-link" to="/dashboard">
-            Dashboard
-          </Link>
-        </li>
-        <li className="nav-item ml-3">
-          <Link className="nav-link" to="/leads">
-            Leads
-          </Link>
-        </li>
-        <li className="nav-item ml-3">
-          <Link className="nav-link" to="/quotes">
-            Quotes
-          </Link>
-        </li>
-      </ul>
+      <div className="container-fluid">
+        <ul className="navbar-nav">
+          <li className="nav-item ml-3">
+            <Link className="nav-link" to="/dashboard">
+              Dashboard
+            </Link>
+          </li>
+          <li className="nav-item ml-3">
+            <Link className="nav-link" to="/leads">
+              Leads
+            </Link>
+          </li>
+          <li className="nav-item ml-3">
+            <Link className="nav-link" to="/quotes">
+              Quotes
+            </Link>
+          </li>
+        </ul>
+        <ul className="nav navbar-nav navbar-right">
+          <li>
+            <button
+              className="btn btn-danger float-right"
+              onClick={this.onLogoutClick}
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
     );
 
     return (
@@ -52,11 +64,11 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 export default connect(
