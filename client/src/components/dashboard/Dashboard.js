@@ -12,14 +12,14 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <h1>Dashboard</h1>
-        <h3>Welcome Back {user.name}</h3>
+        <h3>Welcome back, {user.name}!</h3>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps)(Dashboard);
