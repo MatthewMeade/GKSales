@@ -31,6 +31,7 @@
 - [ ] Improve UI for smaller breakpoints
 - [ ] Add back buttons
 - [ ] Format dates with moment
+- [ ] Add ability to delete quotes, leads, and users
 
 ## General
 
