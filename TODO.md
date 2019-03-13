@@ -24,8 +24,13 @@
 - [ ] Secure getting upload images (jwt auth not sent with img tag)
 - [ ] Add photo fullscreen on click
 - [ ] Add individual photo download
+- [ ] Add nicer default file upload names
+- [ ] Add support for naming files before upload
+- [ ] Add support for editing file names
 - [ ] Align UI Elements
 - [ ] Improve UI for smaller breakpoints
+- [ ] Add back buttons
+- [ ] Format dates with moment
 
 ## General
 
