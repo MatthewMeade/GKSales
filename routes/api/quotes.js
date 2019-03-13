@@ -24,27 +24,51 @@ router.get("/:id", authenticate, catchErrors(QuoteController.getQuoteById));
 // @route   GET api/quotes/lead/:lead_id
 // @desc    Return a list of quotes by lead ID
 // @access  Private
-router.get("/lead/:lead_id", authenticate, catchErrors(QuoteController.getQuotesByLead));
+router.get(
+  "/lead/:lead_id",
+  authenticate,
+  catchErrors(QuoteController.getQuotesByLead)
+);
 
 // @route   POST api/quotes
 // @desc    Create a new quote
 // @access  Private
-router.post("/", authenticate, UploadController.upload, catchErrors(QuoteController.createQuote));
+router.post(
+  "/",
+  authenticate,
+  UploadController.upload,
+  catchErrors(QuoteController.createQuote)
+);
 
 // @route   POST api/quotes/:id
 // @desc    Edit a quote
 // @access  Private
-router.post("/:id", authenticate, UploadController.upload, catchErrors(QuoteController.editQuote));
+router.post(
+  "/:id",
+  authenticate,
+  UploadController.upload,
+  catchErrors(QuoteController.editQuote)
+);
 
 // @route   POST api/quotes/:id/addPhoto
 // @desc    Add a photo to a quote
 // @access  Private
-router.post("/:id/addPhoto", authenticate, UploadController.upload, catchErrors(QuoteController.addPhoto));
+router.post(
+  "/:id/addPhoto",
+  authenticate,
+  UploadController.upload,
+  catchErrors(QuoteController.addPhoto)
+);
 
 // @route   POST api/quotes/:id/deletePhoto
 // @desc    Remove a photo from a quote
 // @access  Private
-router.post("/:id/deletePhoto", authenticate, UploadController.upload, catchErrors(QuoteController.deletePhoto));
+router.post(
+  "/:id/deletePhoto",
+  authenticate,
+  UploadController.upload,
+  catchErrors(QuoteController.deletePhoto)
+);
 
 // @route   DELETE api/quotes/:id
 // @desc    Delete a quote
@@ -52,7 +76,3 @@ router.post("/:id/deletePhoto", authenticate, UploadController.upload, catchErro
 router.delete("/:id", authenticate, catchErrors(QuoteController.deleteQuote));
 
 module.exports = router;
-
-// TODO:
-// GET Quotes by lead ID
-// GET Quote by quote ID

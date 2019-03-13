@@ -34,7 +34,7 @@ module.exports.editQuote = async (req, res) => {
   // TODO: Validation
 
   const quote = await Quote.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true,
+    new: true
   });
 
   if (!quote) {
@@ -65,17 +65,16 @@ module.exports.deletePhoto = async (req, res) => {
 
   if (!quote.photos) quote.photos = [];
 
-  if (quote.photos.indexOf(delFileName) < 0) return res.status(404).send({ err: "That file does not exist" });
+  if (quote.photos.indexOf(delFileName) < 0)
+    return res.status(404).send({ err: "That file does not exist" });
 
-  console.log(delFileName);
-  console.log(quote.photos);
   quote.photos = quote.photos.filter(fileName => fileName !== delFileName);
-  console.log(quote.photos);
 
   const newQuote = await quote.save({ new: true });
 
   res.send(newQuote);
 };
+
 module.exports.deleteQuote = async (req, res) => {
   const quote = await Quote.findOneAndDelete({ _id: req.params.id }).exec();
 

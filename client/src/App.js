@@ -31,7 +31,7 @@ if (localStorage.jwtToken) {
   // Set auth token header auth
   setAuthToken(localStorage.jwtToken);
 
-  // Docode token and get user info
+  // Decode token and get user info
   const decoded = jwt_decode(localStorage.jwtToken);
 
   // Set user and isAuthenticated
@@ -77,7 +77,11 @@ class App extends Component {
                 <PrivateRoute exact path="/quotes/:id" component={Quote} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/quotes/:id/details" component={QuoteDetailsForm} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/details"
+                  component={QuoteDetailsForm}
+                />
               </Switch>
               {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>
