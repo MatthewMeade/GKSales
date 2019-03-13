@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
 import { getQuotes, getQuotesByLead } from "../../actions/quoteActions";
+import Moment from "react-moment";
 
 import { withRouter } from "react-router-dom";
 
@@ -30,7 +31,7 @@ class QuoteTable extends Component {
           </td>
         </tr>
       );
-    } else if (!quotes.length) {
+    } else if (quotes.length === 0) {
       quoteContent = (
         <tr>
           <td colSpan="4">No Quotes</td>
@@ -41,7 +42,9 @@ class QuoteTable extends Component {
         // Can't wrap tr in Link, using onRowClick instead
         <tr key={quote._id} onClick={this.onRowClick.bind(this, quote._id)}>
           <td>{quote.lead.name}</td>
-          <td>{quote.consultationDate}</td>
+          <td>
+            <Moment format="MMM Do YYYY">{quote.consultationDate}</Moment>
+          </td>
         </tr>
       ));
     }
@@ -66,12 +69,12 @@ class QuoteTable extends Component {
 
 QuoteTable.propTypes = {
   quotes: PropTypes.array.isRequired,
-  leadID: PropTypes.string,
+  leadID: PropTypes.string
 };
 
 const mapStateToProps = state => ({
   quotes: state.quotes.quotes,
-  loading: state.quotes.loading,
+  loading: state.quotes.loading
 });
 
 export default withRouter(
