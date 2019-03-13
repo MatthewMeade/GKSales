@@ -12,7 +12,13 @@ import { getLeads } from "../../actions/leadActions";
 import Spinner from "../common/Spinner";
 
 class QuoteDetailsForm extends Component {
-  state = { errors: {}, consultationDate: new Date().toISOString(), address: "", notes: "", lead: "" };
+  state = {
+    errors: {},
+    consultationDate: new Date().toISOString(),
+    address: "",
+    notes: "",
+    lead: ""
+  };
 
   componentDidMount() {
     this.props.getQuote(this.props.match.params.id);
@@ -34,7 +40,7 @@ class QuoteDetailsForm extends Component {
         consultationDate: quote.consultationDate || "",
         address: quote.address || "",
         notes: quote.notes || "",
-        lead: quote.lead._id || "",
+        lead: quote.lead._id || ""
       });
     }
   }
@@ -62,7 +68,10 @@ class QuoteDetailsForm extends Component {
       leads &&
       leads
         .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1))
-        .map(lead => ({ label: `${lead.name} (${lead.email})`, value: lead._id }));
+        .map(lead => ({
+          label: `${lead.name} (${lead.email})`,
+          value: lead._id
+        }));
     return (
       <div className="quoteDetailsForm">
         <h1>Edit Quote Details</h1>
@@ -109,7 +118,11 @@ class QuoteDetailsForm extends Component {
               rows={10}
             />
 
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+            <input
+              type="submit"
+              value="Save"
+              className="btn btn-primary btn-block mt-4"
+            />
           </form>
         )}
       </div>
@@ -118,7 +131,7 @@ class QuoteDetailsForm extends Component {
 }
 
 QuoteDetailsForm.propTypes = {
-  quote: PropTypes.object.isRequired,
+  quote: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -126,7 +139,7 @@ const mapStateToProps = state => ({
   leads: state.leads.leads,
   errors: state.errors,
   quotesLoading: state.quotes.loading,
-  leadsLoading: state.leads.loading,
+  leadsLoading: state.leads.loading
 });
 
 export default connect(
