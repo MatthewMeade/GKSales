@@ -31,6 +31,7 @@
 - [ ] Format dates with moment
 - [ ] Add ability to delete quotes, leads, and users
 - [ ] Configure date pickers to use today's date as default
+- [ ] Fix eslint warnings
 
 ## General
 
