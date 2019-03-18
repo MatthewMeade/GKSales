@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -17,7 +16,7 @@ class Quote extends Component {
           </div>
 
           <div className="col text-right">
-            <Link to="/newQUote" className="btn btn-primary">
+            <Link to="/newQuote" className="btn btn-primary">
               New Quote
             </Link>
           </div>

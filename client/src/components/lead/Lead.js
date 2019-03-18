@@ -7,7 +7,7 @@ import Spinner from "../common/Spinner";
 
 import { getLead } from "../../actions/leadActions";
 
-import { newQuote } from "../../actions/quoteActions";
+import { quoteFormChanged } from "../../actions/quoteActions";
 
 import QuoteTable from "../common/QuoteTable";
 
@@ -17,7 +17,8 @@ class Lead extends Component {
   }
 
   onNewQuoteClick = () => {
-    this.props.newQuote(this.props.match.params.id, this.props.history);
+    this.props.quoteFormChanged({ prop: "lead", value: this.props.match.params.id });
+    this.props.history.push("/newQuote");
   };
 
   render() {
@@ -108,5 +109,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getLead, newQuote }
+  { getLead, quoteFormChanged }
 )(withRouter(Lead));
