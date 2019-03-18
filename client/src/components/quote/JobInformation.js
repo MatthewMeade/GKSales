@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function JobInformation({ quote }) {
-  if (!quote.job) {
-    return <h4>No Job Information Attached</h4>;
-  }
   const {
     squareFootage,
     concreteHardness,
@@ -13,7 +10,8 @@ export default function JobInformation({ quote }) {
     crackingComments,
     verticalSurfaceComments,
     conditions,
-  } = quote.job;
+  } = quote.job || {};
+
   return (
     <div className="jobInfo">
       <div className="row mb-3">
@@ -30,10 +28,10 @@ export default function JobInformation({ quote }) {
 
       <div className="row">
         <div className="jobInfoItem col">
-          <strong>Square footage: </strong> <span>{squareFootage}</span>
+          <strong>Square footage: </strong> <span>{squareFootage || 0}</span>
         </div>
         <div className="jobInfoItem col">
-          <strong>Concrete Hardness: </strong> <span>{concreteHardness}</span>
+          <strong>Concrete Hardness: </strong> <span>{concreteHardness ? "Yes" : "No"}</span>
         </div>
         <div className="jobInfoItem col">
           <strong>Vertical Surface?: </strong> <span>{verticalSurface ? "Yes" : "No"}</span>
@@ -42,22 +40,22 @@ export default function JobInformation({ quote }) {
 
       <div className="jobInfoNotesItem">
         <h5>Concrete Hardness Comments</h5>
-        <p>{hardnessComments}</p>
+        <p>{hardnessComments || "No Comments"}</p>
       </div>
 
       <div className="jobInfoNotesItem">
         <h5>Cracking Comments</h5>
-        <p>{crackingComments}</p>
+        <p>{crackingComments || "No Comments"}</p>
       </div>
 
       <div className="jobInfoNotesItem">
         <h5>Vertical Surface Comments</h5>
-        <p>{verticalSurfaceComments}</p>
+        <p>{verticalSurfaceComments || "No Comments"}</p>
       </div>
 
       <div className="jobInfoNotesItem">
         <h5>Garage Floor Conditions</h5>
-        <p>{conditions}</p>
+        <p>{conditions || "No Comments"}</p>
       </div>
     </div>
   );
