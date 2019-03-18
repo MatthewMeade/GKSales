@@ -10,14 +10,12 @@
 ## Front End
 
 - [ ] Refactor sass into files organized by the component being styled
-- [ ] Quote Job Info page
-- [ ] Quote Floor Info page
 - [ ] Quote Summary (details and payment)
 - [ ] Offline mode with sync (PWA)
 - [ ] Add "Remember Me" checkbox to the login form
 - [ ] Refactor tables into Table component
-- [ ] Add search to tables
-- [ ] Add table pagination
+  - [ ] Add search to tables
+  - [ ] Add table pagination
 - [ ] Add 404 for invalid page ids
 - [ ] Secure getting upload images (jwt auth not sent with img tag)
 - [ ] Add photo fullscreen on click
@@ -33,6 +31,7 @@
 - [ ] Add missing proptypes
 - [ ] Fix dates displaying wrong day (timezones?)
 - [ ] Improve design of "No Photos" message
+- [ ] Add salesperson (user) field to quotes
 
 ## General
 
