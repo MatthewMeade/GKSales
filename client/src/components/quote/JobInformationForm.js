@@ -7,6 +7,7 @@ import SelectListGroup from "../common/SelectListGroup";
 import CheckBoxGroup from "../common/CheckboxGroup";
 
 import { updateQuoteDetails } from "../../actions/quoteActions";
+import Spinner from "../common/Spinner";
 
 class JobInformationForm extends Component {
   state = {
@@ -57,85 +58,90 @@ class JobInformationForm extends Component {
 
     const { errors } = this.props;
 
+    console.log(this.props.loading);
     return (
       <div className="jobInformationForm">
         <h3>Edit Job Information</h3>
 
-        <form onSubmit={this.onSubmit}>
-          <h4>Square Footage</h4>
-          <TextFieldGroup
-            type="number"
-            placeholder="0"
-            name="squareFootage"
-            value={squareFootage}
-            onChange={this.onChange}
-            error={errors.squareFootage}
-          />
-
-          <h4>Concrete Hardness</h4>
-          <SelectListGroup
-            name="concreteHardness"
-            value={concreteHardness}
-            onChange={this.onChange}
-            options={[{ label: 0, value: 0 }, { label: 1, value: 1 }, { label: 2, value: 2 }]}
-            error={errors.concreteHardness}
-          />
-
-          <TextAreaFieldGroup
-            name="hardnessComments"
-            label="Hardness Comments"
-            value={hardnessComments}
-            onChange={this.onChange}
-            error={errors.hardnessComments}
-            rows={4}
-          />
-
-          <h4>
-            <CheckBoxGroup
-              name="cracking"
-              label="Cracking?"
-              value={cracking}
+        {this.props.loading ? (
+          <Spinner />
+        ) : (
+          <form onSubmit={this.onSubmit}>
+            <h4>Square Footage</h4>
+            <TextFieldGroup
+              type="number"
+              placeholder="0"
+              name="squareFootage"
+              value={squareFootage}
               onChange={this.onChange}
-              error={errors.cracking}
+              error={errors.squareFootage}
             />
-          </h4>
-          <TextAreaFieldGroup
-            name="crackingComments"
-            label="Cracking Comments"
-            value={crackingComments}
-            onChange={this.onChange}
-            error={errors.crackingComments}
-            rows={4}
-          />
 
-          <h4>
-            <CheckBoxGroup
-              name="verticalSurface"
-              label="Vertical Surface?"
-              value={verticalSurface}
+            <h4>Concrete Hardness</h4>
+            <SelectListGroup
+              name="concreteHardness"
+              value={concreteHardness}
               onChange={this.onChange}
-              error={errors.verticalSurface}
+              options={[{ label: 0, value: 0 }, { label: 1, value: 1 }, { label: 2, value: 2 }]}
+              error={errors.concreteHardness}
             />
-          </h4>
-          <TextAreaFieldGroup
-            name="verticalSurfaceComments"
-            label="Vertical Surface Comments"
-            value={verticalSurfaceComments}
-            onChange={this.onChange}
-            error={errors.verticalSurfaceComments}
-            rows={4}
-          />
 
-          <h4>Current Garage Floor Conditions</h4>
-          <TextAreaFieldGroup
-            name="conditions"
-            value={conditions}
-            onChange={this.onChange}
-            error={errors.conditions}
-            rows={4}
-          />
-          <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
-        </form>
+            <TextAreaFieldGroup
+              name="hardnessComments"
+              label="Hardness Comments"
+              value={hardnessComments}
+              onChange={this.onChange}
+              error={errors.hardnessComments}
+              rows={4}
+            />
+
+            <h4>
+              <CheckBoxGroup
+                name="cracking"
+                label="Cracking?"
+                value={cracking}
+                onChange={this.onChange}
+                error={errors.cracking}
+              />
+            </h4>
+            <TextAreaFieldGroup
+              name="crackingComments"
+              label="Cracking Comments"
+              value={crackingComments}
+              onChange={this.onChange}
+              error={errors.crackingComments}
+              rows={4}
+            />
+
+            <h4>
+              <CheckBoxGroup
+                name="verticalSurface"
+                label="Vertical Surface?"
+                value={verticalSurface}
+                onChange={this.onChange}
+                error={errors.verticalSurface}
+              />
+            </h4>
+            <TextAreaFieldGroup
+              name="verticalSurfaceComments"
+              label="Vertical Surface Comments"
+              value={verticalSurfaceComments}
+              onChange={this.onChange}
+              error={errors.verticalSurfaceComments}
+              rows={4}
+            />
+
+            <h4>Current Garage Floor Conditions</h4>
+            <TextAreaFieldGroup
+              name="conditions"
+              value={conditions}
+              onChange={this.onChange}
+              error={errors.conditions}
+              rows={4}
+            />
+            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+          </form>
+        )}
       </div>
     );
   }
@@ -143,6 +149,7 @@ class JobInformationForm extends Component {
 
 const mapStateToProps = state => ({
   quote: state.quotes.quote,
+  loading: state.quotes.loading,
   errors: state.errors,
 });
 

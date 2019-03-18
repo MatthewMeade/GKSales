@@ -9,6 +9,7 @@ import SelectListGroup from "../common/SelectListGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 
 import { updateQuoteDetails, getQuote } from "../../actions/quoteActions";
+import Spinner from "../common/Spinner";
 
 class FloorForm extends Component {
   state = {
@@ -108,60 +109,65 @@ class FloorForm extends Component {
             Hide / Show Images
           </span>
         </h3>
-        <form onSubmit={this.onSubmit}>
-          {floorTypeSlider}
 
-          <SelectListGroup
-            name="floorType"
-            label="Floor Type"
-            value={floorType || ""}
-            onChange={this.onChange}
-            options={floorTypeSelectOptions}
-            error={errors.floorType}
-          />
+        {this.props.loading ? (
+          <Spinner />
+        ) : (
+          <form onSubmit={this.onSubmit}>
+            {floorTypeSlider}
 
-          <SelectListGroup
-            name="baseColor"
-            label="Base Color"
-            value={baseColor || ""}
-            onChange={this.onChange}
-            options={[
-              { label: "Red", value: "red" },
-              { label: "Orange", value: "orange" },
-              { label: "Yellow", value: "yellow" },
-              { label: "Green", value: "green" },
-              { label: "Blue", value: "blue" },
-              { label: "Violet", value: "violet" },
-            ]}
-            error={errors.baseColor}
-          />
+            <SelectListGroup
+              name="floorType"
+              label="Floor Type"
+              value={floorType || ""}
+              onChange={this.onChange}
+              options={floorTypeSelectOptions}
+              error={errors.floorType}
+            />
 
-          <SelectListGroup
-            name="colorsFlake"
-            label="Flake Color"
-            value={colorsFlake || ""}
-            onChange={this.onChange}
-            options={[
-              { label: "Red", value: "red" },
-              { label: "Orange", value: "orange" },
-              { label: "Yellow", value: "yellow" },
-              { label: "Green", value: "green" },
-              { label: "Blue", value: "blue" },
-              { label: "Violet", value: "violet" },
-            ]}
-            error={errors.colorsFlake}
-          />
+            <SelectListGroup
+              name="baseColor"
+              label="Base Color"
+              value={baseColor || ""}
+              onChange={this.onChange}
+              options={[
+                { label: "Red", value: "red" },
+                { label: "Orange", value: "orange" },
+                { label: "Yellow", value: "yellow" },
+                { label: "Green", value: "green" },
+                { label: "Blue", value: "blue" },
+                { label: "Violet", value: "violet" },
+              ]}
+              error={errors.baseColor}
+            />
 
-          <TextAreaFieldGroup
-            name="colorComment"
-            label="Comments"
-            value={colorComment}
-            onChange={this.onChange}
-            error={errors.colorComment}
-            rows={4}
-          />
-          <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
-        </form>
+            <SelectListGroup
+              name="colorsFlake"
+              label="Flake Color"
+              value={colorsFlake || ""}
+              onChange={this.onChange}
+              options={[
+                { label: "Red", value: "red" },
+                { label: "Orange", value: "orange" },
+                { label: "Yellow", value: "yellow" },
+                { label: "Green", value: "green" },
+                { label: "Blue", value: "blue" },
+                { label: "Violet", value: "violet" },
+              ]}
+              error={errors.colorsFlake}
+            />
+
+            <TextAreaFieldGroup
+              name="colorComment"
+              label="Comments"
+              value={colorComment}
+              onChange={this.onChange}
+              error={errors.colorComment}
+              rows={4}
+            />
+            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+          </form>
+        )}
       </div>
     );
   }
@@ -169,6 +175,7 @@ class FloorForm extends Component {
 const mapStateToProps = state => ({
   quote: state.quotes.quote,
   errors: state.errors,
+  loading: state.quotes.loading,
 });
 
 const mapDispatchToProps = { getQuote, updateQuoteDetails };
