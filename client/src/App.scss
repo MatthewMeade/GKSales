@@ -79,13 +79,18 @@ nav {
     font-size: 20px;
   }
 
-  .jobInfo {
+  .jobInfo,
+  .floorInfo {
     margin-bottom: 50px;
     margin-top: 75px;
 
     .jobInfoItem {
       strong {
         color: $dark;
+      }
+
+      span {
+        text-transform: capitalize;
       }
 
       font-size: 20px;
@@ -161,6 +166,33 @@ nav {
   }
 }
 
+.floorFormCarousel {
+  .carouselItemContainer {
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .carouselItemContent {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+
+    & * {
+      font-size: 2em !important;
+      margin: 10px 0;
+    }
+  }
+}
+
 .jobInformationForm {
   h4 {
     margin-top: 50px;
@@ -176,5 +208,20 @@ nav {
   i {
     position: relative;
     top: 0px;
+  }
+}
+
+.floorForm {
+  .carouselToggle {
+    margin-left: 10px;
+    // font-size: 0.75em;
+  }
+
+  form > * {
+    margin-top: 20px;
+  }
+
+  label {
+    font-size: 1.25em;
   }
 }

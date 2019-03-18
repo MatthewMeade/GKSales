@@ -9,6 +9,7 @@ import QuoteDetails from "./QuoteDetails";
 import AddPhotoBtn from "./AddPhotoBtn";
 import Photos from "./Photos";
 import JobInformation from "./JobInformation";
+import FloorInfo from "./FloorInfo";
 
 class Quote extends Component {
   componentDidMount() {
@@ -22,6 +23,8 @@ class Quote extends Component {
       <div className="quotePage">
         <h1 className="text-center mb-4">Quote</h1>
         <QuoteDetails quote={this.props.quote} />
+
+        <FloorInfo quote={this.props.quote} />
 
         <JobInformation quote={this.props.quote} />
 

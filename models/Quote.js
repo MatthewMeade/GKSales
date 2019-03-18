@@ -30,7 +30,7 @@ const QuoteSchema = new Schema({
     floorType: String,
     baseColor: String,
     colorsFlake: String,
-    collorComment: String,
+    colorComment: String,
   },
 });
 

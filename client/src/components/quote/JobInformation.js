@@ -10,6 +10,7 @@ export default function JobInformation({ quote }) {
     crackingComments,
     verticalSurfaceComments,
     conditions,
+    cracking,
   } = quote.job || {};
 
   return (
@@ -20,7 +21,7 @@ export default function JobInformation({ quote }) {
         </div>
 
         <div className="col text-right">
-          <Link to={`/quotes/${quote._id}/jobInfo`} class="jobInfoLink btn btn-primary">
+          <Link to={`/quotes/${quote._id}/jobInfo`} className="jobInfoLink btn btn-primary">
             Edit Job Info
           </Link>
         </div>
@@ -32,6 +33,9 @@ export default function JobInformation({ quote }) {
         </div>
         <div className="jobInfoItem col">
           <strong>Concrete Hardness: </strong> <span>{concreteHardness ? "Yes" : "No"}</span>
+        </div>
+        <div className="jobInfoItem col">
+          <strong>Cracking? : </strong> <span>{cracking ? "Yes" : "No"}</span>
         </div>
         <div className="jobInfoItem col">
           <strong>Vertical Surface?: </strong> <span>{verticalSurface ? "Yes" : "No"}</span>

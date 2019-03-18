@@ -27,6 +27,7 @@ import Quote from "./components/quote/Quote";
 import NewQuote from "./components/quote/NewQuote";
 import EditQuoteDetails from "./components/quote/EditQuoteDetails";
 import JobInformationForm from "./components/quote/JobInformationForm";
+import FloorForm from "./components/quote/FloorForm";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -86,6 +87,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/quotes/:id/jobInfo" component={JobInformationForm} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/quotes/:id/floorOptions" component={FloorForm} />
               </Switch>
               {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>
