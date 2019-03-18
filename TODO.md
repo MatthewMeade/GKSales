@@ -28,10 +28,10 @@
 - [ ] Align UI Elements
 - [ ] Improve UI for smaller breakpoints
 - [ ] Add back buttons
-- [ ] Format dates with moment
 - [ ] Add ability to delete quotes, leads, and users
-- [ ] Configure date pickers to use today's date as default
 - [ ] Fix eslint warnings
+- [ ] Add missing proptypes
+- [ ] Fix dates displaying wrong day (timezones?)
 
 ## General
 
