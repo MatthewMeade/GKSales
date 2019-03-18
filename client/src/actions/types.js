@@ -23,3 +23,6 @@ export const DELETE_QUOTE = "DELETE_QUOTE";
 
 export const QUOTE_FORM_CHANGE = "QUOTE_FORM_CHANGE";
 export const QUOTE_FORM_SAVE = "QUOTE_FORM_SAVE";
+
+export const JOB_FORM_CHANGE = "JOB_FORM_CHANGE";
+export const JOB_FORM_SAVE = "JOB_FORM_SAVE";

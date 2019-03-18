@@ -10,6 +10,7 @@ import {
   CLEAR_ERRORS,
   QUOTE_FORM_CHANGE,
   QUOTE_FORM_SAVE,
+  JOB_FORM_CHANGE,
 } from "./types";
 
 // Get quotes
@@ -125,9 +126,15 @@ export const deletePhoto = (quoteID, fileName) => dispatch => {
 };
 
 export const quoteFormChanged = ({ prop, value }) => {
-  console.log(prop, value);
   return {
     type: QUOTE_FORM_CHANGE,
+    payload: { prop, value },
+  };
+};
+
+export const jobFormChanged = ({ prop, value }) => {
+  return {
+    type: JOB_FORM_CHANGE,
     payload: { prop, value },
   };
 };

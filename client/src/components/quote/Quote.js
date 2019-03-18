@@ -8,6 +8,7 @@ import Spinner from "../common/Spinner";
 import QuoteDetails from "./QuoteDetails";
 import AddPhotoBtn from "./AddPhotoBtn";
 import Photos from "./Photos";
+import JobInformation from "./JobInformation";
 
 class Quote extends Component {
   componentDidMount() {
@@ -20,6 +21,8 @@ class Quote extends Component {
     ) : (
       <div className="quotePage">
         <QuoteDetails quote={this.props.quote} />
+
+        <JobInformation quote={this.props.quote} />
 
         <Photos />
       </div>

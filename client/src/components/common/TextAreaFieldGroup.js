@@ -13,7 +13,7 @@ const TextAreaFieldGroup = ({ name, label, placeholder, value, error, info, onCh
         placeholder={placeholder}
         name={name}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value, e.target.name)}
         rows={rows}
       />
       {info && <small className="form-text text-muted">{info}</small>}

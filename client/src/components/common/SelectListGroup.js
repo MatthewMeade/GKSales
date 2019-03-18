@@ -19,11 +19,11 @@ const SelectListGroup = ({ name, value, error, info, onChange, options, label, r
         })}
         name={name}
         value={value || ""}
-        onChange={e => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value, e.target.name)}
         required={required}
       >
         <option disabled value="">
-          Select a Lead
+          Select {label}
         </option>
         {selectOptions}
       </select>
