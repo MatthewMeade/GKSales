@@ -28,8 +28,8 @@ class Login extends Component {
     }
   }
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange = (value, name) => {
+    this.setState({ [name]: value });
   };
 
   onSubmit = e => {
