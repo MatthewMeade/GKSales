@@ -51,8 +51,6 @@ class QuoteTable extends Component {
 
     return (
       <div className="quoteList">
-        <h3>Quotes</h3>
-
         <table className="table table-striped table-light table-hover">
           <thead>
             <tr>
@@ -69,12 +67,12 @@ class QuoteTable extends Component {
 
 QuoteTable.propTypes = {
   quotes: PropTypes.array.isRequired,
-  leadID: PropTypes.string
+  leadID: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   quotes: state.quotes.quotes,
-  loading: state.quotes.loading
+  loading: state.quotes.loading,
 });
 
 export default withRouter(

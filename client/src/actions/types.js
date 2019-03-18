@@ -20,3 +20,6 @@ export const GET_QUOTES = "GET_QUOTES";
 export const GET_QUOTE = "GET_QUOTE";
 export const ADD_QUOTE = "ADD_QUOTE";
 export const DELETE_QUOTE = "DELETE_QUOTE";
+
+export const QUOTE_FORM_CHANGE = "QUOTE_FORM_CHANGE";
+export const QUOTE_FORM_SAVE = "QUOTE_FORM_SAVE";

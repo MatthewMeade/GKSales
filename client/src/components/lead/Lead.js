@@ -82,6 +82,7 @@ class Lead extends Component {
             {lead.notes}
           </div>
 
+          <h3>Quotes</h3>
           <QuoteTable leadID={lead._id} />
         </div>
       );

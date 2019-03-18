@@ -1,6 +1,16 @@
 import axios from "axios";
 
-import { ADD_QUOTE, GET_ERRORS, GET_QUOTES, QUOTE_LOADING, DELETE_QUOTE, GET_QUOTE, CLEAR_ERRORS } from "./types";
+import {
+  ADD_QUOTE,
+  GET_ERRORS,
+  GET_QUOTES,
+  QUOTE_LOADING,
+  DELETE_QUOTE,
+  GET_QUOTE,
+  CLEAR_ERRORS,
+  QUOTE_FORM_CHANGE,
+  QUOTE_FORM_SAVE,
+} from "./types";
 
 // Get quotes
 export const getQuotes = () => dispatch => {
@@ -36,11 +46,19 @@ export const getQuotesByLead = id => dispatch => {
     });
 };
 
-export const newQuote = (leadId, history) => dispatch => {
+export const newQuote = (history, data) => dispatch => {
   axios
-    .post("/api/quotes", { lead: leadId })
-    .then(res => history.push(`/quotes/${res.data._id}/details`))
-    .catch(err => console.log(err));
+    .post("/api/quotes", data)
+    .then(res => {
+      dispatch({ type: QUOTE_FORM_SAVE });
+      history.push(`/quotes/${res.data._id}`);
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
 };
 
 export const getQuote = id => dispatch => {
@@ -59,9 +77,13 @@ export const getQuote = id => dispatch => {
 };
 
 export const updateQuoteDetails = (id, details, history) => dispatch => {
+  console.log(details);
   axios
     .post(`/api/quotes/${id}`, details)
-    .then(res => history.push(`/quotes/${id}`))
+    .then(res => {
+      dispatch({ type: QUOTE_FORM_SAVE });
+      history.push(`/quotes/${id}`);
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -100,6 +122,14 @@ export const deletePhoto = (quoteID, fileName) => dispatch => {
         payload: err.response.data,
       })
     );
+};
+
+export const quoteFormChanged = ({ prop, value }) => {
+  console.log(prop, value);
+  return {
+    type: QUOTE_FORM_CHANGE,
+    payload: { prop, value },
+  };
 };
 
 // Set loading state

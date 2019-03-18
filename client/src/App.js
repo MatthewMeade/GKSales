@@ -24,7 +24,8 @@ import Quotes from "./components/quotes/Quotes";
 
 import Lead from "./components/lead/Lead";
 import Quote from "./components/quote/Quote";
-import QuoteDetailsForm from "./components/quote/QuoteDetailsForm";
+import NewQuote from "./components/quote/NewQuote";
+import EditQuoteDetails from "./components/quote/EditQuoteDetails";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -74,14 +75,13 @@ class App extends Component {
                 <PrivateRoute exact path="/leads/:id" component={Lead} />
               </Switch>
               <Switch>
+                <PrivateRoute exact path="/newQuote" component={NewQuote} />
+              </Switch>
+              <Switch>
                 <PrivateRoute exact path="/quotes/:id" component={Quote} />
               </Switch>
               <Switch>
-                <PrivateRoute
-                  exact
-                  path="/quotes/:id/details"
-                  component={QuoteDetailsForm}
-                />
+                <PrivateRoute exact path="/quotes/:id/details" component={EditQuoteDetails} />
               </Switch>
               {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>
