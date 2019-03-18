@@ -21,7 +21,7 @@ const QuoteSchema = new Schema({
     cracking: Boolean,
     crackingComments: String,
     verticalSurface: Boolean,
-    VerticalSurfaceComments: String,
+    verticalSurfaceComments: String,
     conditions: String,
   },
 

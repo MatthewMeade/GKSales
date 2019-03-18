@@ -5,12 +5,12 @@ import Moment from "react-moment";
 export default function QuoteDetails({ quote }) {
   return (
     <div>
-      <div className="row">
+      <div className="row mb-3">
         <div className="col-md">
-          <h1 className="mb-2">Quote Details</h1>
+          <h3 className="">Quote Info</h3>
         </div>
         <div className="col-md text-md-right">
-          <Link className="btn btn-primary mt-2 mb-sm-5" to={`/quotes/${quote._id}/details`}>
+          <Link className="btn btn-primary mt-2" to={`/quotes/${quote._id}/details`}>
             Edit Details
           </Link>
         </div>

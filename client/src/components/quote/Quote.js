@@ -20,6 +20,7 @@ class Quote extends Component {
       <Spinner />
     ) : (
       <div className="quotePage">
+        <h1 className="text-center mb-4">Quote</h1>
         <QuoteDetails quote={this.props.quote} />
 
         <JobInformation quote={this.props.quote} />
