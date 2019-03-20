@@ -37,9 +37,15 @@ class Photos extends Component {
     ));
 
     const fileListItems = photos.map((photo, i) => (
-      <div key={photo} className="row mb-3 fileRow" onClick={this.onFileNameClicked.bind(this, i)}>
+      <div
+        key={photo}
+        className="row mb-3 fileRow"
+        onClick={this.onFileNameClicked.bind(this, i)}
+      >
         <div className="col text-left fileListItem">
-          <h5 className={this.state.curFileSlide == i ? "active" : ""}>{photo}</h5>
+          <h5 className={this.state.curFileSlide == i ? "active" : ""}>
+            {photo}
+          </h5>
         </div>
 
         <div className="col text-right">
