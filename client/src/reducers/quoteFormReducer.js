@@ -1,4 +1,8 @@
-import { QUOTE_FORM_CHANGE, QUOTE_FORM_SAVE } from "../actions/types";
+import {
+  QUOTE_FORM_CHANGE,
+  QUOTE_FORM_SAVE,
+  CLEAR_QUOTE,
+} from "../actions/types";
 
 const INITIAL_STATE = {
   consultationDate: new Date().toISOString(),
@@ -14,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, [action.payload.prop]: action.payload.value };
 
     case QUOTE_FORM_SAVE:
+      return { ...INITIAL_STATE };
+
+    case CLEAR_QUOTE:
       return { ...INITIAL_STATE };
 
     default:

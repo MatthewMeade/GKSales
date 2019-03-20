@@ -5,6 +5,12 @@ const passport = require("passport");
 const QuoteController = require("../../controllers/QuoteController");
 const UploadController = require("../../controllers/FileController");
 
+// Load validation
+const {
+  validateQuoteInfoInput,
+  validateJobInformationInput,
+} = require("../validation/quotes");
+
 // Error handler
 const catchErrors = require("../catchErrors");
 

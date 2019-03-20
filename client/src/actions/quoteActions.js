@@ -8,6 +8,7 @@ import {
   DELETE_QUOTE,
   GET_QUOTE,
   CLEAR_ERRORS,
+  CLEAR_QUOTE,
   QUOTE_FORM_CHANGE,
   QUOTE_FORM_SAVE,
   JOB_FORM_CHANGE,
@@ -83,6 +84,7 @@ export const updateQuoteDetails = (id, details, history) => dispatch => {
     .post(`/api/quotes/${id}`, details)
     .then(res => {
       dispatch({ type: QUOTE_FORM_SAVE });
+      dispatch({ type: CLEAR_ERRORS });
       history.push(`/quotes/${id}`);
     })
     .catch(err =>
@@ -104,7 +106,10 @@ export const addPhoto = (quoteID, file) => dispatch => {
         "content-type": "multipart/form-data",
       },
     })
-    .then(res => dispatch({ type: GET_QUOTE, payload: res.data }))
+    .then(res => {
+      dispatch({ type: GET_QUOTE, payload: res.data });
+      dispatch({ type: CLEAR_ERRORS });
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -131,6 +136,8 @@ export const quoteFormChanged = ({ prop, value }) => {
     payload: { prop, value },
   };
 };
+
+export const clearQuote = () => ({ type: CLEAR_QUOTE });
 
 export const jobFormChanged = ({ prop, value }) => {
   return {
