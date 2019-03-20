@@ -83,13 +83,25 @@ class App extends Component {
                 <PrivateRoute exact path="/quotes/:id" component={Quote} />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/quotes/:id/details" component={EditQuoteDetails} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/details"
+                  component={EditQuoteDetails}
+                />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/quotes/:id/jobInfo" component={JobInformationForm} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/jobInfo"
+                  component={JobInformationForm}
+                />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/quotes/:id/floorOptions" component={FloorForm} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/floorOptions"
+                  component={FloorForm}
+                />
               </Switch>
               {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>

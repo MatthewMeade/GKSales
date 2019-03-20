@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import TextFieldGroup from "../common/TextFieldGroup";
+import CheckboxGroup from "../common/CheckboxGroup";
 
 import { loginUser } from "../../actions/authActions";
 
@@ -14,9 +15,9 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    // if (this.props.auth.isAuthenticated) {
-    //   this.props.history.push("/dashboard");
-    // }
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,6 +39,7 @@ class Login extends Component {
     const userData = {
       email: this.state.email,
       password: this.state.password,
+      rememberMe: this.state.rememberMe,
     };
 
     this.props.loginUser(userData);
@@ -52,7 +54,9 @@ class Login extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">Sign in to your GK Sales account</p>
+              <p className="lead text-center">
+                Sign in to your GK Sales account
+              </p>
               <form onSubmit={this.onSubmit} noValidate>
                 <TextFieldGroup
                   placeholder="Email Address"
@@ -71,7 +75,18 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <input type="submit" className="btn btn-primary btn-block mt-4" />
+                <span className="text-center">
+                  <CheckboxGroup
+                    name="rememberMe"
+                    label="Remember Me"
+                    value={this.state.rememberMe}
+                    onChange={this.onChange}
+                  />
+                </span>
+                <input
+                  type="submit"
+                  className="btn btn-primary btn-block mt-4"
+                />
               </form>
             </div>
           </div>
