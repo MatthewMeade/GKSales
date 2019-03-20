@@ -3,16 +3,12 @@
 ## Back End
 
 - [ ] Validate file uploads (only accept photos)
-- [ ] Add input validation to controllers
-- [ ] Add support for "Remember Me" in UserController.js
-- [ ] Respond 404 in controllers if DB finds return nothing
 
 ## Front End
 
 - [ ] Refactor sass into files organized by the component being styled
 - [ ] Quote Summary (details and payment)
 - [ ] Offline mode with sync (PWA)
-- [ ] Add "Remember Me" checkbox to the login form
 - [ ] Refactor tables into Table component
   - [ ] Add search to tables
   - [ ] Add table pagination

@@ -2,7 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const TextFieldGroup = ({ name, placeholder, value, label, error, info, type, onChange, disabled }) => {
+const TextFieldGroup = ({
+  name,
+  placeholder,
+  value,
+  label,
+  error,
+  info,
+  type,
+  onChange,
+  disabled,
+  min,
+}) => {
   return (
     <div className="form-group">
       <label>{label}</label>
@@ -14,6 +25,7 @@ const TextFieldGroup = ({ name, placeholder, value, label, error, info, type, on
         placeholder={placeholder}
         name={name}
         value={value}
+        min={min}
         onChange={e => onChange(e.target.value, e.target.name)}
         disabled={disabled}
       />
