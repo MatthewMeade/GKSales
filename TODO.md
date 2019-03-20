@@ -20,7 +20,6 @@
 - [ ] Add support for naming files before upload
 - [ ] Add support for editing file names
 - [ ] Align UI Elements
-- [ ] Improve UI for smaller breakpoints
 - [ ] Add back buttons
 - [ ] Add ability to delete quotes, leads, and users
 - [ ] Fix eslint warnings
