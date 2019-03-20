@@ -44,7 +44,7 @@ module.exports.editQuote = async (req, res) => {
 
   if (req.body.job) {
     errors = quoteValidation.validateJobInformationInput(req);
-  } else {
+  } else if (!req.body.floor) {
     errors = await quoteValidation.validateQuoteInfoInput(req);
   }
 
