@@ -32,7 +32,7 @@ function findUser(query) {
 
 // Login a user
 module.exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, rememberMe } = req.body;
 
   const user = await findUser({ email });
 
@@ -49,11 +49,17 @@ module.exports.loginUser = async (req, res) => {
 
   // Generate and send jwt
   const payload = { id: user.id, name: user.name };
-  jwt.sign(payload, secret, { expiresIn: 36000 }, (err, token) => {
-    if (err) {
-      return res.status(400).json(err);
-    }
+  jwt.sign(
+    payload,
+    secret,
+    // Set expiry based on if remember me is checked
+    { expiresIn: rememberMe ? 36000 * 7 : 36000 },
+    (err, token) => {
+      if (err) {
+        return res.status(400).json(err);
+      }
 
-    res.json({ success: true, token: "Bearer " + token });
-  });
+      res.json({ success: true, token: "Bearer " + token });
+    }
+  );
 };
