@@ -58,7 +58,6 @@ class JobInformationForm extends Component {
 
     const { errors } = this.props;
 
-    console.log(this.props.loading);
     return (
       <div className="jobInformationForm">
         <h3>Edit Job Information</h3>

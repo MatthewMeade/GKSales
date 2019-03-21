@@ -78,7 +78,6 @@ export const getQuote = id => dispatch => {
 };
 
 export const updateQuoteDetails = (id, details, history) => dispatch => {
-  console.log(details);
   axios
     .post(`/api/quotes/${id}`, details)
     .then(res => {

@@ -10,7 +10,6 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case QUOTE_FORM_CHANGE:
-      // console.log(action);
       return { ...state, [action.payload.prop]: action.payload.value };
 
     case QUOTE_FORM_SAVE:

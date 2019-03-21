@@ -28,6 +28,7 @@ import NewQuote from "./components/quote/NewQuote";
 import EditQuoteDetails from "./components/quote/EditQuoteDetails";
 import JobInformationForm from "./components/quote/JobInformationForm";
 import FloorForm from "./components/quote/FloorForm";
+import PricingForm from "./components/quote/PricingForm";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -88,6 +89,10 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path="/quotes/:id/jobInfo" component={JobInformationForm} />
               </Switch>
+              <Switch>
+                <PrivateRoute exact path="/quotes/:id/pricing" component={PricingForm} />
+              </Switch>
+
               <Switch>
                 <PrivateRoute exact path="/quotes/:id/floorOptions" component={FloorForm} />
               </Switch>

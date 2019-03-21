@@ -10,6 +10,7 @@ import AddPhotoBtn from "./AddPhotoBtn";
 import Photos from "./Photos";
 import JobInformation from "./JobInformation";
 import FloorInfo from "./FloorInfo";
+import PricingInfo from "./PricingInfo";
 
 class Quote extends Component {
   componentDidMount() {
@@ -27,6 +28,8 @@ class Quote extends Component {
         <FloorInfo quote={this.props.quote} />
 
         <JobInformation quote={this.props.quote} />
+
+        <PricingInfo quote={this.props.quote} />
 
         <Photos />
       </div>

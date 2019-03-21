@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function FloorInfo({ quote }) {
+export default function FloorInfo({ quote, hideBtn, hideNotes }) {
   const { floorType, baseColor, colorsFlake, colorComment } = quote.floor || {};
   return (
     <div className="floorInfo">
@@ -10,12 +10,15 @@ export default function FloorInfo({ quote }) {
           <h3>Selected Floor Options</h3>
         </div>
 
-        <div className="col text-right">
-          <Link to={`/quotes/${quote._id}/floorOptions`} className="jobInfoLink btn btn-primary">
-            Change Selections
-          </Link>
-        </div>
+        {!hideBtn && (
+          <div className="col text-right">
+            <Link to={`/quotes/${quote._id}/floorOptions`} className="jobInfoLink btn btn-primary">
+              Change Selections
+            </Link>
+          </div>
+        )}
       </div>
+
       <div className="row">
         <div className="jobInfoItem col">
           <strong>Floor Type: </strong> <span>{floorType}</span>
@@ -28,10 +31,12 @@ export default function FloorInfo({ quote }) {
         </div>
       </div>
 
-      <div className="jobInfoNotesItem">
-        <h5>Floor Comments</h5>
-        <p>{colorComment || "No Comments"}</p>
-      </div>
+      {!hideNotes && (
+        <div className="jobInfoNotesItem">
+          <h5>Floor Comments</h5>
+          <p>{colorComment || "No Comments"}</p>
+        </div>
+      )}
     </div>
   );
 }

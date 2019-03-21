@@ -32,6 +32,19 @@ const QuoteSchema = new Schema({
     colorsFlake: String,
     colorComment: String,
   },
+
+  pricing: {
+    pricePerSqft: Number,
+    additionalCosts: [
+      {
+        id: String,
+        name: String,
+        price: Number,
+        isPerSqft: Boolean,
+      },
+    ],
+    comments: String,
+  },
 });
 
 const autoPopulate = function(next) {

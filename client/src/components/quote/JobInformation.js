@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function JobInformation({ quote }) {
+export default function JobInformation({ quote, hideBtn, hideNotes }) {
   const {
     squareFootage,
     concreteHardness,
@@ -20,11 +20,13 @@ export default function JobInformation({ quote }) {
           <h3>Job Information </h3>
         </div>
 
-        <div className="col text-right">
-          <Link to={`/quotes/${quote._id}/jobInfo`} className="jobInfoLink btn btn-primary">
-            Edit Job Info
-          </Link>
-        </div>
+        {!hideBtn && (
+          <div className="col text-right">
+            <Link to={`/quotes/${quote._id}/jobInfo`} className="jobInfoLink btn btn-primary">
+              Edit Job Info
+            </Link>
+          </div>
+        )}
       </div>
 
       <div className="row">
@@ -32,7 +34,7 @@ export default function JobInformation({ quote }) {
           <strong>Square footage: </strong> <span>{squareFootage || 0}</span>
         </div>
         <div className="jobInfoItem col">
-          <strong>Concrete Hardness: </strong> <span>{concreteHardness ? "Yes" : "No"}</span>
+          <strong>Concrete Hardness: </strong> <span>{concreteHardness}</span>
         </div>
         <div className="jobInfoItem col">
           <strong>Cracking? : </strong> <span>{cracking ? "Yes" : "No"}</span>
@@ -42,25 +44,29 @@ export default function JobInformation({ quote }) {
         </div>
       </div>
 
-      <div className="jobInfoNotesItem">
-        <h5>Concrete Hardness Comments</h5>
-        <p>{hardnessComments || "No Comments"}</p>
-      </div>
+      {!hideNotes && (
+        <div>
+          <div className="jobInfoNotesItem">
+            <h5>Concrete Hardness Comments</h5>
+            <p>{hardnessComments || "No Comments"}</p>
+          </div>
 
-      <div className="jobInfoNotesItem">
-        <h5>Cracking Comments</h5>
-        <p>{crackingComments || "No Comments"}</p>
-      </div>
+          <div className="jobInfoNotesItem">
+            <h5>Cracking Comments</h5>
+            <p>{crackingComments || "No Comments"}</p>
+          </div>
 
-      <div className="jobInfoNotesItem">
-        <h5>Vertical Surface Comments</h5>
-        <p>{verticalSurfaceComments || "No Comments"}</p>
-      </div>
+          <div className="jobInfoNotesItem">
+            <h5>Vertical Surface Comments</h5>
+            <p>{verticalSurfaceComments || "No Comments"}</p>
+          </div>
 
-      <div className="jobInfoNotesItem">
-        <h5>Garage Floor Conditions</h5>
-        <p>{conditions || "No Comments"}</p>
-      </div>
+          <div className="jobInfoNotesItem">
+            <h5>Garage Floor Conditions</h5>
+            <p>{conditions || "No Comments"}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -17,7 +17,6 @@ class QuoteDetailsForm extends Component {
 
   render() {
     const { loading, leads, errors, quote } = this.props;
-    // console.log(quote);
 
     const leadOptions =
       leads &&

@@ -227,3 +227,81 @@ nav {
     font-size: 1.25em;
   }
 }
+
+.input-range {
+  .input-range__track {
+    .input-range__track--active,
+    .input-range__slider {
+      background-color: $primary !important;
+    }
+    .input-range__slider {
+      height: 1.5rem;
+      width: 1.5rem;
+      top: -4px;
+      border: $primary;
+    }
+    .input-range__label-container {
+      font-size: 1.2em;
+      top: -10px;
+      left: -40%;
+    }
+  }
+
+  & * {
+    transition-duration: 0.05s !important;
+  }
+}
+
+.pricingForm {
+  .floorInfo,
+  .jobInfo {
+    h3 {
+      font-size: 1.25em;
+    }
+    margin-bottom: 75px;
+  }
+
+  .inputSlider {
+    margin-bottom: 50px;
+  }
+
+  .saveBtn {
+    margin: 100px 0 !important;
+  }
+
+  .addCostHeading {
+    font-size: 1.2em;
+    margin: 15px 0;
+  }
+}
+
+.checkboxToggle {
+  .btnWrapper {
+    width: 200px;
+    margin: 0 auto;
+
+    .btn {
+      display: inline-block;
+      width: 50%;
+
+      &.selected {
+        font-weight: bold;
+      }
+
+      &:not(.selected) {
+        background-color: white;
+        color: $primary;
+        opacity: 0.75;
+      }
+
+      &.trueBtn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &.falseBtn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

@@ -38,7 +38,6 @@ class QuoteTable extends Component {
         </tr>
       );
     } else {
-      console.log(quotes);
       quoteContent = quotes.map(quote => (
         // Can't wrap tr in Link, using onRowClick instead
         <tr key={quote._id} onClick={this.onRowClick.bind(this, quote._id)}>
