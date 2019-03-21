@@ -15,7 +15,10 @@ const QuoteSchema = new Schema({
 
   // Job Info
   job: {
-    squareFootage: Number,
+    squareFootage: {
+      type: Number,
+      default: 0,
+    },
     concreteHardness: Number,
     hardnessComments: String,
     cracking: Boolean,
@@ -34,7 +37,10 @@ const QuoteSchema = new Schema({
   },
 
   pricing: {
-    pricePerSqft: Number,
+    pricePerSqft: {
+      type: Number,
+      default: 0,
+    },
     additionalCosts: [
       {
         id: String,
