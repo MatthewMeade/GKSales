@@ -44,7 +44,8 @@ nav {
 }
 
 .quoteList,
-.leadList {
+.leadList,
+.priceTable {
   th {
     background: $primary;
     border: none;
@@ -80,7 +81,8 @@ nav {
   }
 
   .jobInfo,
-  .floorInfo {
+  .floorInfo,
+  .pricing {
     margin-bottom: 50px;
     margin-top: 75px;
 

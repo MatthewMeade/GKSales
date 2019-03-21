@@ -10,9 +10,7 @@ module.exports.validateQuoteInfoInput = async req => {
   let errors = {};
 
   data.lead = !isEmpty(data.lead) ? data.lead : "";
-  data.consultationDate = !isEmpty(data.consultationDate)
-    ? data.consultationDate
-    : "";
+  data.consultationDate = !isEmpty(data.consultationDate) ? data.consultationDate : "";
 
   if (Validator.isEmpty(data.lead)) {
     errors.lead = "Lead is required";
@@ -40,15 +38,11 @@ module.exports.validateJobInformationInput = req => {
 
   data.squareFootage = !isEmpty(data.squareFootage) ? data.squareFootage : "";
   data.cracking = !isEmpty(data.cracking) ? data.cracking : "";
-  data.verticalSurface = !isEmpty(data.verticalSurface)
-    ? data.verticalSurface
-    : "";
+  data.verticalSurface = !isEmpty(data.verticalSurface) ? data.verticalSurface : "";
 
-  if (!Validator.isNumeric(data.squareFootage) || data.squareFootage < 0) {
+  if (!Validator.isNumeric(data.squareFootage + "") || data.squareFootage < 0) {
     errors.squareFootage = "Square footage must be a positive number.";
   }
-
-  console.log(JSON.stringify(req.body, null, 2));
 
   return errors;
 };

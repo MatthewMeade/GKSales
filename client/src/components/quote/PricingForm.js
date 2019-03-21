@@ -118,7 +118,7 @@ class PricingForm extends Component {
           </div>
 
           <div className="col-md text-md-right">
-            <h3>Current Total: ${this.sumAdditionalCost() + sqft * pricePerSqft}</h3>
+            <h3>Current Total: ${(this.sumAdditionalCost() + sqft * pricePerSqft).toFixed(2)}</h3>
           </div>
         </div>
 
@@ -131,10 +131,10 @@ class PricingForm extends Component {
 
             <div className="row mb-4">
               <div className="col-md-6">
-                <h4>Price Per Square Foot {`$${pricePerSqft}`}</h4>
+                <h4>Price Per Square Foot {`$${pricePerSqft.toFixed(2)}`}</h4>
               </div>
               <div className="col-md-6 text-md-right">
-                <h4>Total Area Price: {`$${pricePerSqft * sqft}`}</h4>
+                <h4>Total Area Price: {`$${(pricePerSqft * sqft).toFixed(2)}`}</h4>
               </div>
             </div>
 
@@ -143,15 +143,15 @@ class PricingForm extends Component {
               max={10}
               step={0.1}
               value={pricePerSqft}
-              label={`Price Per Square Foot: $${pricePerSqft}`}
+              label={`Price Per Square Foot: $${pricePerSqft.toFixed(2)}`}
               onChange={this.onChange}
               name="pricePerSqft"
-              formatLabel={value => `$${value}`}
+              formatLabel={value => `$${value.toFixed(2)}`}
             />
 
             <div className="row">
               <div className="col">
-                <h3>Additional Costs: ${this.sumAdditionalCost()}</h3>
+                <h3>Additional Costs: ${this.sumAdditionalCost().toFixed(2)}</h3>
               </div>
               <div className="col text-right">
                 <p className="btn btn-primary" onClick={this.addAdditionalCost}>

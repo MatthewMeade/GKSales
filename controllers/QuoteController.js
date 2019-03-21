@@ -44,7 +44,7 @@ module.exports.editQuote = async (req, res) => {
 
   if (req.body.job) {
     errors = quoteValidation.validateJobInformationInput(req);
-  } else if (!req.body.floor) {
+  } else if (!req.body.floor && !req.body.pricing) {
     errors = await quoteValidation.validateQuoteInfoInput(req);
   }
 
@@ -84,8 +84,7 @@ module.exports.deletePhoto = async (req, res) => {
 
   if (!quote.photos) quote.photos = [];
 
-  if (quote.photos.indexOf(delFileName) < 0)
-    return res.status(404).send({ err: "That file does not exist" });
+  if (quote.photos.indexOf(delFileName) < 0) return res.status(404).send({ err: "That file does not exist" });
 
   quote.photos = quote.photos.filter(fileName => fileName !== delFileName);
 
