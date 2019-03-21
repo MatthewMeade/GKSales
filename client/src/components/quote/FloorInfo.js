@@ -6,12 +6,12 @@ export default function FloorInfo({ quote, hideBtn, hideNotes }) {
   return (
     <div className="floorInfo">
       <div className="row mb-3">
-        <div className="col">
-          <h3>Selected Floor Options</h3>
+        <div className="col-md">
+          <h3>Floor Options</h3>
         </div>
 
         {!hideBtn && (
-          <div className="col text-right">
+          <div className="col-md text-md-right">
             <Link to={`/quotes/${quote._id}/floorOptions`} className="jobInfoLink btn btn-primary">
               Change Selections
             </Link>
@@ -20,13 +20,13 @@ export default function FloorInfo({ quote, hideBtn, hideNotes }) {
       </div>
 
       <div className="row">
-        <div className="jobInfoItem col">
+        <div className="infoItem col-lg-3 col-sm-6">
           <strong>Floor Type: </strong> <span>{floorType}</span>
         </div>
-        <div className="jobInfoItem col">
+        <div className="infoItem col-lg-3 col-sm-6">
           <strong>Base Color: </strong> <span style={{ color: baseColor }}>{baseColor}</span>
         </div>
-        <div className="jobInfoItem col">
+        <div className="infoItem col-lg-3 col-sm-6">
           <strong>Flake Color: </strong> <span style={{ color: colorsFlake }}>{colorsFlake}</span>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function FloorInfo({ quote, hideBtn, hideNotes }) {
       {!hideNotes && (
         <div className="jobInfoNotesItem">
           <h5>Floor Comments</h5>
-          <p>{colorComment || "No Comments"}</p>
+          <p>{colorComment || "No Comments."}</p>
         </div>
       )}
     </div>

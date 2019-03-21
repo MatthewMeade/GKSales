@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const Quote = mongoose.model("Quote");
 
+const quoteValidation = require("../routes/validation/quotes");
+const isEmpty = require("../routes/validation/is-empty");
+
 module.exports.getQuotes = async (req, res) => {
   return res.send(await Quote.find());
 };
@@ -24,6 +27,10 @@ module.exports.getQuotesByLead = async (req, res) => {
 
 module.exports.createQuote = async (req, res) => {
   // TODO: Validation
+  const errors = quoteValidation.validateQuoteInfoInput(req);
+  if (!isEmpty(errors)) {
+    return res.status(400).json(errors);
+  }
 
   const newQuote = await new Quote(req.body).save();
 
@@ -33,8 +40,20 @@ module.exports.createQuote = async (req, res) => {
 module.exports.editQuote = async (req, res) => {
   // TODO: Validation
 
+  let errors = {};
+
+  if (req.body.job) {
+    errors = quoteValidation.validateJobInformationInput(req);
+  } else if (!req.body.floor) {
+    errors = await quoteValidation.validateQuoteInfoInput(req);
+  }
+
+  if (!isEmpty(errors)) {
+    return res.status(400).json(errors);
+  }
+
   const quote = await Quote.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true
+    new: true,
   });
 
   if (!quote) {

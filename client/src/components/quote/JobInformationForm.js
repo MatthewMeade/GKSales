@@ -41,7 +41,11 @@ class JobInformationForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(this.props.quote._id, { job: this.state }, this.props.history);
+    this.props.updateQuoteDetails(
+      this.props.quote._id,
+      { job: this.state },
+      this.props.history
+    );
   };
 
   render() {
@@ -72,6 +76,7 @@ class JobInformationForm extends Component {
               placeholder="0"
               name="squareFootage"
               value={squareFootage}
+              min={0}
               onChange={this.onChange}
               error={errors.squareFootage}
             />
@@ -81,7 +86,11 @@ class JobInformationForm extends Component {
               name="concreteHardness"
               value={concreteHardness}
               onChange={this.onChange}
-              options={[{ label: 0, value: 0 }, { label: 1, value: 1 }, { label: 2, value: 2 }]}
+              options={[
+                { label: 0, value: 0 },
+                { label: 1, value: 1 },
+                { label: 2, value: 2 },
+              ]}
               error={errors.concreteHardness}
             />
 
@@ -138,7 +147,11 @@ class JobInformationForm extends Component {
               error={errors.conditions}
               rows={4}
             />
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+            <input
+              type="submit"
+              value="Save"
+              className="btn btn-primary btn-block mt-4"
+            />
           </form>
         )}
       </div>

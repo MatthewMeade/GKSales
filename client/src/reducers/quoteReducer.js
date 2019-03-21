@@ -6,6 +6,7 @@ import {
   DELETE_QUOTE,
   GET_QUOTE,
   CLEAR_ERRORS,
+  CLEAR_QUOTE,
   QUOTE_FORM_CHANGE,
 } from "../actions/types";
 
@@ -38,6 +39,9 @@ export default function(state = initialState, action) {
 
     case QUOTE_FORM_CHANGE:
       return { ...state, [action.payload.prop]: action.payload.value };
+
+    case CLEAR_QUOTE:
+      return { ...initialState };
 
     default:
       return state;

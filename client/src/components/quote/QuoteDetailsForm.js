@@ -6,11 +6,15 @@ import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 
-import { quoteFormChanged } from "../../actions/quoteActions";
+import { quoteFormChanged, clearQuote } from "../../actions/quoteActions";
 import { getLeads } from "../../actions/leadActions";
 import Spinner from "../common/Spinner";
 
 class QuoteDetailsForm extends Component {
+  componentWillMount() {
+    this.props.clearQuote();
+  }
+
   componentDidMount() {
     this.props.getLeads();
   }
@@ -34,12 +38,14 @@ class QuoteDetailsForm extends Component {
         ) : (
           <form onSubmit={this.props.onSubmit}>
             <SelectListGroup
-              placeholder="Status"
+              placeholder="Lead"
               name="lead"
               value={quote.lead}
-              onChange={value => this.props.quoteFormChanged({ prop: "lead", value })}
+              onChange={value =>
+                this.props.quoteFormChanged({ prop: "lead", value })
+              }
               options={leadOptions}
-              error={errors.status}
+              error={errors.lead}
               required={true}
               label="Lead"
             />
@@ -48,8 +54,10 @@ class QuoteDetailsForm extends Component {
               name="consultationDate"
               type="date"
               value={quote.consultationDate.split("T")[0]}
-              onChange={value => this.props.quoteFormChanged({ prop: "consultationDate", value })}
-              error={errors.handle}
+              onChange={value =>
+                this.props.quoteFormChanged({ prop: "consultationDate", value })
+              }
+              error={errors.consultationDate}
               label="Consultation Date"
             />
 
@@ -58,7 +66,9 @@ class QuoteDetailsForm extends Component {
               label="Address"
               placeholder="123 Main St."
               value={quote.address}
-              onChange={value => this.props.quoteFormChanged({ prop: "address", value })}
+              onChange={value =>
+                this.props.quoteFormChanged({ prop: "address", value })
+              }
               error={errors.handle}
               rows={4}
             />
@@ -67,12 +77,18 @@ class QuoteDetailsForm extends Component {
               name="notes"
               label="Notes"
               value={quote.notes}
-              onChange={value => this.props.quoteFormChanged({ prop: "notes", value })}
+              onChange={value =>
+                this.props.quoteFormChanged({ prop: "notes", value })
+              }
               error={errors.handle}
               rows={10}
             />
 
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+            <input
+              type="submit"
+              value="Save"
+              className="btn btn-primary btn-block mt-4"
+            />
           </form>
         )}
       </div>
@@ -89,5 +105,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { quoteFormChanged, getLeads }
+  { quoteFormChanged, getLeads, clearQuote }
 )(withRouter(QuoteDetailsForm));
