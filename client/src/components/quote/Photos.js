@@ -29,7 +29,7 @@ class Photos extends Component {
 
     const carouselContent = photos.map(photo => (
       <div key={photo} className="carouselItemContainer">
-        <img src={`/api/uploads/${photo}`} />
+        <img src={`/api/uploads/${photo}`} alt="Carousel Item" />
         <div className="carouselItemContent">
           <h5>{photo.split("_")[1]}</h5>
         </div>
@@ -43,7 +43,7 @@ class Photos extends Component {
         onClick={this.onFileNameClicked.bind(this, i)}
       >
         <div className="col text-left fileListItem">
-          <h5 className={this.state.curFileSlide == i ? "active" : ""}>
+          <h5 className={this.state.curFileSlide === i ? "active" : ""}>
             {photo}
           </h5>
         </div>

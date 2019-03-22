@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import SelectListGroup from "../common/SelectListGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-
 import { updateQuoteDetails, getQuote } from "../../actions/quoteActions";
 import Spinner from "../common/Spinner";
 import InputSlider from "../common/InputSlider";
@@ -13,8 +10,6 @@ import InputSlider from "../common/InputSlider";
 import FloorInfo from "./FloorInfo";
 import JobInfo from "./JobInformation";
 import AdditionalCostInput from "./AdditionalCostInput";
-import { constants } from "crypto";
-import { copyFileSync } from "fs";
 
 class PricingForm extends Component {
   state = {
@@ -43,7 +38,11 @@ class PricingForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(this.props.quote._id, { pricing: this.state }, this.props.history);
+    this.props.updateQuoteDetails(
+      this.props.quote._id,
+      { pricing: this.state },
+      this.props.history
+    );
   };
 
   renderAdditionalCostInputs = () => {
@@ -94,7 +93,11 @@ class PricingForm extends Component {
 
   sumAdditionalCost = () => {
     return this.state.additionalCosts.reduce(
-      (p, c) => p + parseFloat(c.isPerSqft ? c.price * this.props.quote.job.squareFootage : c.price),
+      (p, c) =>
+        p +
+        parseFloat(
+          c.isPerSqft ? c.price * this.props.quote.job.squareFootage : c.price
+        ),
       0
     );
   };
@@ -107,7 +110,7 @@ class PricingForm extends Component {
 
   render() {
     const { pricePerSqft } = this.state;
-    const { errors, quote } = this.props;
+    const { quote } = this.props;
     const sqft = (quote.job && quote.job.squareFootage) || 0;
 
     return (
@@ -118,7 +121,10 @@ class PricingForm extends Component {
           </div>
 
           <div className="col-md text-md-right">
-            <h3>Current Total: ${(this.sumAdditionalCost() + sqft * pricePerSqft).toFixed(2)}</h3>
+            <h3>
+              Current Total: $
+              {(this.sumAdditionalCost() + sqft * pricePerSqft).toFixed(2)}
+            </h3>
           </div>
         </div>
 
@@ -127,14 +133,20 @@ class PricingForm extends Component {
         ) : (
           <form onSubmit={this.onSubmit}>
             <JobInfo quote={this.props.quote} hideBtn={true} hideNotes={true} />
-            <FloorInfo quote={this.props.quote} hideBtn={true} hideNotes={true} />
+            <FloorInfo
+              quote={this.props.quote}
+              hideBtn={true}
+              hideNotes={true}
+            />
 
             <div className="row mb-4">
               <div className="col-md-6">
                 <h4>Price Per Square Foot {`$${pricePerSqft.toFixed(2)}`}</h4>
               </div>
               <div className="col-md-6 text-md-right">
-                <h4>Total Area Price: {`$${(pricePerSqft * sqft).toFixed(2)}`}</h4>
+                <h4>
+                  Total Area Price: {`$${(pricePerSqft * sqft).toFixed(2)}`}
+                </h4>
               </div>
             </div>
 
@@ -151,7 +163,9 @@ class PricingForm extends Component {
 
             <div className="row">
               <div className="col">
-                <h3>Additional Costs: ${this.sumAdditionalCost().toFixed(2)}</h3>
+                <h3>
+                  Additional Costs: ${this.sumAdditionalCost().toFixed(2)}
+                </h3>
               </div>
               <div className="col text-right">
                 <p className="btn btn-primary" onClick={this.addAdditionalCost}>
@@ -168,7 +182,11 @@ class PricingForm extends Component {
 
             {this.renderAdditionalCostInputs()}
 
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4 saveBtn" />
+            <input
+              type="submit"
+              value="Save"
+              className="btn btn-primary btn-block mt-4 saveBtn"
+            />
           </form>
         )}
       </div>

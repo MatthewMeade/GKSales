@@ -40,7 +40,11 @@ class FloorForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(this.props.quote._id, { floor: this.state }, this.props.history);
+    this.props.updateQuoteDetails(
+      this.props.quote._id,
+      { floor: this.state },
+      this.props.history
+    );
   };
 
   render() {
@@ -68,16 +72,22 @@ class FloorForm extends Component {
     const floorTypeCarouselContent = floorTypes.map(floor => {
       return (
         <div className="carouselItemContainer" key={floor.name}>
-          <img src={floor.imgUrl} />
+          <img src={floor.imgUrl} alt="Floor" />
           <div className="carouselItemContent">
             <h5>{floor.label}</h5>
 
             {this.state.floorType !== floor.name ? (
-              <p className="btn btn-primary" onClick={() => this.setState({ floorType: floor.name })}>
+              <p
+                className="btn btn-primary"
+                onClick={() => this.setState({ floorType: floor.name })}
+              >
                 Select This Floor
               </p>
             ) : (
-              <p className="btn btn-success" onClick={() => this.setState({ floorType: floor.name })}>
+              <p
+                className="btn btn-success"
+                onClick={() => this.setState({ floorType: floor.name })}
+              >
                 Currently Selected Floor
               </p>
             )}
@@ -86,13 +96,21 @@ class FloorForm extends Component {
       );
     });
 
-    const floorTypeSelectOptions = floorTypes.map(floor => ({ label: floor.label, value: floor.name }));
+    const floorTypeSelectOptions = floorTypes.map(floor => ({
+      label: floor.label,
+      value: floor.name,
+    }));
 
     let floorTypeSlider = null;
 
     if (this.state.showFloorCarousel) {
       floorTypeSlider = (
-        <Slider infinite={true} adaptiveHeight={true} afterChange={this.onSlideChanged} className="floorFormCarousel">
+        <Slider
+          infinite={true}
+          adaptiveHeight={true}
+          afterChange={this.onSlideChanged}
+          className="floorFormCarousel"
+        >
           {floorTypeCarouselContent}
         </Slider>
       );
@@ -104,7 +122,11 @@ class FloorForm extends Component {
           Floor Options{" "}
           <span
             className="carouselToggle btn btn-outline-dark"
-            onClick={() => this.setState({ showFloorCarousel: !this.state.showFloorCarousel })}
+            onClick={() =>
+              this.setState({
+                showFloorCarousel: !this.state.showFloorCarousel,
+              })
+            }
           >
             Hide / Show Images
           </span>
@@ -165,7 +187,11 @@ class FloorForm extends Component {
               error={errors.colorComment}
               rows={4}
             />
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+            <input
+              type="submit"
+              value="Save"
+              className="btn btn-primary btn-block mt-4"
+            />
           </form>
         )}
       </div>
