@@ -11,6 +11,7 @@ const QuoteSchema = new Schema({
   lead: {
     type: Schema.Types.ObjectId,
     ref: "Lead",
+    required: true,
   },
 
   // Job Info
@@ -19,7 +20,10 @@ const QuoteSchema = new Schema({
       type: Number,
       default: 0,
     },
-    concreteHardness: Number,
+    concreteHardness: {
+      type: Number,
+      default: 0,
+    },
     hardnessComments: String,
     cracking: Boolean,
     crackingComments: String,
