@@ -1,11 +1,9 @@
 import axios from "axios";
 
 import {
-  ADD_QUOTE,
   GET_ERRORS,
   GET_QUOTES,
   QUOTE_LOADING,
-  DELETE_QUOTE,
   GET_QUOTE,
   CLEAR_ERRORS,
   CLEAR_QUOTE,

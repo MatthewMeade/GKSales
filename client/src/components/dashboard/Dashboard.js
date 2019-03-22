@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import Leads from "../leads/Leads";
+import { connect } from "react-redux";
 
 class Dashboard extends Component {
   render() {
@@ -19,7 +16,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(Dashboard);

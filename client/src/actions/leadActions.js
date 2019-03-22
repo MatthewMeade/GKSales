@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { ADD_LEAD, GET_ERRORS, GET_LEADS, LEAD_LOADING, DELETE_LEAD, GET_LEAD, CLEAR_ERRORS } from "./types";
+import { GET_LEADS, LEAD_LOADING, GET_LEAD } from "./types";
 
 // Get Leads
 export const getLeads = () => dispatch => {

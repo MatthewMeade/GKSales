@@ -10,16 +10,18 @@ class ExportPhotosButton extends Component {
     const { photos } = this.props;
 
     // Request file
-    axios.post("/api/uploads/export", { photos }, { responseType: "blob" }).then(response => {
-      // Create a url for the zip file blob
-      const blobURL = window.URL.createObjectURL(new Blob([response.data]));
+    axios
+      .post("/api/uploads/export", { photos }, { responseType: "blob" })
+      .then(response => {
+        // Create a url for the zip file blob
+        const blobURL = window.URL.createObjectURL(new Blob([response.data]));
 
-      // Point button at blob url
-      this.setState({ blobURL });
+        // Point button at blob url
+        this.setState({ blobURL });
 
-      // Click download button
-      this.link.click();
-    });
+        // Click download button
+        this.link.click();
+      });
   };
 
   state = {
@@ -38,7 +40,9 @@ class ExportPhotosButton extends Component {
           href={this.state.blobURL}
           ref={c => (this.link = c)}
           download="photo_export.zip"
-        />
+        >
+          Download
+        </a>
       </div>
     );
   }
