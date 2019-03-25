@@ -41,7 +41,7 @@ export default function AdditionalCostInput({ costObj, onChange, onDelPress }) {
               type="number"
               className="form-control"
               placeholder="Price"
-              value={parseFloat(price).toFixed(2)}
+              value={parseFloat(price || 0)}
               step="1"
               onChange={e => onChange(id, "price", e.target.value)}
             />
