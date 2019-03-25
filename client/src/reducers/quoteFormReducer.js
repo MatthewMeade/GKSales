@@ -1,14 +1,11 @@
-import {
-  QUOTE_FORM_CHANGE,
-  QUOTE_FORM_SAVE,
-  CLEAR_QUOTE,
-} from "../actions/types";
+import { QUOTE_FORM_CHANGE, QUOTE_FORM_SAVE, CLEAR_QUOTE } from "../actions/types";
 
 const INITIAL_STATE = {
   consultationDate: new Date().toISOString(),
   address: "",
   notes: "",
   lead: "",
+  salesperson: "",
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -13,6 +13,11 @@ const QuoteSchema = new Schema({
     ref: "Lead",
     required: true,
   },
+  salesperson: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 
   // Job Info
   job: {
@@ -59,6 +64,7 @@ const QuoteSchema = new Schema({
 
 const autoPopulate = function(next) {
   this.populate("lead");
+  this.populate("salesperson");
   next();
 };
 

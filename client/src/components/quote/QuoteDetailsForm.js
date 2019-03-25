@@ -7,6 +7,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 
 import { quoteFormChanged, clearQuote } from "../../actions/quoteActions";
+import { getUsers } from "../../actions/userActions";
 import { getLeads } from "../../actions/leadActions";
 import Spinner from "../common/Spinner";
 
@@ -16,6 +17,7 @@ class QuoteDetailsForm extends Component {
   }
 
   componentDidMount() {
+    this.props.getUsers();
     this.props.getLeads();
 
     const { leadId } = this.props.match.params;
@@ -24,17 +26,21 @@ class QuoteDetailsForm extends Component {
     }
   }
 
-  render() {
-    const { loading, leads, errors, quote } = this.props;
+  buildSelectOptions = options =>
+    options
+      .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1))
+      .map(item => ({
+        label: `${item.name} (${item.email})`,
+        value: item._id,
+      }));
 
-    const leadOptions =
-      leads &&
-      leads
-        .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1))
-        .map(lead => ({
-          label: `${lead.name} (${lead.email})`,
-          value: lead._id,
-        }));
+  onAssignPress = () => this.props.quoteFormChanged({ prop: "salesperson", value: this.props.user.id });
+
+  render() {
+    const { loading, leads, errors, quote, users } = this.props;
+
+    const leadOptions = leads && this.buildSelectOptions(leads);
+    const salespersonOptions = users && this.buildSelectOptions(users);
 
     return (
       <div className="quoteDetailsForm">
@@ -52,6 +58,28 @@ class QuoteDetailsForm extends Component {
               required={true}
               label="Lead"
             />
+
+            <div className="row">
+              <div className="col-10">
+                <SelectListGroup
+                  placeholder="Salesperson"
+                  name="salesperson"
+                  value={quote.salesperson || ""}
+                  onChange={value => this.props.quoteFormChanged({ prop: "salesperson", value })}
+                  options={salespersonOptions}
+                  error={errors.salesperson}
+                  required={true}
+                  label="Salesperson"
+                />
+              </div>
+
+              <div className="col-2 d-flex align-items-center pl-0">
+                <span className="btn btn-primary p-2 mt-3  w-100" onClick={this.onAssignPress}>
+                  <span className="d-none d-lg-block">Assign to Me</span>
+                  <span className="d-lg-none">Me</span>
+                </span>
+              </div>
+            </div>
 
             <TextFieldGroup
               name="consultationDate"
@@ -93,10 +121,12 @@ const mapStateToProps = state => ({
   // quote: state.quoteForm,
   leads: state.leads.leads,
   errors: state.errors,
-  loading: state.leads.loading,
+  loading: state.leads.loading || state.users.loading,
+  users: state.users.users,
+  user: state.auth.user,
 });
 
 export default connect(
   mapStateToProps,
-  { quoteFormChanged, getLeads, clearQuote }
+  { quoteFormChanged, getLeads, clearQuote, getUsers }
 )(withRouter(QuoteDetailsForm));

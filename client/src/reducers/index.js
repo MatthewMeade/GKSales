@@ -4,6 +4,7 @@ import errorReducer from "./errorReducer";
 import leadReducer from "./leadReducer";
 import quoteReducer from "./quoteReducer";
 import quoteFormReducer from "./quoteFormReducer";
+import usersReducer from "./usersReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   leads: leadReducer,
   quotes: quoteReducer,
   quoteForm: quoteFormReducer,
+  users: usersReducer,
 });

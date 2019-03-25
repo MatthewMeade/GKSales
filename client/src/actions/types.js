@@ -27,3 +27,6 @@ export const QUOTE_FORM_SAVE = "QUOTE_FORM_SAVE";
 
 export const JOB_FORM_CHANGE = "JOB_FORM_CHANGE";
 export const JOB_FORM_SAVE = "JOB_FORM_SAVE";
+
+export const GET_USERS = "GET_USERS";
+export const USERS_LOADING = "USERS_LOADING";

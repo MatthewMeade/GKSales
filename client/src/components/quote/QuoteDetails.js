@@ -24,6 +24,12 @@ export default function QuoteDetails({ quote }) {
             </Link>
           </div>
         )}
+        {quote.salesperson && (
+          <div className="col-lg col-md-6 col-sm-6 mb-sm-2">
+            <i className="far fa-id-badge mr-1" />
+            <strong>Salesperson:</strong> {quote.salesperson.name}
+          </div>
+        )}
 
         {quote.consultationDate && (
           <div className="col-lg col-md-6 col-sm-6 mb-sm-2">

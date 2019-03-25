@@ -30,6 +30,13 @@ function findUser(query) {
   return User.findOne(query);
 }
 
+// Return all users
+module.exports.getUsers = async (req, res) => {
+  // Fetch users, only include name, id, and email
+  const users = await User.find().select("name email");
+  res.send(users);
+};
+
 // Login a user
 module.exports.loginUser = async (req, res) => {
   const { email, password, rememberMe } = req.body;

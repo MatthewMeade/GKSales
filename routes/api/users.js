@@ -11,15 +11,10 @@ const catchErrors = require("../catchErrors");
 const { validateRegisterInput, validateLoginInput } = require("../validation/auth");
 const authenticate = passport.authenticate("jwt", { session: false });
 
-// @route   GET api/users/test
-// @desc    Tests the users route
-// @access  Public
-router.get("/test", (req, res) => res.json({ message: "User routes working", ...req.query }));
-
-// @route   GET api/users/test/auth
-// @desc    Tests authentication for private routes
+// @route   GET api/users/me
+// @desc    Returns the current user
 // @access  Private
-router.get("/test/auth", authenticate, (req, res) => res.json({ message: "Private Route", user: req.user }));
+router.get("/me", authenticate, (req, res) => res.json(req.user));
 
 // @route   POST api/users/register
 // @desc    Register User
@@ -30,5 +25,10 @@ router.post("/register", validateRegisterInput, catchErrors(UserController.regis
 // @desc    Login User
 // @access  Public
 router.post("/login", validateLoginInput, catchErrors(UserController.loginUser));
+
+// @route   POST api/users/
+// @desc    Returns a list of all users containing only the name and email fields
+// @access  Public
+router.get("/", authenticate, catchErrors(UserController.getUsers));
 
 module.exports = router;
