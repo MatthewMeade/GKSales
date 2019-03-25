@@ -84,7 +84,7 @@ class QuoteDetailsForm extends Component {
             <TextFieldGroup
               name="consultationDate"
               type="date"
-              value={quote.consultationDate.split("T")[0]}
+              value={(quote.consultationDate || "").split("T")[0]}
               onChange={value => this.props.quoteFormChanged({ prop: "consultationDate", value })}
               error={errors.consultationDate}
               label="Consultation Date"
