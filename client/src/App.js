@@ -81,6 +81,9 @@ class App extends Component {
                 <PrivateRoute exact path="/newQuote" component={NewQuote} />
               </Switch>
               <Switch>
+                <PrivateRoute exact path="/newQuote/:leadId" component={NewQuote} />
+              </Switch>
+              <Switch>
                 <PrivateRoute exact path="/quotes/:id" component={Quote} />
               </Switch>
               <Switch>

@@ -17,8 +17,9 @@ class Lead extends Component {
   }
 
   onNewQuoteClick = () => {
-    this.props.quoteFormChanged({ prop: "lead", value: this.props.match.params.id });
-    this.props.history.push("/newQuote");
+    const leadId = this.props.match.params.id;
+    this.props.quoteFormChanged({ prop: "lead", value: leadId });
+    this.props.history.push(`/newQuote/${leadId}`);
   };
 
   render() {

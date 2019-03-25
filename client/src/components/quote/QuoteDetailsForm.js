@@ -17,6 +17,11 @@ class QuoteDetailsForm extends Component {
 
   componentDidMount() {
     this.props.getLeads();
+
+    const { leadId } = this.props.match.params;
+    if (leadId) {
+      this.props.quoteFormChanged({ prop: "lead", value: leadId });
+    }
   }
 
   render() {
@@ -41,9 +46,7 @@ class QuoteDetailsForm extends Component {
               placeholder="Lead"
               name="lead"
               value={quote.lead}
-              onChange={value =>
-                this.props.quoteFormChanged({ prop: "lead", value })
-              }
+              onChange={value => this.props.quoteFormChanged({ prop: "lead", value })}
               options={leadOptions}
               error={errors.lead}
               required={true}
@@ -54,9 +57,7 @@ class QuoteDetailsForm extends Component {
               name="consultationDate"
               type="date"
               value={quote.consultationDate.split("T")[0]}
-              onChange={value =>
-                this.props.quoteFormChanged({ prop: "consultationDate", value })
-              }
+              onChange={value => this.props.quoteFormChanged({ prop: "consultationDate", value })}
               error={errors.consultationDate}
               label="Consultation Date"
             />
@@ -66,9 +67,7 @@ class QuoteDetailsForm extends Component {
               label="Address"
               placeholder="123 Main St."
               value={quote.address}
-              onChange={value =>
-                this.props.quoteFormChanged({ prop: "address", value })
-              }
+              onChange={value => this.props.quoteFormChanged({ prop: "address", value })}
               error={errors.handle}
               rows={4}
             />
@@ -77,18 +76,12 @@ class QuoteDetailsForm extends Component {
               name="notes"
               label="Notes"
               value={quote.notes}
-              onChange={value =>
-                this.props.quoteFormChanged({ prop: "notes", value })
-              }
+              onChange={value => this.props.quoteFormChanged({ prop: "notes", value })}
               error={errors.handle}
               rows={10}
             />
 
-            <input
-              type="submit"
-              value="Save"
-              className="btn btn-primary btn-block mt-4"
-            />
+            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
           </form>
         )}
       </div>
