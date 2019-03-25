@@ -22,11 +22,8 @@
 - [ ] Align UI Elements
 - [ ] Add back buttons
 - [ ] Add ability to delete quotes, leads, and users
-- [ ] Fix eslint warnings
-- [ ] Add missing proptypes
 - [ ] Fix dates displaying wrong day (timezones?)
 - [ ] Improve design of "No Photos" message
-- [ ] Add salesperson (user) field to quotes
 
 ## General
 
