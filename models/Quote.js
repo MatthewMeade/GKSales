@@ -46,6 +46,15 @@ const QuoteSchema = new Schema({
   },
 
   pricing: {
+    depositPaid: {
+      type: Boolean,
+      default: false,
+    },
+
+    jobPaid: {
+      type: Boolean,
+      default: false,
+    },
     pricePerSqft: {
       type: Number,
       default: 0,

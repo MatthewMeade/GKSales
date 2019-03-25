@@ -1,6 +1,6 @@
 import React from "react";
 
-const CheckBoxGroup = ({ name, placeholder, value, label, error, info, type, onChange, disabled }) => {
+const CheckBoxGroup = ({ name, placeholder, value, label, error, info, type, onChange, disabled, labelPos }) => {
   return (
     <div className="customCheck">
       <label
@@ -8,8 +8,9 @@ const CheckBoxGroup = ({ name, placeholder, value, label, error, info, type, onC
           onChange(!value, name);
         }}
       >
-        <span className="checkLabel">{label}</span>
+        {labelPos !== "right" && <span className="checkLabel">{label}</span>}
         {value ? <i className="far fa-check-square" /> : <i className="far fa-square" />}
+        {labelPos === "right" && <span className="checkLabel ml-2">{label}</span>}
       </label>
     </div>
   );
