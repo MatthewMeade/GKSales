@@ -11,6 +11,10 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { updateQuoteDetails, getQuote } from "../../actions/quoteActions";
 import Spinner from "../common/Spinner";
 
+import MarbleImg from "../../img/MarbleExample.JPG";
+import FlakeImg from "../../img/FlakeExample.JPG";
+import EpoxyImg from "../../img/EpoxyExample.JPG";
+
 class FloorForm extends Component {
   state = {
     floorType: "",
@@ -40,11 +44,7 @@ class FloorForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(
-      this.props.quote._id,
-      { floor: this.state },
-      this.props.history
-    );
+    this.props.updateQuoteDetails(this.props.quote._id, { floor: this.state }, this.props.history);
   };
 
   render() {
@@ -55,17 +55,17 @@ class FloorForm extends Component {
       {
         name: "flake",
         label: "Signature Polyaspartic Flake Floor",
-        imgUrl: "https://garagekings.com/assets/images/flake_floor.jpg",
+        imgUrl: FlakeImg,
       },
       {
         name: "epoxy",
         label: "Solid Epoxy Floor",
-        imgUrl: "https://garagekings.com/assets/images/solid_epoxy_floor.jpg",
+        imgUrl: EpoxyImg,
       },
       {
         name: "marbled",
         label: "Decorative Marbled Epoxy Floor",
-        imgUrl: "https://garagekings.com/assets/images/epoxy-floor.jpg",
+        imgUrl: MarbleImg,
       },
     ];
 
@@ -77,17 +77,11 @@ class FloorForm extends Component {
             <h5>{floor.label}</h5>
 
             {this.state.floorType !== floor.name ? (
-              <p
-                className="btn btn-primary"
-                onClick={() => this.setState({ floorType: floor.name })}
-              >
+              <p className="btn btn-primary" onClick={() => this.setState({ floorType: floor.name })}>
                 Select This Floor
               </p>
             ) : (
-              <p
-                className="btn btn-success"
-                onClick={() => this.setState({ floorType: floor.name })}
-              >
+              <p className="btn btn-success" onClick={() => this.setState({ floorType: floor.name })}>
                 Currently Selected Floor
               </p>
             )}
@@ -105,12 +99,7 @@ class FloorForm extends Component {
 
     if (this.state.showFloorCarousel) {
       floorTypeSlider = (
-        <Slider
-          infinite={true}
-          adaptiveHeight={true}
-          afterChange={this.onSlideChanged}
-          className="floorFormCarousel"
-        >
+        <Slider infinite={true} adaptiveHeight={true} afterChange={this.onSlideChanged} className="floorFormCarousel">
           {floorTypeCarouselContent}
         </Slider>
       );
@@ -187,11 +176,7 @@ class FloorForm extends Component {
               error={errors.colorComment}
               rows={4}
             />
-            <input
-              type="submit"
-              value="Save"
-              className="btn btn-primary btn-block mt-4"
-            />
+            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
           </form>
         )}
       </div>
