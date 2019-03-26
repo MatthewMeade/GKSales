@@ -27,9 +27,9 @@ class QuoteTable extends Component {
 
     const data = quotes.map(quote => ({
       ...quote,
-      leadId: quote.lead.id,
+      leadId: quote.lead._id,
       leadName: quote.lead.name,
-      salespersonId: quote.salesperson.id,
+      salespersonId: quote.salesperson._id,
       salespersonName: quote.salesperson.name,
     }));
 
