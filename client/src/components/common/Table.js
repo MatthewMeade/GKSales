@@ -61,7 +61,7 @@ export default class Table extends Component {
   }
 
   renderBody() {
-    const { data, headings, loading } = this.props;
+    const { headings, loading } = this.props;
 
     if (loading) {
       return (

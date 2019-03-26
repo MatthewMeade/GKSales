@@ -10,7 +10,6 @@ import InputSlider from "../common/InputSlider";
 import FloorInfo from "./FloorInfo";
 import JobInfo from "./JobInformation";
 import AdditionalCostInput from "./AdditionalCostInput";
-import CheckboxToggle from "../common/CheckboxToggle";
 import CheckBoxGroup from "../common/CheckboxGroup";
 
 class PricingForm extends Component {

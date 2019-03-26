@@ -21,7 +21,7 @@ function UpcomingQuotes({ quotes, loading, history, auth }) {
         }}
         sortBy="consultationDate"
         sortMethod="date"
-        filter={data => Date.parse(data.consultationDate) > Date.now() && data.salesperson._id == auth.user.id}
+        filter={data => Date.parse(data.consultationDate) > Date.now() && data.salesperson._id === auth.user.id}
         onRowClick={({ _id }) => history.push("/quotes/" + _id)}
       />
     </div>
