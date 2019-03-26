@@ -94,8 +94,8 @@ export const updateQuoteDetails = (id, details, history) => dispatch => {
 
 export const addPhoto = (quoteID, file) => dispatch => {
   const fd = new FormData();
-  fd.append("photo", file);
   fd.append("quote", quoteID);
+  fd.append("photo", file);
 
   axios
     .post(`/api/quotes/${quoteID}/addPhoto`, fd, {

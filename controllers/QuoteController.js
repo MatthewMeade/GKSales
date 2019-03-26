@@ -74,6 +74,7 @@ module.exports.addPhoto = async (req, res) => {
   if (!quote.photos) quote.photos = [];
 
   quote.photos.push(file);
+  quote.photoCount++;
 
   const newQuote = await quote.save({ new: true });
 

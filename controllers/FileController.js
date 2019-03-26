@@ -5,6 +5,7 @@ const archiver = require("archiver");
 
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
+const Quote = mongoose.model("Quote");
 
 const GridFSStorage = require("multer-gridfs-storage");
 let Grid = require("gridfs-stream");
@@ -34,7 +35,7 @@ const localStorage = multer.diskStorage({
     cb(null, dir);
   },
   filename: (req, file, cb) => {
-    const fileName = `${Date.now()}_${file.originalname}`;
+    const fileName = `${file.originalname}`;
     req.body.file = fileName;
     cb(null, fileName);
   },
@@ -42,8 +43,12 @@ const localStorage = multer.diskStorage({
 
 storage = new GridFSStorage({
   db: connection,
-  file: (req, file) => {
-    const filename = `${Date.now()}_${file.originalname}`;
+  file: async (req, file) => {
+    const { photoCount } = await Quote.findById(req.body.quote);
+    const extension = file.originalname.split(".").pop();
+
+    const filename = `${Date.now()}_Photo ${photoCount + 1}.${extension}`;
+
     req.body.file = filename;
 
     return { filename, bucketName: "uploads" };

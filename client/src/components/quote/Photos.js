@@ -37,18 +37,20 @@ class Photos extends Component {
     ));
 
     const fileListItems = photos.map((photo, i) => (
-      <div
-        key={photo}
-        className="row mb-3 fileRow"
-        onClick={this.onFileNameClicked.bind(this, i)}
-      >
+      <div key={photo} className="row mb-3 fileRow" onClick={this.onFileNameClicked.bind(this, i)}>
         <div className="col text-left fileListItem">
           <h5 className={this.state.curFileSlide === i ? "active" : ""}>
-            {photo}
+            {photo
+              .split("_")
+              .slice(1)
+              .join()}
           </h5>
         </div>
 
         <div className="col text-right">
+          <a className="btn btn-primary d-inline-block mr-4" href={photo} download>
+            <i className="fas fa-download" />
+          </a>
           <DeletePhotoBtn fileName={photo} />
         </div>
       </div>
@@ -64,7 +66,7 @@ class Photos extends Component {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row p-3">
           {photos.length ? (
             <div className="col-lg-6 pl-4 pr-4">
               <Slider
@@ -81,7 +83,7 @@ class Photos extends Component {
               </Slider>
             </div>
           ) : (
-            <h4 className="p-5">No Photos</h4>
+            <h4 className="p-5 noPhotosMsg">No Photos Attached</h4>
           )}
 
           <div className="col-lg-6 fileList">{fileListItems}</div>

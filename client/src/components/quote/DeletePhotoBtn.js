@@ -14,11 +14,9 @@ class DeletePhotoBtn extends Component {
 
   render() {
     return (
-      <div>
-        <button className="btn btn-danger" onClick={this.onClick}>
-          Delete
-        </button>
-      </div>
+      <button className="btn btn-danger" onClick={this.onClick}>
+        <i className="fas fa-trash-alt" />
+      </button>
     );
   }
 }
