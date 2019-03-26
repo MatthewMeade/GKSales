@@ -5,8 +5,11 @@ import Spinner from "../common/Spinner";
 import { getLeads, refreshLeads } from "../../actions/leadActions";
 
 import { withRouter } from "react-router-dom";
+import Table from "../common/Table";
 
 class Leads extends Component {
+  state = { filterStr: "" };
+
   componentDidMount() {
     this.props.getLeads();
   }
@@ -15,55 +18,49 @@ class Leads extends Component {
     this.props.refreshLeads();
   };
 
-  onRowClick = id => {
-    this.props.history.push("/leads/" + id);
+  onRowClick = ({ _id }) => {
+    this.props.history.push("/leads/" + _id);
   };
 
   render() {
     const { leads, loading } = this.props;
-    let leadsContent;
-
-    if (!leads || loading) {
-      leadsContent = (
-        <tr>
-          <td colSpan="4">
-            <Spinner className="spinner" />
-          </td>
-        </tr>
-      );
-    } else {
-      leadsContent = leads.map(lead => (
-        // Can't wrap tr in Link, using onRowClick instead
-        <tr key={lead._id} onClick={this.onRowClick.bind(this, lead._id)}>
-          <td>{lead.name}</td>
-          <td>{lead.email}</td>
-          <td>{lead.phone}</td>
-        </tr>
-      ));
-    }
 
     return (
       <div className="leadList">
         <div className="row">
-          <div className="col">
+          <div className="col-6 col-md-3 order-md-first">
             <h3>Leads</h3>
           </div>
-          <div className="col text-right">
+          <div className="col-12 col-md-6 mb-2 order-last order-md-2">
+            <input
+              className="form-control"
+              type="text"
+              name="search"
+              placeholder="Search"
+              onChange={e => this.setState({ filterStr: e.target.value })}
+            />
+          </div>
+          <div className="col-6 col-md-3 text-right order-md-last">
             <button className="btn btn-primary" onClick={this.onDeleteClick}>
               Refresh
             </button>
           </div>
         </div>
-        <table className="table table-striped table-light table-hover">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-            </tr>
-          </thead>
-          <tbody>{leadsContent}</tbody>
-        </table>
+
+        <Table
+          headings={[
+            { name: "name", label: "Name" },
+            { name: "email", label: "Email" },
+            { name: "phone", label: "Phone" },
+          ]}
+          sortBy="date"
+          sortDir="desc"
+          sortMethod="date"
+          filter={this.state.filterStr}
+          data={leads}
+          loading={loading}
+          onRowClick={this.onRowClick}
+        />
       </div>
     );
   }

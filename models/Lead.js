@@ -7,7 +7,7 @@ const LeadSchema = Schema({
   phone: String,
   zip: String,
   source: String,
-  Date: { type: Date, default: Date.now },
+  date: { type: Date, default: Date.now },
   notes: String,
 });
 

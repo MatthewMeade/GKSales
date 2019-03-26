@@ -73,7 +73,7 @@ const QuoteSchema = new Schema({
 
 const autoPopulate = function(next) {
   this.populate("lead");
-  this.populate("salesperson");
+  this.populate("salesperson", "name email");
   next();
 };
 

@@ -1,39 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Table from "../common/Table";
 
 export default function PricingInfo({ quote }) {
   const { squareFootage } = quote.job || {};
   const { pricePerSqft, additionalCosts } = quote.pricing || {};
-
-  const hasAdditional = additionalCosts && additionalCosts.length > 0;
-
-  const additionalCostRows =
-    hasAdditional &&
-    additionalCosts.map(cost => (
-      <tr key={cost.id}>
-        <td>{cost.name}</td>
-        <td>{cost.isPerSqft ? "Per Sqft" : "Flat"}</td>
-        <td>${cost.price.toFixed(2)}</td>
-      </tr>
-    ));
-
-  const additionalCostTable = hasAdditional && (
-    <div>
-      <h4 className="mt-4">Additional Costs:</h4>
-
-      <table className="table is-fullwidth  priceTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Cost</th>
-          </tr>
-        </thead>
-
-        <tbody>{additionalCostRows}</tbody>
-      </table>
-    </div>
-  );
 
   return (
     <div className="pricing">
@@ -55,7 +26,16 @@ export default function PricingInfo({ quote }) {
         </div>
       </div>
 
-      {additionalCostTable}
+      <h4 className="mt-3">Additional Costs</h4>
+      <Table
+        headings={[
+          { name: "name", label: "Name" },
+          { name: "isPerSqft", label: "Type" },
+          { name: "price", label: "Price" },
+        ]}
+        data={additionalCosts || []}
+        format={{ isPerSqft: isPerSqft => (isPerSqft ? "Per Sqft" : "Flat"), price: price => `$${price.toFixed(2)}` }}
+      />
     </div>
   );
 }

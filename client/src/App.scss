@@ -47,7 +47,8 @@ nav {
 
 .quoteList,
 .leadList,
-.priceTable {
+.priceTable,
+.dataTable {
   th {
     background: $primary;
     border: none;
@@ -282,7 +283,7 @@ nav {
 
 .checkboxToggle {
   .btnWrapper {
-    width: 200px;
+    width: 100;
     margin: 0 auto;
 
     .btn {
@@ -291,12 +292,23 @@ nav {
 
       &.selected {
         font-weight: bold;
+
+        &::before {
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f00c    ";
+        }
       }
 
       &:not(.selected) {
         background-color: white;
         color: $primary;
-        opacity: 0.75;
+
+        &::before {
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          content: "\f00d     ";
+        }
       }
 
       &.trueBtn {
