@@ -48,7 +48,14 @@ class Photos extends Component {
         </div>
 
         <div className="col text-right">
-          <a className="btn btn-primary d-inline-block mr-4" href={photo} download>
+          <a
+            className="btn btn-primary d-inline-block mr-4"
+            href={`/api/uploads/${photo}`}
+            download={photo
+              .split("_")
+              .slice(1)
+              .join()}
+          >
             <i className="fas fa-download" />
           </a>
           <DeletePhotoBtn fileName={photo} />
