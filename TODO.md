@@ -7,11 +7,7 @@
 ## Front End
 
 - [ ] Refactor sass into files organized by the component being styled
-- [ ] Quote Summary (details and payment)
 - [ ] Offline mode with sync (PWA)
-- [ ] Refactor tables into Table component
-  - [ ] Add search to tables
-  - [ ] Add table pagination
 - [ ] Add 404 for invalid page ids
 - [ ] Secure getting upload images (jwt auth not sent with img tag)
 - [ ] Add photo fullscreen on click
@@ -19,7 +15,6 @@
 - [ ] Add nicer default file upload names
 - [ ] Add support for naming files before upload
 - [ ] Add support for editing file names
-- [ ] Align UI Elements
 - [ ] Add back buttons
 - [ ] Add ability to delete quotes, leads, and users
 - [ ] Fix dates displaying wrong day (timezones?)
