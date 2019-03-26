@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import {
-  updateQuoteDetails,
-  getQuote,
-  quoteFormChanged,
-} from "../../actions/quoteActions";
+import { updateQuoteDetails, getQuote, quoteFormChanged } from "../../actions/quoteActions";
 
 import QuoteDetailsForm from "./QuoteDetailsForm";
 
@@ -15,10 +11,7 @@ class EditQuoteDetails extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      Object.keys(nextProps.quote).length !== 0 &&
-      this.props.quoteForm.lead === ""
-    ) {
+    if (Object.keys(nextProps.quote).length !== 0 && this.props.quoteForm.lead === "") {
       const { quote } = nextProps;
       this.props.quoteFormChanged({ prop: "lead", value: quote.lead._id });
       this.props.quoteFormChanged({
@@ -27,26 +20,20 @@ class EditQuoteDetails extends Component {
       });
       this.props.quoteFormChanged({ prop: "address", value: quote.address });
       this.props.quoteFormChanged({ prop: "notes", value: quote.notes });
+      this.props.quoteFormChanged({ prop: "salesperson", value: quote.salesperson._id });
     }
   }
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(
-      this.props.match.params.id,
-      this.props.quoteForm,
-      this.props.history
-    );
+    this.props.updateQuoteDetails(this.props.match.params.id, this.props.quoteForm, this.props.history);
   };
 
   render() {
     return (
       <div className="newQuotePage">
         <h1>Edit Quote Details</h1>
-        <QuoteDetailsForm
-          onSubmit={this.onSubmit}
-          quote={this.props.quoteForm}
-        />
+        <QuoteDetailsForm onSubmit={this.onSubmit} quote={this.props.quoteForm} />
       </div>
     );
   }

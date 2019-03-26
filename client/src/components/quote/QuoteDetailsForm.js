@@ -42,6 +42,8 @@ class QuoteDetailsForm extends Component {
     const leadOptions = leads && this.buildSelectOptions(leads);
     const salespersonOptions = users && this.buildSelectOptions(users);
 
+    console.log(quote);
+
     return (
       <div className="quoteDetailsForm">
         {loading ? (

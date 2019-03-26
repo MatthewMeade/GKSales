@@ -6,11 +6,13 @@ export default class Table extends Component {
     const filter = this.props.filter;
     const { sortBy, sortDir, sortMethod } = this.props;
 
+    console.log(filter);
+
     let { data } = this.props;
 
     if (filter) {
       if (typeof filter === "string") data = this.filterItems(data, filter.toLowerCase());
-      else filter.forEach(f => (data = this.filterItems(data, f)));
+      else filter.forEach(f => (data = this.filterItems(data, f.toLowerCase())));
     }
 
     if (sortBy) data = this.sortItems(data, sortBy, sortDir, sortMethod.toLowerCase());

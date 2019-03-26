@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import QuoteTable from "../common/QuoteTable";
 import CheckboxToggle from "../common/CheckboxToggle";
@@ -13,22 +13,11 @@ class Quote extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-6 col-md-3 order-md-first">
+          <div className="col-4">
             <h3>Quotes</h3>
           </div>
 
-          <div className="col-12 col-md-5 mb-2 order-last order-md-2">
-            <input
-              className="form-control"
-              type="text"
-              name="search"
-              placeholder="Search"
-              onChange={e => this.setState({ filterStr: e.target.value })}
-              value={this.state.filterStr}
-            />
-          </div>
-
-          <div className="col-6 col-md-4 text-right order-md-last">
+          <div className="col-4 ">
             <CheckboxToggle
               name=""
               value={this.state.salespersonFilter}
@@ -37,7 +26,23 @@ class Quote extends Component {
               onChange={value => this.setState({ salespersonFilter: value })}
             />
           </div>
+
+          <div className="col-4  text-right">
+            <Link to="/newQuote" className="btn btn-primary">
+              New Quote
+            </Link>
+          </div>
         </div>
+
+        <input
+          className="form-control mt-2 mb-3"
+          type="text"
+          name="search"
+          placeholder="Search"
+          onChange={e => this.setState({ filterStr: e.target.value })}
+          value={this.state.filterStr}
+        />
+
         <QuoteTable filter={[this.state.filterStr, this.state.salespersonFilter ? this.props.salespersonId : ""]} />
       </div>
     );
