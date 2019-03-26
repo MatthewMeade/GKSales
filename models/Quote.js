@@ -11,7 +11,7 @@ const QuoteSchema = new Schema({
     type: Number,
     default: 0,
   },
-  Operation: String,
+  operation: String,
   lead: {
     type: Schema.Types.ObjectId,
     ref: "Lead",

@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
+import { getQuotes } from "../../actions/quoteActions";
+import UpcomingQuotes from "./UpcomingQuotes";
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.getQuotes();
+  }
+
   render() {
     const { user } = this.props.auth;
 
@@ -10,6 +17,12 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h1>Dashboard</h1>
         <h3>Welcome back, {user.name}!</h3>
+
+        <Link to="/newQuote" className="btn btn-primary mt-2 mb-5">
+          New Quote
+        </Link>
+
+        <UpcomingQuotes {...this.props} />
       </div>
     );
   }
@@ -17,6 +30,11 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  quotes: state.quotes.quotes,
+  loading: state.quotes.loading,
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  { getQuotes }
+)(Dashboard);

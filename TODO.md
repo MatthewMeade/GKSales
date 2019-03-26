@@ -9,7 +9,6 @@
 - [ ] Add 404 for invalid page ids
 - [ ] Secure getting upload images (jwt auth not sent with img tag)
 - [ ] Add photo fullscreen on click
-- [ ] Add individual photo download
 - [ ] Add support for editing file names
 - [ ] Add back buttons
 - [ ] Add ability to delete quotes, leads, and users
