@@ -50,7 +50,10 @@ storage = new GridFSStorage({
   },
 });
 
-exports.upload = multer({ storage }).any();
+exports.upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => cb(null, file.mimetype.indexOf("image") >= 0),
+}).single("photo");
 
 exports.getUpload = async (req, res) => {
   const readStream = Attachment.readByFileName(req.params.fileName);

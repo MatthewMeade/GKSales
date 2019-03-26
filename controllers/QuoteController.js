@@ -64,7 +64,10 @@ module.exports.editQuote = async (req, res) => {
 };
 
 module.exports.addPhoto = async (req, res) => {
-  const file = req.files[0].filename;
+  if (!req.file) {
+    return res.status(400).send({ photo: "No Valid Photo Attached" });
+  }
+  const file = req.file.filename;
 
   const quote = await Quote.findById(req.params.id);
 
