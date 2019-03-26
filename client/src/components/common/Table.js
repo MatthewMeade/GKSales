@@ -8,14 +8,11 @@ export default class Table extends Component {
 
     let { data } = this.props;
 
-    console.log(data);
     if (filter) {
       if (typeof filter === "string") data = this.filterItems(data, filter.toLowerCase());
       else if (typeof filter === "function") data = data.filter(filter);
       else filter.forEach(f => (data = this.filterItems(data, f.toLowerCase())));
     }
-
-    console.log(data);
 
     if (sortBy) data = this.sortItems(data, sortBy, sortDir, sortMethod.toLowerCase());
 
