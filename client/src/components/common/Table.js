@@ -6,8 +6,6 @@ export default class Table extends Component {
     const filter = this.props.filter;
     const { sortBy, sortDir, sortMethod } = this.props;
 
-    console.log(filter);
-
     let { data } = this.props;
 
     if (filter) {
