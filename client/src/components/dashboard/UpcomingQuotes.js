@@ -4,7 +4,6 @@ import Moment from "react-moment";
 import Table from "../common/Table";
 
 function UpcomingQuotes({ quotes, loading, history, auth }) {
-  console.log(auth.user.id);
   const data = quotes.map(quote => ({
     ...quote,
     leadId: quote.lead._id,
