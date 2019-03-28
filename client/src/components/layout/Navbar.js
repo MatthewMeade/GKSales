@@ -51,7 +51,7 @@ class Navbar extends Component {
 
     return (
       <nav className="navbar navbar-expand bg-primary">
-        <Link className="navbar-brand mr-0" to="/">
+        <Link className="navbar-brand mr-0" to="/dashboard">
           <img src={Logo} alt="Garage Kings" id="navLogo" />
           <span className="d-none d-md-inline ml-2">Garage Kings Sales</span>
         </Link>
