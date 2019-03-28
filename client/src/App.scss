@@ -13,6 +13,23 @@ $primary: #c0392b;
   min-height: calc(100vh - 3rem);
 
   padding-bottom: 10vh;
+
+  & > div {
+    position: relative;
+    animation: animateIn 0.2s;
+  }
+}
+
+@keyframes animateIn {
+  0% {
+    right: -50px;
+    opacity: 0;
+  }
+
+  100% {
+    right: 0;
+    opacity: 1;
+  }
 }
 
 body {
