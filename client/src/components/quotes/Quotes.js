@@ -13,11 +13,11 @@ class Quote extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-4">
+          <div className="col-6 col-md-3 col-lg-4 order-first mb-2 mb-sm-0">
             <h3>Quotes</h3>
           </div>
 
-          <div className="col-4 ">
+          <div className="col-sm-12 col-md-6 col-lg-4 order-3 order-md-2">
             <CheckboxToggle
               name=""
               value={this.state.salespersonFilter}
@@ -27,7 +27,7 @@ class Quote extends Component {
             />
           </div>
 
-          <div className="col-4  text-right">
+          <div className="col-6 col-md-3 col-lg-4 order-2 text-right">
             <Link to="/newQuote" className="btn btn-primary">
               New Quote
             </Link>
@@ -43,7 +43,12 @@ class Quote extends Component {
           value={this.state.filterStr}
         />
 
-        <QuoteTable filter={[this.state.filterStr, this.state.salespersonFilter ? this.props.salespersonId : ""]} />
+        <QuoteTable
+          filter={[
+            this.state.filterStr,
+            this.state.salespersonFilter ? this.props.salespersonId : "",
+          ]}
+        />
       </div>
     );
   }
