@@ -34,7 +34,7 @@ import Moment from "react-moment";
 import "moment-timezone";
 
 Moment.globalTimezone = "UTC";
-Moment.globalFormat = "YYYY MMMM DD";
+Moment.globalFormat = "MMMM DD YYYY";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -80,17 +80,37 @@ class App extends Component {
 
                 <PrivateRoute exact path="/newQuote" component={NewQuote} />
 
-                <PrivateRoute exact path="/newQuote/:leadId" component={NewQuote} />
+                <PrivateRoute
+                  exact
+                  path="/newQuote/:leadId"
+                  component={NewQuote}
+                />
 
                 <PrivateRoute exact path="/quotes/:id" component={Quote} />
 
-                <PrivateRoute exact path="/quotes/:id/details" component={EditQuoteDetails} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/details"
+                  component={EditQuoteDetails}
+                />
 
-                <PrivateRoute exact path="/quotes/:id/jobInfo" component={JobInformationForm} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/jobInfo"
+                  component={JobInformationForm}
+                />
 
-                <PrivateRoute exact path="/quotes/:id/pricing" component={PricingForm} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/pricing"
+                  component={PricingForm}
+                />
 
-                <PrivateRoute exact path="/quotes/:id/floorOptions" component={FloorForm} />
+                <PrivateRoute
+                  exact
+                  path="/quotes/:id/floorOptions"
+                  component={FloorForm}
+                />
 
                 <Route exact path="/*" component={NotFound} />
               </Switch>
