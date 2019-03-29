@@ -60,7 +60,7 @@ module.exports.loginUser = async (req, res) => {
     payload,
     secret,
     // Set expiry based on if remember me is checked
-    { expiresIn: rememberMe ? 36000 * 7 : 36000 },
+    { expiresIn: 1000 * 60 * 60 * 24 * (rememberMe ? 30 : 1) }, // 30 days : 1 day
     (err, token) => {
       if (err) {
         return res.status(400).json(err);
