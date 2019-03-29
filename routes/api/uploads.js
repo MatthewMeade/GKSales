@@ -13,7 +13,7 @@ const authenticate = passport.authenticate("jwt", { session: false });
 // @route   POST api/uploads/export
 // @desc    Returns a zip of requested files
 // @access  Private
-router.post("/export", authenticate, catchErrors(FileController.exportUploads));
+router.post("/export", authenticate, FileController.exportUploads);
 
 // @route   POST api/uploads/:filename
 // @desc    Returns an uploaded file
