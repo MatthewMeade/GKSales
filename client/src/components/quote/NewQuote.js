@@ -16,7 +16,7 @@ class NewQuote extends Component {
     return (
       <div className="newQuotePage">
         <Link className="btn btn-primary mb-4" to={`/quotes/`}>
-          <i className="fas fa-backspace pr-3" />
+          <i className="fas fa-backspace pr-2" />
           Cancel
         </Link>
         <h1>New Quote</h1>

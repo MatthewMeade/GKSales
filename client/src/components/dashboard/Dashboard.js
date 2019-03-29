@@ -19,7 +19,7 @@ class Dashboard extends Component {
         <h3>Welcome back, {user.name}!</h3>
 
         <Link to="/newQuote" className="btn btn-primary mt-2 mb-5">
-          <i class="fas fa-plus-circle" /> New Quote
+          <i class="fas fa-plus-circle pr-2" /> New Quote
         </Link>
 
         <UpcomingQuotes {...this.props} />
