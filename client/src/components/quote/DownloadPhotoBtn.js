@@ -11,7 +11,6 @@ class DownloadPhotoButton extends Component {
 
   onClick = e => {
     const { fileName } = this.props;
-    console.log("HERE");
 
     axios.get(`/api/uploads/${fileName}`, { responseType: "blob" }).then(({ data }) => {
       const blob = window.URL.createObjectURL(new Blob([data]));
