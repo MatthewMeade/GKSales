@@ -25,7 +25,6 @@ class Photos extends Component {
 
   state = {
     curFileSlide: 0,
-    // popupActive: false,
     popupContent: null,
   };
 
@@ -39,11 +38,9 @@ class Photos extends Component {
       ),
     });
     console.log(this.state);
-    // this.setState({ popupActive: true });
   };
 
   onPopupClose = () => {
-    // this.setState({ popupActive: false });
     this.setState({ popupContent: null });
   };
 
@@ -52,9 +49,7 @@ class Photos extends Component {
     const { photos = [] } = this.props;
     const carouselContent = photos.map(photo => (
       <div key={photo} className="carouselItemContainer">
-        <span onClick={() => this.popupImage(photo)}>
-          <SecureImage src={`/api/uploads/${photo}`} alt="Carousel Item" />
-        </span>
+        <SecureImage src={`/api/uploads/${photo}`} alt="Carousel Item" />
         <div className="carouselItemContent">
           <h5>{photo.split("_")[1]}</h5>
         </div>
@@ -73,6 +68,9 @@ class Photos extends Component {
         </div>
 
         <div className="col text-right">
+          <span className="btn btn-primary mr-4" onClick={() => this.popupImage(photo)}>
+            <i className="fas fa-expand-arrows-alt " />
+          </span>
           <DownloadPhotoBtn fileName={photo} />
           <DeletePhotoBtn fileName={photo} />
         </div>
