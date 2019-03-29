@@ -34,7 +34,8 @@ class QuoteDetailsForm extends Component {
         value: item._id,
       }));
 
-  onAssignPress = () => this.props.quoteFormChanged({ prop: "salesperson", value: this.props.user.id });
+  onAssignPress = () =>
+    this.props.quoteFormChanged({ prop: "salesperson", value: this.props.user.id });
 
   render() {
     const { loading, leads, errors, quote, users } = this.props;
@@ -76,7 +77,9 @@ class QuoteDetailsForm extends Component {
               <div className="col-2 d-flex align-items-center pl-0">
                 <span className="btn btn-primary p-2 mt-3  w-100" onClick={this.onAssignPress}>
                   <span className="d-none d-lg-block">Assign to Me</span>
-                  <span className="d-lg-none">Me</span>
+                  <span className="d-lg-none">
+                    <i class="fas fa-user" /> Me
+                  </span>
                 </span>
               </div>
             </div>
