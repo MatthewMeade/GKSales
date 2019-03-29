@@ -11,6 +11,7 @@ import ExportPhotosBtn from "./ExportPhotosBtn";
 import DeletePhotoBtn from "./DeletePhotoBtn";
 import SecureImage from "../common/SecureImage";
 import DownloadPhotoBtn from "./DownloadPhotoBtn";
+import PopupModal from "../common/PopupModal";
 
 class Photos extends Component {
   onFileNameClicked = index => {
@@ -24,13 +25,36 @@ class Photos extends Component {
 
   state = {
     curFileSlide: 0,
+    // popupActive: false,
+    popupContent: null,
+  };
+
+  popupImage = photo => {
+    console.log("CLICKED");
+    this.setState({
+      popupContent: (
+        <span className="popupSecureImage">
+          <SecureImage src={`/api/uploads/${photo}`} alt="Carousel Item" />
+        </span>
+      ),
+    });
+    console.log(this.state);
+    // this.setState({ popupActive: true });
+  };
+
+  onPopupClose = () => {
+    // this.setState({ popupActive: false });
+    this.setState({ popupContent: null });
   };
 
   render() {
+    console.log("RENDERING", this.state);
     const { photos = [] } = this.props;
     const carouselContent = photos.map(photo => (
       <div key={photo} className="carouselItemContainer">
-        <SecureImage src={`/api/uploads/${photo}`} alt="Carousel Item" />
+        <span onClick={() => this.popupImage(photo)}>
+          <SecureImage src={`/api/uploads/${photo}`} alt="Carousel Item" />
+        </span>
         <div className="carouselItemContent">
           <h5>{photo.split("_")[1]}</h5>
         </div>
@@ -49,16 +73,6 @@ class Photos extends Component {
         </div>
 
         <div className="col text-right">
-          {/* <a
-            className="btn btn-primary d-inline-block mr-4"
-            href={`/api/uploads/${photo}`}
-            download={photo
-              .split("_")
-              .slice(1)
-              .join()}
-          >
-            <i className="fas fa-download" />
-          </a> */}
           <DownloadPhotoBtn fileName={photo} />
           <DeletePhotoBtn fileName={photo} />
         </div>
@@ -74,7 +88,6 @@ class Photos extends Component {
             <AddPhotoBtn />
           </div>
         </div>
-
         <div className="row p-3">
           {photos.length ? (
             <div className="col-lg-6 pl-4 pr-4">
@@ -97,6 +110,9 @@ class Photos extends Component {
 
           <div className="col-lg-6 fileList">{fileListItems}</div>
         </div>
+        <PopupModal active={this.state.popupContent !== null} onPopupClose={this.onPopupClose}>
+          {this.state.popupContent}
+        </PopupModal>
       </div>
     );
   }
