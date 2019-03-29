@@ -4,9 +4,6 @@
 
 ## Front End
 
-- [ ] Refactor sass into files organized by the component being styled
-- [ ] Offline mode with sync (PWA)
-- [ ] Add 404 for invalid page ids
 - [ ] Secure getting upload images (jwt auth not sent with img tag)
 - [ ] Add photo fullscreen on click
 - [ ] Add support for editing file names
