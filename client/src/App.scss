@@ -6,6 +6,8 @@ $primary: #c0392b;
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/darkly/bootswatch";
 
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 // Global Styles
 .App > .container {
   padding-top: 2em; // Add space between nav and body
