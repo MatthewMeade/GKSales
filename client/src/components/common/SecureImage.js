@@ -15,10 +15,19 @@ class SecureImage extends Component {
 
     const { src } = this.props;
 
-    axios.get(src, { responseType: "blob" }).then(({ data }) => {
-      const blob = window.URL.createObjectURL(new Blob([data]));
-      this.setState({ blob });
-    });
+    this.source = axios.CancelToken.source();
+
+    axios
+      .get(src, { responseType: "blob", cancelToken: this.source.token })
+      .then(({ data }) => {
+        const blob = window.URL.createObjectURL(new Blob([data]));
+        this.setState({ blob });
+      })
+      .catch(e => {}); // Throws error when request is cancelled
+  }
+
+  componentWillUnmount() {
+    this.source.cancel();
   }
 
   render() {
