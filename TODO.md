@@ -4,7 +4,6 @@
 
 ## Front End
 
-- [ ] Add photo fullscreen on click
 - [ ] Add support for editing file names
 - [ ] Add ability to delete quotes, leads, and users
 
