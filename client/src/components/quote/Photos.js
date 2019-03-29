@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import AddPhotoBtn from "./AddPhotoBtn";
 import ExportPhotosBtn from "./ExportPhotosBtn";
 import DeletePhotoBtn from "./DeletePhotoBtn";
+import SecureImage from "../common/SecureImage";
 
 class Photos extends Component {
   onFileNameClicked = index => {
@@ -26,10 +27,9 @@ class Photos extends Component {
 
   render() {
     const { photos = [] } = this.props;
-
     const carouselContent = photos.map(photo => (
       <div key={photo} className="carouselItemContainer">
-        <img src={`/api/uploads/${photo}`} alt="Carousel Item" />
+        <SecureImage src={`/api/uploads/${photo}`} alt="Carousel Item" />
         <div className="carouselItemContent">
           <h5>{photo.split("_")[1]}</h5>
         </div>
@@ -81,7 +81,7 @@ class Photos extends Component {
                 className="clearifx"
                 dots={true}
                 infinite={true}
-                adaptiveHeight={true}
+                adaptiveHeight={false}
                 initialSlide={this.state.curFileSlide}
                 arrows={false}
                 afterChange={this.onSlideChanged}

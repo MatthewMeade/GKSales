@@ -12,23 +12,25 @@ import FloorInfo from "./FloorInfo";
 import PricingInfo from "./PricingInfo";
 
 class Quote extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getQuote(this.props.match.params.id, this.props.history);
   }
 
   render() {
-    return this.props.loading ? (
+    const { quote, loading } = this.props;
+
+    return loading ? (
       <Spinner />
     ) : (
       <div className="quotePage">
         <h1 className="text-center mb-4">Quote</h1>
-        <QuoteDetails quote={this.props.quote} />
+        <QuoteDetails quote={quote} />
 
-        <FloorInfo quote={this.props.quote} />
+        <FloorInfo quote={quote} />
 
-        <JobInformation quote={this.props.quote} />
+        <JobInformation quote={quote} />
 
-        <PricingInfo quote={this.props.quote} />
+        <PricingInfo quote={quote} />
 
         <Photos />
       </div>
