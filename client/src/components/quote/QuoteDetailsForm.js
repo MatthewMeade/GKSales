@@ -78,7 +78,7 @@ class QuoteDetailsForm extends Component {
                 <span className="btn btn-primary p-2 mt-3  w-100" onClick={this.onAssignPress}>
                   <span className="d-none d-lg-block">Assign to Me</span>
                   <span className="d-lg-none">
-                    <i class="fas fa-user" /> Me
+                    <i class="d-none d-sm-inline fas fa-user" /> Me
                   </span>
                 </span>
               </div>
