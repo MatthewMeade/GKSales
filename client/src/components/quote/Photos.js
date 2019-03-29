@@ -10,6 +10,7 @@ import AddPhotoBtn from "./AddPhotoBtn";
 import ExportPhotosBtn from "./ExportPhotosBtn";
 import DeletePhotoBtn from "./DeletePhotoBtn";
 import SecureImage from "../common/SecureImage";
+import DownloadPhotoBtn from "./DownloadPhotoBtn";
 
 class Photos extends Component {
   onFileNameClicked = index => {
@@ -48,7 +49,7 @@ class Photos extends Component {
         </div>
 
         <div className="col text-right">
-          <a
+          {/* <a
             className="btn btn-primary d-inline-block mr-4"
             href={`/api/uploads/${photo}`}
             download={photo
@@ -57,7 +58,8 @@ class Photos extends Component {
               .join()}
           >
             <i className="fas fa-download" />
-          </a>
+          </a> */}
+          <DownloadPhotoBtn fileName={photo} />
           <DeletePhotoBtn fileName={photo} />
         </div>
       </div>
