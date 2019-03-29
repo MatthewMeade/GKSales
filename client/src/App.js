@@ -34,7 +34,7 @@ import Moment from "react-moment";
 import "moment-timezone";
 
 Moment.globalTimezone = "UTC";
-Moment.globalFormat = "YYYY MMMM DD";
+Moment.globalFormat = "MMMM DD YYYY";
 
 // Check for token
 if (localStorage.jwtToken) {
