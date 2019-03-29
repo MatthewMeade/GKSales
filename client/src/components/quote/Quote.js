@@ -13,7 +13,7 @@ import PricingInfo from "./PricingInfo";
 
 class Quote extends Component {
   componentDidMount() {
-    this.props.getQuote(this.props.match.params.id);
+    this.props.getQuote(this.props.match.params.id, this.props.history);
   }
 
   render() {

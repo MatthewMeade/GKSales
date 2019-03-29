@@ -19,7 +19,7 @@ export const getLeads = () => dispatch => {
 };
 
 // Get lead by ID
-export const getLead = id => dispatch => {
+export const getLead = (id, history) => dispatch => {
   dispatch(setLeadLoading());
   axios
     .get(`/api/leads/${id}`)
@@ -27,6 +27,7 @@ export const getLead = id => dispatch => {
       dispatch({ type: GET_LEAD, payload: res.data });
     })
     .catch(err => {
+      history.push("/not-found");
       dispatch({
         type: GET_LEAD,
         payload: null,

@@ -61,7 +61,7 @@ export const newQuote = (history, data) => dispatch => {
     );
 };
 
-export const getQuote = id => dispatch => {
+export const getQuote = (id, history) => dispatch => {
   dispatch(setQuoteLoading());
   axios
     .get(`/api/quotes/${id}`)
@@ -69,6 +69,7 @@ export const getQuote = id => dispatch => {
       dispatch({ type: GET_QUOTE, payload: res.data });
     })
     .catch(err => {
+      history.push("/not-found");
       dispatch({
         type: GET_QUOTE,
         payload: null,

@@ -25,7 +25,7 @@ class FloorForm extends Component {
   };
 
   componentWillMount() {
-    this.props.getQuote(this.props.match.params.id);
+    this.props.getQuote(this.props.match.params.id, this.props.history);
   }
 
   componentWillReceiveProps(nextProps) {

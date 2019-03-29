@@ -29,6 +29,7 @@ import EditQuoteDetails from "./components/quote/EditQuoteDetails";
 import JobInformationForm from "./components/quote/JobInformationForm";
 import FloorForm from "./components/quote/FloorForm";
 import PricingForm from "./components/quote/PricingForm";
+import NotFound from "./components/404/NotFound";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -65,39 +66,29 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/leads" component={Leads} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/quotes" component={Quotes} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/leads/:id" component={Lead} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/newQuote" component={NewQuote} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/newQuote/:leadId" component={NewQuote} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/quotes/:id" component={Quote} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/quotes/:id/details" component={EditQuoteDetails} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/quotes/:id/jobInfo" component={JobInformationForm} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/quotes/:id/pricing" component={PricingForm} />
-              </Switch>
 
-              <Switch>
+                <PrivateRoute exact path="/leads" component={Leads} />
+
+                <PrivateRoute exact path="/quotes" component={Quotes} />
+
+                <PrivateRoute exact path="/leads/:id" component={Lead} />
+
+                <PrivateRoute exact path="/newQuote" component={NewQuote} />
+
+                <PrivateRoute exact path="/newQuote/:leadId" component={NewQuote} />
+
+                <PrivateRoute exact path="/quotes/:id" component={Quote} />
+
+                <PrivateRoute exact path="/quotes/:id/details" component={EditQuoteDetails} />
+
+                <PrivateRoute exact path="/quotes/:id/jobInfo" component={JobInformationForm} />
+
+                <PrivateRoute exact path="/quotes/:id/pricing" component={PricingForm} />
+
                 <PrivateRoute exact path="/quotes/:id/floorOptions" component={FloorForm} />
+
+                <Route exact path="/*" component={NotFound} />
               </Switch>
-              {/* <Route exact path="/not-found" component={NotFound} />  */}
             </div>
           </div>
         </Router>

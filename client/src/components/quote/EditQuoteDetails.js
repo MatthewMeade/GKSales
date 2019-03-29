@@ -7,7 +7,7 @@ import QuoteDetailsForm from "./QuoteDetailsForm";
 
 class EditQuoteDetails extends Component {
   componentDidMount() {
-    this.props.getQuote(this.props.match.params.id);
+    this.props.getQuote(this.props.match.params.id, this.props.history);
   }
 
   componentWillReceiveProps(nextProps) {

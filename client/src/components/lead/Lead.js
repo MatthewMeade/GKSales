@@ -13,7 +13,7 @@ import QuoteTable from "../common/QuoteTable";
 
 class Lead extends Component {
   componentDidMount() {
-    this.props.getLead(this.props.match.params.id);
+    this.props.getLead(this.props.match.params.id, this.props.history);
   }
 
   onNewQuoteClick = () => {

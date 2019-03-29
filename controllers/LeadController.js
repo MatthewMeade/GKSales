@@ -30,5 +30,9 @@ module.exports.getLeads = async (req, res) => {
 // Returns a lead by ID
 module.exports.getLead = async (req, res) => {
   const lead = await Lead.findOne({ _id: req.params.id });
+
+  if (!lead) {
+    return res.status(404).send({ err: "Not found" });
+  }
   res.send(lead);
 };
