@@ -36,7 +36,7 @@ export default function QuoteDetails({ quote }) {
           <div className="col-lg-4 col-md-6 mb-sm-2">
             <i className="fas fa-calendar-alt mr-1" />
             <strong>Date: </strong>
-            <Moment format="MMM Do YYYY">{quote.consultationDate}</Moment>
+            <Moment>{quote.consultationDate}</Moment>
           </div>
         )}
 

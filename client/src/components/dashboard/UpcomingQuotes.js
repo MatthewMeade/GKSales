@@ -17,7 +17,7 @@ function UpcomingQuotes({ quotes, loading, history, auth }) {
         headings={[{ name: "leadName", label: "Lead" }, { name: "consultationDate", label: "Consultation Date" }]}
         data={data}
         format={{
-          consultationDate: date => <Moment format="YYYY MMMM DD">{date}</Moment>,
+          consultationDate: date => <Moment>{date}</Moment>,
         }}
         sortBy="consultationDate"
         sortMethod="date"

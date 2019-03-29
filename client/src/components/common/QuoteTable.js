@@ -44,7 +44,7 @@ class QuoteTable extends Component {
           loading={loading}
           onRowClick={this.onRowClick}
           format={{
-            consultationDate: date => <Moment format="YYYY MMMM DD">{date}</Moment>,
+            consultationDate: date => <Moment>{date}</Moment>,
           }}
         />{" "}
       </div>

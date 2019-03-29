@@ -30,6 +30,11 @@ import JobInformationForm from "./components/quote/JobInformationForm";
 import FloorForm from "./components/quote/FloorForm";
 import PricingForm from "./components/quote/PricingForm";
 import NotFound from "./components/404/NotFound";
+import Moment from "react-moment";
+import "moment-timezone";
+
+Moment.globalTimezone = "UTC";
+Moment.globalFormat = "YYYY MMMM DD";
 
 // Check for token
 if (localStorage.jwtToken) {
