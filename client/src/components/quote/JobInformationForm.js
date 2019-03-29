@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { getQuote } from "../../actions/quoteActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
@@ -8,6 +10,7 @@ import CheckBoxGroup from "../common/CheckboxGroup";
 
 import { updateQuoteDetails } from "../../actions/quoteActions";
 import Spinner from "../common/Spinner";
+import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class JobInformationForm extends Component {
   state = {
@@ -41,7 +44,10 @@ class JobInformationForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(this.props.quote._id, { job: this.state }, this.props.history);
+  };
+
+  onSaveBtnPressed = redirectLocation => {
+    this.props.updateQuoteDetails(this.props.quote._id, { job: this.state }, this.props.history, redirectLocation);
   };
 
   render() {
@@ -60,12 +66,17 @@ class JobInformationForm extends Component {
 
     return (
       <div className="jobInformationForm">
+        <Link className="btn btn-primary mb-4" to={`/quotes/${this.props.quote._id}`}>
+          <i className="fas fa-backspace pr-3" />
+          Cancel
+        </Link>
+
         <h3>Edit Job Information</h3>
 
         {this.props.loading ? (
           <Spinner />
         ) : (
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={e => e.preventDefault()}>
             <h4>Square Footage</h4>
             <TextFieldGroup
               type="number"
@@ -139,7 +150,7 @@ class JobInformationForm extends Component {
               error={errors.conditions}
               rows={4}
             />
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+            <QuoteFormSaveBtns onSaveBtnPressed={this.onSaveBtnPressed} currentPage="jobInfo" />
           </form>
         )}
       </div>

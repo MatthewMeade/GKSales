@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 import { updateQuoteDetails, getQuote } from "../../actions/quoteActions";
 import Spinner from "../common/Spinner";
@@ -11,6 +12,7 @@ import FloorInfo from "./FloorInfo";
 import JobInfo from "./JobInformation";
 import AdditionalCostInput from "./AdditionalCostInput";
 import CheckBoxGroup from "../common/CheckboxGroup";
+import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class PricingForm extends Component {
   state = {
@@ -38,9 +40,8 @@ class PricingForm extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.updateQuoteDetails(this.props.quote._id, { pricing: this.state }, this.props.history);
+  onSaveBtnPressed = redirectLocation => {
+    this.props.updateQuoteDetails(this.props.quote._id, { pricing: this.state }, this.props.history, redirectLocation);
   };
 
   renderAdditionalCostInputs = () => {
@@ -109,6 +110,11 @@ class PricingForm extends Component {
 
     return (
       <div className="pricingForm">
+        <Link className="btn btn-primary mb-4" to={`/quotes/${this.props.quote._id}`}>
+          <i className="fas fa-backspace pr-3" />
+          Cancel
+        </Link>
+
         <div className="row">
           <div className="col-md">
             <h3 className="mb-4">Quote Pricing</h3>
@@ -122,7 +128,7 @@ class PricingForm extends Component {
         {this.props.loading ? (
           <Spinner />
         ) : (
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={e => e.preventDefault()}>
             <h4 className="row mb-5">
               <div className="col-md-3 text-left">
                 <CheckBoxGroup
@@ -187,7 +193,7 @@ class PricingForm extends Component {
 
             {this.renderAdditionalCostInputs()}
 
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4 saveBtn" />
+            <QuoteFormSaveBtns onSaveBtnPressed={this.onSaveBtnPressed} currentPage="pricing" />
           </form>
         )}
       </div>

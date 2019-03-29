@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { updateQuoteDetails, getQuote, quoteFormChanged } from "../../actions/quoteActions";
 
 import QuoteDetailsForm from "./QuoteDetailsForm";
+import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class EditQuoteDetails extends Component {
   componentDidMount() {
@@ -24,16 +26,27 @@ class EditQuoteDetails extends Component {
     }
   }
 
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.updateQuoteDetails(this.props.match.params.id, this.props.quoteForm, this.props.history);
+  onSaveBtnPressed = redirectLocation => {
+    this.props.updateQuoteDetails(
+      this.props.match.params.id,
+      this.props.quoteForm,
+      this.props.history,
+      redirectLocation
+    );
   };
 
   render() {
     return (
       <div className="newQuotePage">
+        <Link className="btn btn-primary mb-4" to={`/quotes/${this.props.quote._id}`}>
+          <i className="fas fa-backspace pr-3" />
+          Cancel
+        </Link>
+
         <h1>Edit Quote Details</h1>
         <QuoteDetailsForm onSubmit={this.onSubmit} quote={this.props.quoteForm} />
+
+        <QuoteFormSaveBtns onSaveBtnPressed={this.onSaveBtnPressed} currentPage="details" />
       </div>
     );
   }

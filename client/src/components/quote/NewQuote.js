@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { newQuote } from "../../actions/quoteActions";
 
 import QuoteDetailsForm from "./QuoteDetailsForm";
+import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class NewQuote extends Component {
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.newQuote(this.props.history, this.props.quote);
+  onSaveBtnPressed = redirectLocation => {
+    this.props.newQuote(this.props.history, this.props.quote, redirectLocation);
   };
 
   render() {
     return (
       <div className="newQuotePage">
+        <Link className="btn btn-primary mb-4" to={`/quotes/${this.props.quote._id}`}>
+          <i className="fas fa-backspace pr-3" />
+          Cancel
+        </Link>
         <h1>New Quote</h1>
-        <QuoteDetailsForm onSubmit={this.onSubmit} quote={this.props.quote} />
+        <QuoteDetailsForm quote={this.props.quote} />
+        <QuoteFormSaveBtns onSaveBtnPressed={this.onSaveBtnPressed} currentPage="details" />
       </div>
     );
   }

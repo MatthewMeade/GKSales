@@ -47,7 +47,7 @@ class QuoteDetailsForm extends Component {
         {loading ? (
           <Spinner />
         ) : (
-          <form onSubmit={this.props.onSubmit}>
+          <form onSubmit={e => e.preventDefault()}>
             <SelectListGroup
               placeholder="Lead"
               name="lead"
@@ -108,8 +108,6 @@ class QuoteDetailsForm extends Component {
               error={errors.handle}
               rows={10}
             />
-
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
           </form>
         )}
       </div>

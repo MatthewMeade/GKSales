@@ -46,12 +46,12 @@ export const getQuotesByLead = id => dispatch => {
     });
 };
 
-export const newQuote = (history, data) => dispatch => {
+export const newQuote = (history, data, redirectLocation) => dispatch => {
   axios
     .post("/api/quotes", data)
     .then(res => {
       dispatch({ type: QUOTE_FORM_SAVE });
-      history.push(`/quotes/${res.data._id}`);
+      history.push(`/quotes/${res.data._id}/${redirectLocation}`);
     })
     .catch(err =>
       dispatch({
@@ -77,13 +77,13 @@ export const getQuote = (id, history) => dispatch => {
     });
 };
 
-export const updateQuoteDetails = (id, details, history) => dispatch => {
+export const updateQuoteDetails = (id, details, history, redirectLocation) => dispatch => {
   axios
     .post(`/api/quotes/${id}`, details)
     .then(res => {
       dispatch({ type: QUOTE_FORM_SAVE });
       dispatch({ type: CLEAR_ERRORS });
-      history.push(`/quotes/${id}`);
+      history.push(`/quotes/${id}/${redirectLocation}`);
     })
     .catch(err =>
       dispatch({

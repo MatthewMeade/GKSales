@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 import Slider from "react-slick";
 
@@ -14,6 +15,7 @@ import Spinner from "../common/Spinner";
 import MarbleImg from "../../img/MarbleExample.JPG";
 import FlakeImg from "../../img/FlakeExample.JPG";
 import EpoxyImg from "../../img/EpoxyExample.JPG";
+import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class FloorForm extends Component {
   state = {
@@ -44,7 +46,10 @@ class FloorForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.updateQuoteDetails(this.props.quote._id, { floor: this.state }, this.props.history);
+  };
+
+  onSaveBtnPressed = redirectLocation => {
+    this.props.updateQuoteDetails(this.props.quote._id, { floor: this.state }, this.props.history, redirectLocation);
   };
 
   render() {
@@ -107,6 +112,11 @@ class FloorForm extends Component {
 
     return (
       <div className="floorForm">
+        <Link className="btn btn-primary mb-4" to={`/quotes/${this.props.quote._id}`}>
+          <i className="fas fa-backspace pr-3" />
+          Cancel
+        </Link>
+
         <h3 className="mb-4">
           Floor Options{" "}
           <span
@@ -124,7 +134,7 @@ class FloorForm extends Component {
         {this.props.loading ? (
           <Spinner />
         ) : (
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={e => e.preventDefault()}>
             {floorTypeSlider}
 
             <SelectListGroup
@@ -176,7 +186,8 @@ class FloorForm extends Component {
               error={errors.colorComment}
               rows={4}
             />
-            <input type="submit" value="Save" className="btn btn-primary btn-block mt-4" />
+
+            <QuoteFormSaveBtns onSaveBtnPressed={this.onSaveBtnPressed} currentPage="floorOptions" />
           </form>
         )}
       </div>
