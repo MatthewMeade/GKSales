@@ -15,7 +15,7 @@ class NewQuote extends Component {
   render() {
     return (
       <div className="newQuotePage">
-        <Link className="btn btn-primary mb-4" to={`/quotes/${this.props.quote._id}`}>
+        <Link className="btn btn-primary mb-4" to={`/quotes/`}>
           <i className="fas fa-backspace pr-3" />
           Cancel
         </Link>
