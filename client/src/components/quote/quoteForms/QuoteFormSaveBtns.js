@@ -7,7 +7,7 @@ const QuoteFormSaveBtns = ({ currentPage, onSaveBtnPressed }) => {
         <i className="far fa-save" /> Save
       </h4>
       <p className="btn btn-primary w-100 mb-3" onClick={() => onSaveBtnPressed("")}>
-        <i class="fas fa-check pr-2" /> Return to Quote
+        <i className="fas fa-check pr-2" /> Return to Quote
       </p>
 
       <div className="row">

@@ -29,7 +29,7 @@ class Quote extends Component {
 
           <div className="col-6 col-md-3 col-lg-4 order-2 text-right">
             <Link to="/newQuote" className="btn btn-primary">
-              <i class="fas fa-plus-circle pr-2" /> New Quote
+              <i className="fas fa-plus-circle pr-2" /> New Quote
             </Link>
           </div>
         </div>
@@ -43,12 +43,7 @@ class Quote extends Component {
           value={this.state.filterStr}
         />
 
-        <QuoteTable
-          filter={[
-            this.state.filterStr,
-            this.state.salespersonFilter ? this.props.salespersonId : "",
-          ]}
-        />
+        <QuoteTable filter={[this.state.filterStr, this.state.salespersonFilter ? this.props.salespersonId : ""]} />
       </div>
     );
   }

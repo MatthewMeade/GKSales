@@ -130,7 +130,7 @@ class PricingForm extends Component {
         ) : (
           <form onSubmit={e => e.preventDefault()}>
             <h4 className="row mb-5">
-              <div className="col-md-3 text-left">
+              <div className="col-md-4 text-left">
                 <CheckBoxGroup
                   name="depositPaid"
                   label="Deposit Paid"
@@ -139,7 +139,7 @@ class PricingForm extends Component {
                   onChange={this.onChange}
                 />
               </div>
-              <div className="col-md-3 text-left">
+              <div className="col-md-4 text-left">
                 <CheckBoxGroup
                   name="jobPaid"
                   label="Job Paid"

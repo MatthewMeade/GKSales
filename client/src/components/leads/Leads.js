@@ -41,7 +41,7 @@ class Leads extends Component {
           </div>
           <div className="col-6 col-md-3 text-right order-md-last">
             <button className="btn btn-primary" onClick={this.onDeleteClick}>
-              <i class="fas fa-sync pr-2" /> Refresh
+              <i className="fas fa-sync pr-2" /> Refresh
             </button>
           </div>
         </div>

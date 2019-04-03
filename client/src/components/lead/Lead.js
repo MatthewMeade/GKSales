@@ -38,7 +38,7 @@ class Lead extends Component {
             </div>
             <div className="col-lg text-lg-right">
               <button className="btn btn-primary mt-2 mb-sm-5" onClick={this.onNewQuoteClick}>
-                <i class="fas fa-plus-circle" /> New Quote for {lead.name}
+                <i className="fas fa-plus-circle" /> New Quote for {lead.name}
               </button>
             </div>
           </div>
