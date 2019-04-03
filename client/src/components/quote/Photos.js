@@ -29,7 +29,6 @@ class Photos extends Component {
   };
 
   popupImage = photo => {
-    console.log("CLICKED");
     this.setState({
       popupContent: (
         <span className="popupSecureImage">
@@ -37,7 +36,6 @@ class Photos extends Component {
         </span>
       ),
     });
-    console.log(this.state);
   };
 
   onPopupClose = () => {
@@ -45,7 +43,6 @@ class Photos extends Component {
   };
 
   render() {
-    console.log("RENDERING", this.state);
     const { photos = [] } = this.props;
     const carouselContent = photos.map(photo => (
       <div key={photo} className="carouselItemContainer">
