@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deletePhoto } from "../../actions/quoteActions";
+import { deletePhoto } from "../../../../actions/quoteActions";
 
 import PropTypes from "prop-types";
 

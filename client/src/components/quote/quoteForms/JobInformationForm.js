@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getQuote } from "../../actions/quoteActions";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import SelectListGroup from "../common/SelectListGroup";
-import CheckBoxGroup from "../common/CheckboxGroup";
+import { getQuote } from "../../../actions/quoteActions";
+import TextFieldGroup from "../../common/TextFieldGroup";
+import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
+import SelectListGroup from "../../common/SelectListGroup";
+import CheckBoxGroup from "../../common/CheckboxGroup";
 
-import { updateQuoteDetails } from "../../actions/quoteActions";
-import Spinner from "../common/Spinner";
+import { updateQuoteDetails } from "../../../actions/quoteActions";
+import Spinner from "../../common/Spinner";
 import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class JobInformationForm extends Component {

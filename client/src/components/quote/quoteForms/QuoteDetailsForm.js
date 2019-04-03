@@ -2,14 +2,14 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import SelectListGroup from "../common/SelectListGroup";
+import TextFieldGroup from "../../common/TextFieldGroup";
+import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
+import SelectListGroup from "../../common/SelectListGroup";
 
-import { quoteFormChanged, clearQuote } from "../../actions/quoteActions";
-import { getUsers } from "../../actions/userActions";
-import { getLeads } from "../../actions/leadActions";
-import Spinner from "../common/Spinner";
+import { quoteFormChanged, clearQuote } from "../../../actions/quoteActions";
+import { getUsers } from "../../../actions/userActions";
+import { getLeads } from "../../../actions/leadActions";
+import Spinner from "../../common/Spinner";
 
 class QuoteDetailsForm extends Component {
   componentWillMount() {
@@ -34,8 +34,7 @@ class QuoteDetailsForm extends Component {
         value: item._id,
       }));
 
-  onAssignPress = () =>
-    this.props.quoteFormChanged({ prop: "salesperson", value: this.props.user.id });
+  onAssignPress = () => this.props.quoteFormChanged({ prop: "salesperson", value: this.props.user.id });
 
   render() {
     const { loading, leads, errors, quote, users } = this.props;

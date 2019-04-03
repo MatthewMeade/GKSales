@@ -9,9 +9,9 @@ import Slider from "react-slick";
 import AddPhotoBtn from "./AddPhotoBtn";
 import ExportPhotosBtn from "./ExportPhotosBtn";
 import DeletePhotoBtn from "./DeletePhotoBtn";
-import SecureImage from "../common/SecureImage";
+import SecureImage from "../../../common/SecureImage";
 import DownloadPhotoBtn from "./DownloadPhotoBtn";
-import PopupModal from "../common/PopupModal";
+import PopupModal from "../../../common/PopupModal";
 
 class Photos extends Component {
   onFileNameClicked = index => {

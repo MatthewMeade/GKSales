@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import { getQuote, updateQuoteDetails } from "../../actions/quoteActions";
 import Spinner from "../common/Spinner";
 
-import QuoteDetails from "./QuoteDetails";
-import Photos from "./Photos";
-import JobInformation from "./JobInformation";
-import FloorInfo from "./FloorInfo";
-import PricingInfo from "./PricingInfo";
+import QuoteDetails from "./quoteDetails/QuoteDetails";
+import Photos from "./quoteDetails/photoUpload/Photos";
+import JobInformation from "./quoteDetails/JobInformation";
+import FloorInfo from "./quoteDetails/FloorInfo";
+import PricingInfo from "./quoteDetails/PricingInfo";
 
 class Quote extends Component {
   componentWillMount() {

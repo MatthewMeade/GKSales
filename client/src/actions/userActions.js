@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { GET_ERRORS, GET_USERS, USERS_LOADING } from "./types";
 
-// TODO: Refactor to salesperson actions?
+// Fetches a list of salespeople
 export const getUsers = () => dispatch => {
   dispatch({ type: USERS_LOADING });
   axios

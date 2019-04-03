@@ -64,9 +64,7 @@ nav {
   }
 }
 
-.quoteList,
-.leadList,
-.priceTable,
+// Data tables
 .dataTable {
   th {
     background: $primary;
@@ -83,6 +81,7 @@ nav {
   }
 }
 
+// Lead Page
 .leadPage {
   .leadDetails * {
     color: $dark;
@@ -90,6 +89,7 @@ nav {
   }
 }
 
+// Quote Page
 .quotePage {
   .quoteNotes {
     h5 {

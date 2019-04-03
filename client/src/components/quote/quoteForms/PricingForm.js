@@ -4,14 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
-import { updateQuoteDetails, getQuote } from "../../actions/quoteActions";
-import Spinner from "../common/Spinner";
-import InputSlider from "../common/InputSlider";
+import { updateQuoteDetails, getQuote } from "../../../actions/quoteActions";
+import Spinner from "../../common/Spinner";
+import InputSlider from "../../common/InputSlider";
 
-import FloorInfo from "./FloorInfo";
-import JobInfo from "./JobInformation";
+import FloorInfo from "../quoteDetails/FloorInfo";
+import JobInfo from "../quoteDetails/JobInformation";
 import AdditionalCostInput from "./AdditionalCostInput";
-import CheckBoxGroup from "../common/CheckboxGroup";
+import CheckBoxGroup from "../../common/CheckboxGroup";
 import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class PricingForm extends Component {

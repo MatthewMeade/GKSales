@@ -1,5 +1,5 @@
 import React from "react";
-import CheckboxToggle from "../common/CheckboxToggle";
+import CheckboxToggle from "../../common/CheckboxToggle";
 
 export default function AdditionalCostInput({ costObj, onChange, onDelPress }) {
   const { name, isPerSqft, price, id } = costObj;

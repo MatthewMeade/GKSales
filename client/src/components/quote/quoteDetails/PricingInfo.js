@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Table from "../common/Table";
+import Table from "../../common/Table";
 
 export default function PricingInfo({ quote }) {
   const { squareFootage } = quote.job || {};

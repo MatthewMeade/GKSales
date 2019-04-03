@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addPhoto } from "../../actions/quoteActions";
+import { addPhoto } from "../../../../actions/quoteActions";
 
 import PropTypes from "prop-types";
 

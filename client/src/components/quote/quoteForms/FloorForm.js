@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 
 import Slider from "react-slick";
 
-import SelectListGroup from "../common/SelectListGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import SelectListGroup from "../../common/SelectListGroup";
+import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 
-import { updateQuoteDetails, getQuote } from "../../actions/quoteActions";
-import Spinner from "../common/Spinner";
+import { updateQuoteDetails, getQuote } from "../../../actions/quoteActions";
+import Spinner from "../../common/Spinner";
 
-import MarbleImg from "../../img/MarbleExample.JPG";
-import FlakeImg from "../../img/FlakeExample.JPG";
-import EpoxyImg from "../../img/EpoxyExample.JPG";
+import MarbleImg from "../../../img/MarbleExample.JPG";
+import FlakeImg from "../../../img/FlakeExample.JPG";
+import EpoxyImg from "../../../img/EpoxyExample.JPG";
 import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class FloorForm extends Component {

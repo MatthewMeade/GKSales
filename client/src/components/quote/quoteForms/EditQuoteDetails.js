@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { updateQuoteDetails, getQuote, quoteFormChanged } from "../../actions/quoteActions";
+import { updateQuoteDetails, getQuote, quoteFormChanged } from "../../../actions/quoteActions";
 
 import QuoteDetailsForm from "./QuoteDetailsForm";
 import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
