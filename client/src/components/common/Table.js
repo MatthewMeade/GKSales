@@ -1,27 +1,36 @@
 import React, { Component } from "react";
 import Spinner from "./Spinner";
 
+// Renders a tabel given data and sort/filter options
 export default class Table extends Component {
   filterSortItems() {
+    // Filter and sort options
     const filter = this.props.filter;
     const { sortBy, sortDir, sortMethod } = this.props;
 
     let { data } = this.props;
 
+    // Apply filter if one is provided
     if (filter) {
-      if (typeof filter === "string")
+      if (typeof filter === "string") {
+        // Filter by string value
         data = this.filterItems(data, filter.toLowerCase());
-      else if (typeof filter === "function") data = data.filter(filter);
-      else
+      } else if (typeof filter === "function") {
+        // Filter using provided function
+        data = data.filter(filter);
+      } else {
+        // Filter by multiple strings
         filter.forEach(f => (data = this.filterItems(data, f.toLowerCase())));
+      }
     }
 
-    if (sortBy)
-      data = this.sortItems(data, sortBy, sortDir, sortMethod.toLowerCase());
+    // Sort data if sortyBy was provided
+    if (sortBy) data = this.sortItems(data, sortBy, sortDir, sortMethod.toLowerCase());
 
     return data;
   }
 
+  // Filter data by string
   filterItems(data, str) {
     return data.filter(item => {
       const itemStr = JSON.stringify(item).toLowerCase();
@@ -29,6 +38,7 @@ export default class Table extends Component {
     });
   }
 
+  // Sort array of data
   sortItems(data, sortBy, sortDir = "asc", sortMethod = "string") {
     return data.sort((a, b) => {
       let itemA = a[sortBy];
@@ -49,6 +59,7 @@ export default class Table extends Component {
     });
   }
 
+  // Render headings based on provided data mapping
   renderHeading() {
     const { headings } = this.props;
 
@@ -63,6 +74,7 @@ export default class Table extends Component {
     );
   }
 
+  // Render data
   renderBody() {
     const { headings, loading } = this.props;
 
@@ -80,6 +92,7 @@ export default class Table extends Component {
 
     const filteredData = this.filterSortItems();
 
+    // Check if no data after filter
     if (filteredData.length === 0) {
       return (
         <tbody>
@@ -92,6 +105,7 @@ export default class Table extends Component {
       );
     }
 
+    // Render table
     return (
       <tbody>
         {filteredData.map(item => {
@@ -105,6 +119,7 @@ export default class Table extends Component {
     );
   }
 
+  // Render a cell using custom format function if one was provided
   renderCell(item, heading) {
     const format = this.props.format[heading];
     if (format) {

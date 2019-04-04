@@ -1,6 +1,8 @@
 import React from "react";
 import "./Spinner.scss";
 
+// Returns an animated spinner
+// Retrieved from https://github.com/tobiasahlin/SpinKit
 export default () => {
   return (
     <div>

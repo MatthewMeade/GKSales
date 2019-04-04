@@ -4,6 +4,7 @@ import { deletePhoto } from "../../../../actions/quoteActions";
 
 import PropTypes from "prop-types";
 
+// Deletes an associated photo on click
 class DeletePhotoBtn extends Component {
   onClick = e => {
     e.preventDefault();

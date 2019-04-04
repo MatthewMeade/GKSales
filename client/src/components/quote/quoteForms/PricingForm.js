@@ -11,7 +11,7 @@ import InputSlider from "../../common/InputSlider";
 import FloorInfo from "../quoteDetails/FloorInfo";
 import JobInfo from "../quoteDetails/JobInformation";
 import AdditionalCostInput from "./AdditionalCostInput";
-import CheckBoxGroup from "../../common/CheckboxGroup";
+import Checkbox from "../../common/Checkbox";
 import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class PricingForm extends Component {
@@ -131,7 +131,7 @@ class PricingForm extends Component {
           <form onSubmit={e => e.preventDefault()}>
             <h4 className="row mb-5">
               <div className="col-md-4 text-left">
-                <CheckBoxGroup
+                <Checkbox
                   name="depositPaid"
                   label="Deposit Paid"
                   labelPos="right"
@@ -140,13 +140,7 @@ class PricingForm extends Component {
                 />
               </div>
               <div className="col-md-4 text-left">
-                <CheckBoxGroup
-                  name="jobPaid"
-                  label="Job Paid"
-                  labelPos="right"
-                  value={jobPaid}
-                  onChange={this.onChange}
-                />
+                <Checkbox name="jobPaid" label="Job Paid" labelPos="right" value={jobPaid} onChange={this.onChange} />
               </div>
             </h4>
 

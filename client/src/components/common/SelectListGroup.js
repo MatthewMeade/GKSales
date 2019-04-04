@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
+// Renders a select list with a label
 const SelectListGroup = ({ name, value, error, info, onChange, options, label, required }) => {
+  // Map data to option tags
   const selectOptions = options.map(option => (
     <option key={option.value} value={option.value}>
       {option.label}

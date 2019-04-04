@@ -2,18 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const TextFieldGroup = ({
-  name,
-  placeholder,
-  value,
-  label,
-  error,
-  info,
-  type,
-  onChange,
-  disabled,
-  min,
-}) => {
+// Renders an input and a label
+const InputFieldGroup = ({ name, placeholder, value, label, error, info, type, onChange, disabled, min }) => {
   return (
     <div className="form-group">
       <label>{label}</label>
@@ -35,7 +25,7 @@ const TextFieldGroup = ({
   );
 };
 
-TextFieldGroup.propTypes = {
+InputFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   // value: PropTypes.string.isRequired,
@@ -45,8 +35,8 @@ TextFieldGroup.propTypes = {
   disabed: PropTypes.string,
 };
 
-TextFieldGroup.defaultProps = {
+InputFieldGroup.defaultProps = {
   type: "text",
 };
 
-export default TextFieldGroup;
+export default InputFieldGroup;

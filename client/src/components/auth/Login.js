@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import TextFieldGroup from "../common/TextFieldGroup";
-import CheckboxGroup from "../common/CheckboxGroup";
+import InputFieldGroup from "../common/InputFieldGroup";
+import Checkbox from "../common/Checkbox";
 
 import { loginUser } from "../../actions/authActions";
 
+// Log In Form
 class Login extends Component {
   state = {
     email: "",
@@ -16,15 +17,19 @@ class Login extends Component {
   };
 
   componentDidMount() {
+    // Check if alreay authenticated
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    // Check if authenticated and redirect
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
+
+    // Display errors
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -57,7 +62,7 @@ class Login extends Component {
               <h1 className="display-4 text-center">Log In</h1>
               <p className="lead text-center">Sign in to your GK Sales account</p>
               <form onSubmit={this.onSubmit} noValidate>
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Email Address"
                   name="email"
                   type="email"
@@ -66,7 +71,7 @@ class Login extends Component {
                   error={errors.email}
                 />
 
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Password"
                   name="password"
                   type="password"
@@ -75,7 +80,7 @@ class Login extends Component {
                   error={errors.password}
                 />
                 <span className="text-center">
-                  <CheckboxGroup
+                  <Checkbox
                     name="rememberMe"
                     label="Remember Me"
                     value={this.state.rememberMe}

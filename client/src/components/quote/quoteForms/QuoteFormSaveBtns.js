@@ -1,5 +1,6 @@
 import React from "react";
 
+// Set of buttons below quote forms used to save and navigate between forms
 const QuoteFormSaveBtns = ({ currentPage, onSaveBtnPressed }) => {
   return (
     <div>

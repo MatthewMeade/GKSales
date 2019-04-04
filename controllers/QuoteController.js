@@ -26,7 +26,6 @@ module.exports.getQuotesByLead = async (req, res) => {
 };
 
 module.exports.createQuote = async (req, res) => {
-  // TODO: Validation
   const errors = quoteValidation.validateQuoteInfoInput(req);
   if (!isEmpty(errors)) {
     return res.status(400).json(errors);
@@ -38,8 +37,6 @@ module.exports.createQuote = async (req, res) => {
 };
 
 module.exports.editQuote = async (req, res) => {
-  // TODO: Validation
-
   let errors = {};
 
   if (req.body.job) {

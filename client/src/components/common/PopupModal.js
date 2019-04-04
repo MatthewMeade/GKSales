@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 
+// Toggleable popup modal
 class PopupModal extends Component {
   state = { active: false };
 
   componentWillReceiveProps(nextProps) {
+    // Set the state to the provided active prop
     if (nextProps.active !== undefined) {
       this.setState({ active: !!nextProps.active });
     }
   }
 
   close = () => {
+    // Disable
     this.props.onPopupClose();
     this.setState({ active: false });
   };
 
   render() {
+    // Render empty element if inactive
     if (!this.state.active) {
       return <span />;
     }

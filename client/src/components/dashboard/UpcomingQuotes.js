@@ -3,6 +3,7 @@ import Moment from "react-moment";
 
 import Table from "../common/Table";
 
+// Table of quotes filtered by salesperson and future date
 function UpcomingQuotes({ quotes, loading, history, auth }) {
   const data = quotes.map(quote => ({
     ...quote,
@@ -22,6 +23,7 @@ function UpcomingQuotes({ quotes, loading, history, auth }) {
         sortBy="consultationDate"
         sortMethod="date"
         filter={data => Date.parse(data.consultationDate) > Date.now() && data.salesperson._id === auth.user.id}
+        loading={loading}
         onRowClick={({ _id }) => history.push("/quotes/" + _id)}
       />
     </div>

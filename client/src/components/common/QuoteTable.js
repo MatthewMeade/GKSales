@@ -7,16 +7,20 @@ import Moment from "react-moment";
 import { withRouter } from "react-router-dom";
 import Table from "./Table";
 
+// Table of quoets
 class QuoteTable extends Component {
   componentDidMount() {
+    // If provided a leadID, filter quotes for that lead
     if (this.props.leadID) {
       this.setState({ filterStr: this.props.leadID });
       return this.props.getQuotesByLead(this.props.leadID);
     }
 
+    // Fetch quotes
     this.props.getQuotes();
   }
 
+  // Redirect to clicked quote
   onRowClick = ({ _id }) => {
     this.props.history.push("/quotes/" + _id);
   };
@@ -24,6 +28,7 @@ class QuoteTable extends Component {
   render() {
     const { quotes, loading } = this.props;
 
+    // Flatten data
     const data = quotes.map(quote => ({
       ...quote,
       leadId: quote.lead._id,

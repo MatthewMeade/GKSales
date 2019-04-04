@@ -1,5 +1,6 @@
 import React from "react";
 
+// Displays two toggleable checkboxes
 const CheckboxToggle = ({ name, value, trueLabel, falseLabel, onChange }) => {
   return (
     <div className="checkboxToggle">

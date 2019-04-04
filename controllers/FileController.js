@@ -14,6 +14,7 @@ Grid.mongo = mongoose.mongo;
 const gridfs = require("mongoose-gridfs");
 
 let Attachment;
+// Initialize DB with connection (library can't use promise from mongoose.connection)
 exports.initDB = connection => {
   const { model } = gridfs({
     collection: "uploads",
@@ -24,7 +25,8 @@ exports.initDB = connection => {
   Attachment = model;
 };
 
-// TODO: File Validation
+// DEV ONLY
+// Configures multer to store photos locally
 const localStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = `./uploads/`;
@@ -41,6 +43,7 @@ const localStorage = multer.diskStorage({
   },
 });
 
+// Configures multer to store files on DB
 storage = new GridFSStorage({
   db: connection,
   file: async (req, file) => {
@@ -60,11 +63,13 @@ exports.upload = multer({
   fileFilter: (req, file, cb) => cb(null, file.mimetype.indexOf("image") >= 0),
 }).single("photo");
 
+// Read a file from the DB
 exports.getUpload = async (req, res) => {
   const readStream = Attachment.readByFileName(req.params.fileName);
   readStream.pipe(res);
 };
 
+// Read and zip a list of photos
 exports.exportUploads = (req, res) => {
   res.writeHead(200, {
     "Content-Type": "application/zip",

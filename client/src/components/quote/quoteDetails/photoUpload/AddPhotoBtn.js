@@ -4,6 +4,7 @@ import { addPhoto } from "../../../../actions/quoteActions";
 
 import PropTypes from "prop-types";
 
+// File input that dispatches the photo upload action when a new file is attached
 class AddPhotoBtn extends Component {
   onChange = e => {
     e.preventDefault();

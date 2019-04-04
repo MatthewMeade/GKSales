@@ -1,6 +1,7 @@
 import React from "react";
 
-const CheckBoxGroup = ({ name, placeholder, value, label, error, info, type, onChange, disabled, labelPos }) => {
+// Displays a single toggleable checkbox
+const Checkbox = ({ name, value, label, onChange, labelPos }) => {
   return (
     <div className="customCheck">
       <label
@@ -16,4 +17,4 @@ const CheckBoxGroup = ({ name, placeholder, value, label, error, info, type, onC
   );
 };
 
-export default CheckBoxGroup;
+export default Checkbox;

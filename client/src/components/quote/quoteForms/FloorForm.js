@@ -56,6 +56,7 @@ class FloorForm extends Component {
     const { floorType, baseColor, colorsFlake, colorComment } = this.state;
     const { errors } = this.props;
 
+    // Define data
     const floorTypes = [
       {
         name: "flake",

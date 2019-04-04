@@ -1,6 +1,7 @@
 import React from "react";
 import CheckboxToggle from "../../common/CheckboxToggle";
 
+// Renders a set of inputs with name, type, and price inputs
 export default function AdditionalCostInput({ costObj, onChange, onDelPress }) {
   const { name, isPerSqft, price, id } = costObj;
   return (

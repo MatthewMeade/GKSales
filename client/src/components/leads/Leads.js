@@ -6,6 +6,7 @@ import { getLeads, refreshLeads } from "../../actions/leadActions";
 import { withRouter } from "react-router-dom";
 import Table from "../common/Table";
 
+// Leads table page
 class Leads extends Component {
   state = { filterStr: "" };
 

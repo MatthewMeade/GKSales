@@ -11,6 +11,7 @@ import { quoteFormChanged } from "../../actions/quoteActions";
 
 import QuoteTable from "../common/QuoteTable";
 
+// Renders a lead page
 class Lead extends Component {
   componentDidMount() {
     this.props.getLead(this.props.match.params.id, this.props.history);
@@ -30,7 +31,6 @@ class Lead extends Component {
       content = <Spinner />;
     } else {
       content = (
-        // TODO: Refactor
         <div>
           <div className="row">
             <div className="col-lg">

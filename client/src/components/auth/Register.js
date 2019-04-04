@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import { registerUser } from "../../actions/authActions";
 
-import TextFieldGroup from "../common/TextFieldGroup";
+import InputFieldGroup from "../common/InputFieldGroup";
 
 class Register extends Component {
   state = {
@@ -17,6 +17,7 @@ class Register extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    // Render Errors
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -50,7 +51,7 @@ class Register extends Component {
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your GK Sales account</p>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Name"
                   name="name"
                   value={this.state.name}
@@ -58,7 +59,7 @@ class Register extends Component {
                   error={errors.name}
                 />
 
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Email"
                   name="email"
                   type="email"
@@ -67,7 +68,7 @@ class Register extends Component {
                   error={errors.email}
                 />
 
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Password"
                   name="password"
                   type="password"
@@ -76,7 +77,7 @@ class Register extends Component {
                   error={errors.password}
                 />
 
-                <TextFieldGroup
+                <InputFieldGroup
                   placeholder="Confirm Password"
                   name="password2"
                   type="password"

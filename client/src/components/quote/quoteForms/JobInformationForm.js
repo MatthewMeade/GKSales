@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getQuote } from "../../../actions/quoteActions";
-import TextFieldGroup from "../../common/TextFieldGroup";
+import InputFieldGroup from "../../common/InputFieldGroup";
 import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import SelectListGroup from "../../common/SelectListGroup";
-import CheckBoxGroup from "../../common/CheckboxGroup";
+import Checkbox from "../../common/Checkbox";
 
 import { updateQuoteDetails } from "../../../actions/quoteActions";
 import Spinner from "../../common/Spinner";
@@ -78,7 +78,7 @@ class JobInformationForm extends Component {
         ) : (
           <form onSubmit={e => e.preventDefault()}>
             <h4>Square Footage</h4>
-            <TextFieldGroup
+            <InputFieldGroup
               type="number"
               placeholder="0"
               name="squareFootage"
@@ -107,7 +107,7 @@ class JobInformationForm extends Component {
             />
 
             <h4>
-              <CheckBoxGroup
+              <Checkbox
                 name="cracking"
                 label="Cracking?"
                 value={cracking}
@@ -125,7 +125,7 @@ class JobInformationForm extends Component {
             />
 
             <h4>
-              <CheckBoxGroup
+              <Checkbox
                 name="verticalSurface"
                 label="Vertical Surface?"
                 value={verticalSurface}

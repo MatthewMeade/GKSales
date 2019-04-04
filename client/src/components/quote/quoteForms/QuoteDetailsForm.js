@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import TextFieldGroup from "../../common/TextFieldGroup";
+import InputFieldGroup from "../../common/InputFieldGroup";
 import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import SelectListGroup from "../../common/SelectListGroup";
 
@@ -86,7 +86,7 @@ class QuoteDetailsForm extends Component {
               </div>
             </div>
 
-            <TextFieldGroup
+            <InputFieldGroup
               name="consultationDate"
               type="date"
               value={(quote.consultationDate || "").split("T")[0]}

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
+// Renders a text area with a label
 const TextAreaFieldGroup = ({ name, label, placeholder, value, error, info, onChange, rows }) => {
   return (
     <div className="form-group">

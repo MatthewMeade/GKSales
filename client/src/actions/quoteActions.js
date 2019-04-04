@@ -46,6 +46,7 @@ export const getQuotesByLead = id => dispatch => {
     });
 };
 
+// Create a new quote
 export const newQuote = (history, data, redirectLocation) => dispatch => {
   axios
     .post("/api/quotes", data)
@@ -61,6 +62,7 @@ export const newQuote = (history, data, redirectLocation) => dispatch => {
     );
 };
 
+// Get a quote by id
 export const getQuote = (id, history) => dispatch => {
   dispatch(setQuoteLoading());
   axios
@@ -77,6 +79,7 @@ export const getQuote = (id, history) => dispatch => {
     });
 };
 
+// Update a quote
 export const updateQuoteDetails = (id, details, history, redirectLocation) => dispatch => {
   axios
     .post(`/api/quotes/${id}`, details)
@@ -93,6 +96,7 @@ export const updateQuoteDetails = (id, details, history, redirectLocation) => di
     );
 };
 
+// Add photo to a quote
 export const addPhoto = (quoteID, file) => dispatch => {
   const fd = new FormData();
   fd.append("quote", quoteID);
@@ -116,6 +120,7 @@ export const addPhoto = (quoteID, file) => dispatch => {
     );
 };
 
+// Delete photo from a quote
 export const deletePhoto = (quoteID, fileName) => dispatch => {
   axios
     .post(`/api/quotes/${quoteID}/deletePhoto`, { fileName })
@@ -128,6 +133,7 @@ export const deletePhoto = (quoteID, fileName) => dispatch => {
     );
 };
 
+// Quote form changed (New and Edit)
 export const quoteFormChanged = ({ prop, value }) => {
   return {
     type: QUOTE_FORM_CHANGE,
@@ -135,14 +141,8 @@ export const quoteFormChanged = ({ prop, value }) => {
   };
 };
 
+// Clear quote form
 export const clearQuote = () => ({ type: CLEAR_QUOTE });
-
-export const jobFormChanged = ({ prop, value }) => {
-  return {
-    type: JOB_FORM_CHANGE,
-    payload: { prop, value },
-  };
-};
 
 // Set loading state
 export const setQuoteLoading = () => {

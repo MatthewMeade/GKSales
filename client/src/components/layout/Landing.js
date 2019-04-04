@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../img/logo.png";
 
+// Landing Page with log in or sign up
 class Landing extends Component {
   componentDidMount() {
+    // Redirect to dashboard if user is authenticated
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../img/logo.png";
 
+// Navbar used across the application
 class Navbar extends Component {
   onLogoutClick = e => {
     e.preventDefault();
@@ -17,6 +18,7 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
 
+    // Nav items to show only if user is authenticated
     const authLinks = (
       <div className="container-fluid">
         <ul className="navbar-nav">
@@ -38,10 +40,7 @@ class Navbar extends Component {
         </ul>
         <ul className="nav navbar-nav navbar-right">
           <li>
-            <button
-              className="btn btn-danger float-right"
-              onClick={this.onLogoutClick}
-            >
+            <button className="btn btn-danger float-right" onClick={this.onLogoutClick}>
               Logout
             </button>
           </li>
@@ -56,6 +55,7 @@ class Navbar extends Component {
           <span className="d-none d-md-inline ml-2">Garage Kings Sales</span>
         </Link>
 
+        {/* Only render links if user is authenticated */}
         {isAuthenticated && authLinks}
       </nav>
     );

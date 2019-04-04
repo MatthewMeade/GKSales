@@ -13,12 +13,15 @@ import SecureImage from "../../../common/SecureImage";
 import DownloadPhotoBtn from "./DownloadPhotoBtn";
 import PopupModal from "../../../common/PopupModal";
 
+// Renders a slideshow of images with options to add and manage photos
 class Photos extends Component {
+  // Update slideshow when a file is clicked
   onFileNameClicked = index => {
     this.setState({ curFileSlide: index });
     this.slider.slickGoTo(index);
   };
 
+  // Update state to reflect sliding through slides
   onSlideChanged = index => {
     this.setState({ curFileSlide: index });
   };
@@ -28,6 +31,7 @@ class Photos extends Component {
     popupContent: null,
   };
 
+  // Show a full screen image on click
   popupImage = photo => {
     this.setState({
       popupContent: (
@@ -38,6 +42,7 @@ class Photos extends Component {
     });
   };
 
+  // Close the popup
   onPopupClose = () => {
     this.setState({ popupContent: null });
   };

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import axios from "axios";
 
+// Fetches an upload from the server and downloads it
 class DownloadPhotoButton extends Component {
   state = {
     blob: "",
@@ -12,10 +13,12 @@ class DownloadPhotoButton extends Component {
   onClick = e => {
     const { fileName } = this.props;
 
+    // Fetch Image
     axios.get(`/api/uploads/${fileName}`, { responseType: "blob" }).then(({ data }) => {
+      // Create data blob
       const blob = window.URL.createObjectURL(new Blob([data]));
-      this.setState({ blob });
-      this.link.click();
+      this.setState({ blob }); // Point link at blob
+      this.link.click(); // Simulate click on download link
     });
   };
 
@@ -31,6 +34,7 @@ class DownloadPhotoButton extends Component {
           style={{ display: "none" }}
           href={this.state.blob}
           ref={c => (this.link = c)}
+          // Remove timestamp from photo name
           download={fileName
             .split("_")
             .slice(1)
