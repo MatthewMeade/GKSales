@@ -20,7 +20,7 @@ export default class Table extends Component {
         data = data.filter(filter);
       } else {
         // Filter by multiple strings
-        filter.forEach(f => (data = this.filterItems(data, f.toLowerCase())));
+        filter.forEach((f) => (data = this.filterItems(data, f.toLowerCase())));
       }
     }
 
@@ -32,7 +32,7 @@ export default class Table extends Component {
 
   // Filter data by string
   filterItems(data, str) {
-    return data.filter(item => {
+    return data.filter((item) => {
       const itemStr = JSON.stringify(item).toLowerCase();
       return itemStr.indexOf(str) >= 0;
     });
@@ -66,7 +66,7 @@ export default class Table extends Component {
     return (
       <thead>
         <tr>
-          {headings.map(heading => (
+          {headings.map((heading) => (
             <th key={heading.name}> {heading.label} </th>
           ))}
         </tr>
@@ -108,10 +108,10 @@ export default class Table extends Component {
     // Render table
     return (
       <tbody>
-        {filteredData.map(item => {
+        {filteredData.map((item) => {
           return (
             <tr key={item._id} onClick={() => this.props.onRowClick(item)}>
-              {headings.map(heading => this.renderCell(item, heading.name))}
+              {headings.map((heading) => this.renderCell(item, heading.name))}
             </tr>
           );
         })}
@@ -131,7 +131,7 @@ export default class Table extends Component {
 
   render() {
     return (
-      <table className="dataTable table table-striped table-light table-hover">
+      <table className="dataTable table table-hover">
         {this.renderHeading()}
         {this.renderBody()}
       </table>
