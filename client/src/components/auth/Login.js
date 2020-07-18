@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import InputFieldGroup from "../common/InputFieldGroup";
 import Checkbox from "../common/Checkbox";
@@ -10,8 +11,8 @@ import { loginUser } from "../../actions/authActions";
 // Log In Form
 class Login extends Component {
   state = {
-    email: "",
-    password: "",
+    email: "demo@gmail.com",
+    password: "123456",
     rememberMe: true,
     errors: {},
   };
@@ -39,7 +40,7 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
@@ -60,7 +61,16 @@ class Login extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">Sign in to your GK Sales account</p>
+              <p className="lead text-center">
+                Sign in to your GK Sales account or{" "}
+                <Link to="/register" className="text-primary">
+                  Register for a new account
+                </Link>
+              </p>
+              <p className="text-center">
+                For demo purposes, sign in as <span className="text-primary">demo@gmail.com</span> with the password{" "}
+                <span className="text-primary">123456</span>
+              </p>
               <form onSubmit={this.onSubmit} noValidate>
                 <InputFieldGroup
                   placeholder="Email Address"
@@ -103,12 +113,9 @@ Login.propTypes = {
   errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
 });
 
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(Login);
+export default connect(mapStateToProps, { loginUser })(Login);

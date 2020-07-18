@@ -21,11 +21,15 @@ class Landing extends Component {
           <div className="col-md-12 text-center">
             <h1 className="display-4 mb-4">Sales App</h1>
             <p>Sign in or Register as a new salesperson</p>
+            <p>
+              For demo purposes, sign in as <span className="text-primary">demo@gmail.com</span> with the password{" "}
+              <span className="text-primary">123456</span>
+            </p>
             <hr />
             <Link to="/login" className="btn btn-lg btn-primary mr-2">
               Sign In
             </Link>
-            <Link to="/register" className="btn btn-lg btn-light">
+            <Link to="/register" className="btn btn-lg btn-secondary">
               Register
             </Link>
           </div>
@@ -39,7 +43,7 @@ Landing.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 

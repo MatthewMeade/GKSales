@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { registerUser } from "../../actions/authActions";
 
@@ -27,7 +28,7 @@ class Register extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const newUser = {
@@ -49,7 +50,12 @@ class Register extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">Create your GK Sales account</p>
+              <p className="lead text-center">
+                Create your GK Sales account or{" "}
+                <Link to="/login" className="text-primary">
+                  Sign into an existing account
+                </Link>
+              </p>
               <form onSubmit={this.onSubmit}>
                 <InputFieldGroup
                   placeholder="Name"
@@ -101,12 +107,9 @@ Register.propTypes = {
   errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
 });
 
-export default connect(
-  mapStateToProps,
-  { registerUser }
-)(withRouter(Register));
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
