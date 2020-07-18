@@ -12,9 +12,9 @@ import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import { updateQuoteDetails, getQuote } from "../../../actions/quoteActions";
 import Spinner from "../../common/Spinner";
 
-import MarbleImg from "../../../img/MarbleExample.JPG";
-import FlakeImg from "../../../img/FlakeExample.JPG";
-import EpoxyImg from "../../../img/EpoxyExample.JPG";
+import MarbleImg from "../../../img/MarbleExample.png";
+import FlakeImg from "../../../img/FlakeExample.png";
+import EpoxyImg from "../../../img/EpoxyExample.png";
 import QuoteFormSaveBtns from "./QuoteFormSaveBtns";
 
 class FloorForm extends Component {
@@ -44,11 +44,11 @@ class FloorForm extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
   };
 
-  onSaveBtnPressed = redirectLocation => {
+  onSaveBtnPressed = (redirectLocation) => {
     this.props.updateQuoteDetails(this.props.quote._id, { floor: this.state }, this.props.history, redirectLocation);
   };
 
@@ -75,7 +75,7 @@ class FloorForm extends Component {
       },
     ];
 
-    const floorTypeCarouselContent = floorTypes.map(floor => {
+    const floorTypeCarouselContent = floorTypes.map((floor) => {
       return (
         <div className="carouselItemContainer" key={floor.name}>
           <img src={floor.imgUrl} alt="Floor" />
@@ -96,7 +96,7 @@ class FloorForm extends Component {
       );
     });
 
-    const floorTypeSelectOptions = floorTypes.map(floor => ({
+    const floorTypeSelectOptions = floorTypes.map((floor) => ({
       label: floor.label,
       value: floor.name,
     }));
@@ -135,7 +135,7 @@ class FloorForm extends Component {
         {this.props.loading ? (
           <Spinner />
         ) : (
-          <form onSubmit={e => e.preventDefault()}>
+          <form onSubmit={(e) => e.preventDefault()}>
             {floorTypeSlider}
 
             <SelectListGroup
@@ -195,7 +195,7 @@ class FloorForm extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   quote: state.quotes.quote,
   errors: state.errors,
   loading: state.quotes.loading,

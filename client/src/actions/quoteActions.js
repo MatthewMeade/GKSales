@@ -9,19 +9,18 @@ import {
   CLEAR_QUOTE,
   QUOTE_FORM_CHANGE,
   QUOTE_FORM_SAVE,
-  JOB_FORM_CHANGE,
 } from "./types";
 
 // Get quotes
-export const getQuotes = () => dispatch => {
+export const getQuotes = () => (dispatch) => {
   dispatch(setQuoteLoading());
 
   axios
     .get("/api/quotes")
-    .then(res => {
+    .then((res) => {
       dispatch({ type: GET_QUOTES, payload: res.data });
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_QUOTES,
         payload: null,
@@ -30,15 +29,15 @@ export const getQuotes = () => dispatch => {
 };
 
 // Get quotes by lead ID
-export const getQuotesByLead = id => dispatch => {
+export const getQuotesByLead = (id) => (dispatch) => {
   dispatch(setQuoteLoading());
 
   axios
     .get(`/api/quotes/lead/${id}`)
-    .then(res => {
+    .then((res) => {
       dispatch({ type: GET_QUOTES, payload: res.data });
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_QUOTES,
         payload: null,
@@ -47,14 +46,14 @@ export const getQuotesByLead = id => dispatch => {
 };
 
 // Create a new quote
-export const newQuote = (history, data, redirectLocation) => dispatch => {
+export const newQuote = (history, data, redirectLocation) => (dispatch) => {
   axios
     .post("/api/quotes", data)
-    .then(res => {
+    .then((res) => {
       dispatch({ type: QUOTE_FORM_SAVE });
       history.push(`/quotes/${res.data._id}/${redirectLocation}`);
     })
-    .catch(err =>
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
@@ -63,14 +62,14 @@ export const newQuote = (history, data, redirectLocation) => dispatch => {
 };
 
 // Get a quote by id
-export const getQuote = (id, history) => dispatch => {
+export const getQuote = (id, history) => (dispatch) => {
   dispatch(setQuoteLoading());
   axios
     .get(`/api/quotes/${id}`)
-    .then(res => {
+    .then((res) => {
       dispatch({ type: GET_QUOTE, payload: res.data });
     })
-    .catch(err => {
+    .catch((err) => {
       history.push("/not-found");
       dispatch({
         type: GET_QUOTE,
@@ -80,15 +79,15 @@ export const getQuote = (id, history) => dispatch => {
 };
 
 // Update a quote
-export const updateQuoteDetails = (id, details, history, redirectLocation) => dispatch => {
+export const updateQuoteDetails = (id, details, history, redirectLocation) => (dispatch) => {
   axios
     .post(`/api/quotes/${id}`, details)
-    .then(res => {
+    .then((res) => {
       dispatch({ type: QUOTE_FORM_SAVE });
       dispatch({ type: CLEAR_ERRORS });
       history.push(`/quotes/${id}/${redirectLocation}`);
     })
-    .catch(err =>
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
@@ -97,7 +96,7 @@ export const updateQuoteDetails = (id, details, history, redirectLocation) => di
 };
 
 // Add photo to a quote
-export const addPhoto = (quoteID, file) => dispatch => {
+export const addPhoto = (quoteID, file) => (dispatch) => {
   const fd = new FormData();
   fd.append("quote", quoteID);
   fd.append("photo", file);
@@ -108,11 +107,11 @@ export const addPhoto = (quoteID, file) => dispatch => {
         "content-type": "multipart/form-data",
       },
     })
-    .then(res => {
+    .then((res) => {
       dispatch({ type: GET_QUOTE, payload: res.data });
       dispatch({ type: CLEAR_ERRORS });
     })
-    .catch(err =>
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
@@ -121,11 +120,11 @@ export const addPhoto = (quoteID, file) => dispatch => {
 };
 
 // Delete photo from a quote
-export const deletePhoto = (quoteID, fileName) => dispatch => {
+export const deletePhoto = (quoteID, fileName) => (dispatch) => {
   axios
     .post(`/api/quotes/${quoteID}/deletePhoto`, { fileName })
-    .then(res => dispatch({ type: GET_QUOTE, payload: res.data }))
-    .catch(err =>
+    .then((res) => dispatch({ type: GET_QUOTE, payload: res.data }))
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,

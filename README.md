@@ -1,4 +1,4 @@
-# Garage Kings Sales App
+# GK Sales App
 
 CNA PR2460 Comprehensive Project
 
@@ -7,13 +7,13 @@ CNA PR2460 Comprehensive Project
 ### Clone the repo
 
 ```bash
-git clone git@github.com:mafumeade/GarageKingsSales.git
+git clone git@github.com:mafumeade/GKSales.git
 ```
 
 ### Install NPM packages
 
 ```bash
-cd GarageKingsSales     # Navigate to project
+cd GKSales     # Navigate to project
 npm i                   # Install server packages
 npm run client-install  # Install client packages
 ```

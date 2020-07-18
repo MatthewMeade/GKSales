@@ -6,8 +6,6 @@ import { logoutUser } from "../../actions/authActions";
 
 import { Link } from "react-router-dom";
 
-import Logo from "../../img/logo.png";
-
 // Navbar used across the application
 class Navbar extends Component {
   onLogoutClick = e => {
@@ -51,8 +49,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand bg-primary">
         <Link className="navbar-brand mr-0" to="/dashboard">
-          <img src={Logo} alt="Garage Kings" id="navLogo" />
-          <span className="d-none d-md-inline ml-2">Garage Kings Sales</span>
+          <span className="d-none d-md-inline ml-2">GK Sales</span>
         </Link>
 
         {/* Only render links if user is authenticated */}
